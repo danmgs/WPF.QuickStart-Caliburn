@@ -1,8 +1,14 @@
-﻿<Window x:Class="WPF.QuickStart.UI.Views.ChildView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ChildView" Height="300" Width="300">
-    <Grid>
-        <TextBlock Text="TEST" FontSize="48" FontWeight="Bold" Foreground="#FF463D" VerticalAlignment="Center" HorizontalAlignment="Center" />
-    </Grid>
-</Window>  
+﻿<UserControl x:Class="WPF.QuickStart.UI.Views.ChildView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.CustomControls">
+
+    <DockPanel>
+
+        <TextBlock Text="{Binding DisplayName}" FontSize="48" FontWeight="Bold" Foreground="#FF463D" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="true" IsExportable="Visible" />
+
+    </DockPanel>
+
+</UserControl>

@@ -13,12 +13,11 @@ namespace WPF.QuickStart.UI.ViewModels
         public ChildTabViewModel(string displayName)
         {
             DisplayName = displayName;
-            //IsEnabled = true;
-
-            //Items.Add(new ChildTabViewModel("tab1"));
-            //var tab2ViewModel = new ChildTabViewModel("tab2");
-            //Items.Add(tab2ViewModel);
-            //ActivateItem(tab2ViewModel);
+            IsEnabled = true;
+            Items.Add(new ChildViewModel("Tab 1"));
+            var tab2ViewModel = new ChildViewModel("Tab 2");
+            Items.Add(tab2ViewModel);
+            ActivateItem(tab2ViewModel);
         }
 
         private bool _isEnabled;
@@ -38,7 +37,7 @@ namespace WPF.QuickStart.UI.ViewModels
         {
             base.OnInitialize();
 
-            MessageBox.Show(string.Format("Init: {0}", DisplayName));
+            MessageBox.Show(string.Format("Init: '{0}'", DisplayName));
         }
 
         protected override void OnDeactivate(bool close)
@@ -47,7 +46,7 @@ namespace WPF.QuickStart.UI.ViewModels
 
             if (close)
             {
-                MessageBox.Show(string.Format("Closed: {0}", DisplayName));
+                MessageBox.Show(string.Format("Closed: '{0}'", DisplayName));
             }
         }
     }

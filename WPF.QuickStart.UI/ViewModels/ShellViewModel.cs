@@ -41,9 +41,14 @@ namespace WPF.QuickStart.UI.ViewModels
             MessageBox.Show(string.Format("Hello {0}!", Name)); //Don't do this in real life :)
         }
 
+        public void ShowMultiTabsScreen()
+        {
+            ActivateItem(new ChildTabViewModel("Tab Panel"));
+        }
+
         public void ShowRedScreen()
         {
-            ActivateItem(new ChildTabViewModel("Red"));
+            ActivateItem(new ChildViewModel("Red"));
         }
  
         public void ShowGreenScreen()

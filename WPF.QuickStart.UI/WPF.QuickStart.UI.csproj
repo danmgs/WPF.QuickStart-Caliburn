@@ -63,13 +63,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="CustomControls\MyCustomControl.cs" />
     <Compile Include="ViewModels\ChildTabViewModel.cs" />
-    <Compile Include="Views\ChildTabView.xaml.cs">
-      <DependentUpon>ChildTabView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ChildView.xaml.cs">
-      <DependentUpon>ChildView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\ChildViewModel.cs" />
     <Compile Include="IShell.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
@@ -77,6 +74,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\ControlTemplateStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ChildTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +123,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
