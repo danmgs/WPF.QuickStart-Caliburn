@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace WPF.QuickStart.UI.CustomControls
 {
-    class MyCustomControl : Control
+    public class MyCustomControl : Control
     {
         #region DependencyProperties
 

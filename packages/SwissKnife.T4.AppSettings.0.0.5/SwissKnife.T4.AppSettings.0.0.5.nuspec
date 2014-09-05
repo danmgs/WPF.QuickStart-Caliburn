@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SwissKnife.T4.AppSettings</id>
+    <version>0.0.5</version>
+    <authors>shiba-yan</authors>
+    <owners>shiba-yan</owners>
+    <licenseUrl>https://raw.github.com/shibayan/SwissKnife/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/shibayan/SwissKnife</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SwissKnife.T4.AppSettings is generates strongly typed AppSettings class.</description>
+    <tags>AspNet T4 Web.config App.config</tags>
+  </metadata>
+</package>

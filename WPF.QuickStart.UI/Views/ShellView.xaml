@@ -3,15 +3,17 @@
         xmlns:cal="http://www.caliburnproject.org"   
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <DockPanel Width="300" Height="300" Background="LightBlue">
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
+    <DockPanel Width="600" Height="500" Background="LightBlue">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="ShowMultiTabsScreen" Content="Tabs Panel" Width="100" />
             <Button x:Name="ShowRedScreen" Content="Red" Width="50" Margin="12,0,0,0" />
             <Button x:Name="ShowGreenScreen" Content="Green" Width="50" Margin="12,0,0,0" />
             <Button x:Name="ShowBlueScreen" Content="Blue" Width="50" Margin="12,0,0,0" />
         </StackPanel>
 
-        <ContentControl x:Name="ActiveItem" />
+        <ContentControl DockPanel.Dock="Top" x:Name="ActiveItem" Height="450"/>
+
+        <TextBlock x:Name="StatusBar" DockPanel.Dock="Bottom" Text="Status ..."></TextBlock>
 
     </DockPanel>
 

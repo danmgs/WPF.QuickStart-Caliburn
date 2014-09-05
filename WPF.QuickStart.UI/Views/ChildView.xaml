@@ -5,9 +5,9 @@
 
     <DockPanel>
 
-        <TextBlock Text="{Binding DisplayName}" FontSize="48" FontWeight="Bold" Foreground="#FF463D" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBlock Text="{Binding DisplayName}" FontSize="48" FontWeight="Bold" Foreground="#FF463D" VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Top" />
 
-        <ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="true" IsExportable="Visible" />
+        <ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="true" IsExportable="Visible" DockPanel.Dock="Bottom" />
 
     </DockPanel>
 

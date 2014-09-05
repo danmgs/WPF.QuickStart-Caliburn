@@ -6,10 +6,14 @@
                     xmlns:debug="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                    
                     xmlns:converter="clr-namespace:WPF.QuickStart.UI.CustomControls.Converters"
+                    xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                     xmlns:ignore="dummy"
                     mc:Ignorable="ignore">
 
-    <!-- Use to debug binding : debug:PresentationTraceSources.TraceLevel=High -->
+    <!-- Use to debug binding : 
+     - include namespace : xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+     - add to element : {binding ...,  debug:PresentationTraceSources.TraceLevel=High }
+    -->
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Resources/Shared.xaml" />
@@ -19,20 +23,25 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:MyCustomControl}">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300" />
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Row="0" Text="MyCustomControl Row 0" />
-                        <TextBlock Grid.Row="1" Text="MyCustomControl Row 1" />
-                        <ContentPresenter Grid.Row="2" />
-                    </Grid>
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10,10">
+                            <Label Content="Number of items" />
+                            <TextBox Name="ElementsCount" Width="50" Margin="20,0" />                            
+                        </StackPanel>
+                        <Button DockPanel.Dock="Top" Name="GenerateItems" HorizontalContentAlignment="Stretch" Content="Generate list" Padding="10">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="GenerateItems">
+                                        <cal:Parameter Value="{Binding ElementName=ElementsCount, Path=Text}" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical">
+                            <TextBlock Text="{Binding MyCollectionItems.Count, diagnostics:PresentationTraceSources.TraceLevel=High}"/>
+                            <DataGrid ItemsSource="{Binding MyCollectionItems.SourceCollection}" />
+                        </StackPanel>
+                    </DockPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

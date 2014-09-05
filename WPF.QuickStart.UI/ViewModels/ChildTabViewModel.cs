@@ -14,8 +14,8 @@ namespace WPF.QuickStart.UI.ViewModels
         {
             DisplayName = displayName;
             IsEnabled = true;
-            Items.Add(new ChildViewModel("Tab 1"));
-            var tab2ViewModel = new ChildViewModel("Tab 2");
+            Items.Add(new ChildViewModel("Tab 1", null, null)); // TODO add eventAgg + windowManager
+            var tab2ViewModel = new ChildViewModel("Tab 2",  null, null); // TODO add eventAgg + windowManager
             Items.Add(tab2ViewModel);
             ActivateItem(tab2ViewModel);
         }
