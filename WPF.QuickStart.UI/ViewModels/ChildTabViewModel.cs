@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +11,13 @@ namespace WPF.QuickStart.UI.ViewModels
 {
     public class ChildTabViewModel : Conductor<IScreen>.Collection.OneActive
     {
-        public ChildTabViewModel(string displayName)
+        [ImportingConstructor()]
+        public ChildTabViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
         {
             DisplayName = displayName;
             IsEnabled = true;
-            Items.Add(new ChildViewModel("Tab 1", null, null)); // TODO add eventAgg + windowManager
-            var tab2ViewModel = new ChildViewModel("Tab 2",  null, null); // TODO add eventAgg + windowManager
+            Items.Add(new ChildViewModel("Tab 1", eventAgg, windowManager));
+            var tab2ViewModel = new ChildViewModel("Tab 2", eventAgg, windowManager);
             Items.Add(tab2ViewModel);
             ActivateItem(tab2ViewModel);
         }
@@ -37,7 +39,7 @@ namespace WPF.QuickStart.UI.ViewModels
         {
             base.OnInitialize();
 
-            MessageBox.Show(string.Format("Init: '{0}'", DisplayName));
+            //MessageBox.Show(string.Format("Init: '{0}'", DisplayName));
         }
 
         protected override void OnDeactivate(bool close)
@@ -46,7 +48,7 @@ namespace WPF.QuickStart.UI.ViewModels
 
             if (close)
             {
-                MessageBox.Show(string.Format("Closed: '{0}'", DisplayName));
+                //MessageBox.Show(string.Format("Closed: '{0}'", DisplayName));
             }
         }
     }

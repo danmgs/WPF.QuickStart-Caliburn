@@ -42,6 +42,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.Initialization">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ComponentModel.Composition.Initialization.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition.Registration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -74,19 +77,28 @@
     </Compile>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="CustomControls\DialogControl.cs" />
     <Compile Include="CustomControls\MyCustomControl.cs" />
     <Compile Include="Events\StatusEvent.cs" />
     <Compile Include="MefBootstrapper.cs" />
+    <Compile Include="Utils\ColorHelper.cs" />
     <Compile Include="ViewModels\ChildTabViewModel.cs" />
     <Compile Include="ViewModels\ChildViewModel.cs" />
     <Compile Include="IShell.cs" />
+    <Compile Include="ViewModels\Common\Dialog\DialogResult.cs" />
+    <Compile Include="ViewModels\Common\Dialog\DialogViewModel.cs" />
+    <Compile Include="ViewModels\Common\Dialog\Enums.cs" />
     <Compile Include="ViewModels\Common\ExtendedScreen.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\ControlTemplateStyles.xaml">
+    <Page Include="Resources\ControlTemplates\MyCustomControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ControlTemplates\DialogControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,6 +113,10 @@
     <Page Include="Views\ChildView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\Dialog\DialogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +157,26 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DialogWindow\16x16\blocked.ico" />
+    <Resource Include="Images\DialogWindow\16x16\blocked.png" />
+    <Resource Include="Images\DialogWindow\16x16\custom.ico" />
+    <Resource Include="Images\DialogWindow\16x16\custom.png" />
+    <Resource Include="Images\DialogWindow\16x16\error.ico" />
+    <Resource Include="Images\DialogWindow\16x16\error.png" />
+    <Resource Include="Images\DialogWindow\16x16\info.ico" />
+    <Resource Include="Images\DialogWindow\16x16\info.png" />
+    <Resource Include="Images\DialogWindow\16x16\question.ico" />
+    <Resource Include="Images\DialogWindow\16x16\question.png" />
+    <Resource Include="Images\DialogWindow\16x16\warning.ico" />
+    <Resource Include="Images\DialogWindow\16x16\warning.png" />
+    <Resource Include="Images\DialogWindow\48x48\blocked.png" />
+    <Resource Include="Images\DialogWindow\48x48\custom.png" />
+    <Resource Include="Images\DialogWindow\48x48\error.png" />
+    <Resource Include="Images\DialogWindow\48x48\info.png" />
+    <Resource Include="Images\DialogWindow\48x48\question.png" />
+    <Resource Include="Images\DialogWindow\48x48\warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

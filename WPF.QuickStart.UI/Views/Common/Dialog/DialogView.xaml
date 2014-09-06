@@ -1,0 +1,12 @@
+﻿<Window x:Class="WPF.QuickStart.UI.Views.Common.Dialog.DialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.CustomControls"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    ResizeMode="NoResize" SizeToContent="WidthAndHeight" 
+    Icon="{Binding SmallIcon}" WindowStartupLocation="CenterOwner">
+
+    <ctrl:DialogControl Text="{Binding Text}" Header="{Binding Header}" Icon="{Binding Icon}" FillBrush="{Binding FillBrush}" />
+    
+</Window>

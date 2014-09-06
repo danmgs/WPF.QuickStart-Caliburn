@@ -6,9 +6,11 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    <local:AppBootstrapper x:Key="bootstrapper" />
+                    <local:MefBootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
-                <ResourceDictionary Source="/Resources/ControlTemplateStyles.xaml"/>
+                <ResourceDictionary Source="/Resources/Shared.xaml" />
+                <ResourceDictionary Source="/Resources/ControlTemplates/MyCustomControl.xaml"/>
+                <ResourceDictionary Source="/Resources/ControlTemplates/DialogControl.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

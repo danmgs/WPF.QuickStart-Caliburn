@@ -20,7 +20,9 @@
 
         protected override void Configure()
         {
-            container = CompositionHost.Initialize(
+            container =
+
+                new CompositionContainer(
                 new AggregateCatalog(
                     AssemblySource.Instance.Select(x => new AssemblyCatalog(x)).OfType<ComposablePartCatalog>()
                     )

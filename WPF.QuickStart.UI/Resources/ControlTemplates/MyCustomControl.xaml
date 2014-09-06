@@ -5,7 +5,6 @@
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:debug="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                    
-                    xmlns:converter="clr-namespace:WPF.QuickStart.UI.CustomControls.Converters"
                     xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                     xmlns:ignore="dummy"
                     mc:Ignorable="ignore">
@@ -15,9 +14,9 @@
      - add to element : {binding ...,  debug:PresentationTraceSources.TraceLevel=High }
     -->
 
-    <ResourceDictionary.MergedDictionaries>
+    <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Resources/Shared.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary.MergedDictionaries>-->
 
     <Style TargetType="{x:Type ctrl:MyCustomControl}">
         <Setter Property="Template">
@@ -28,7 +27,7 @@
                             <Label Content="Number of items" />
                             <TextBox Name="ElementsCount" Width="50" Margin="20,0" />                            
                         </StackPanel>
-                        <Button DockPanel.Dock="Top" Name="GenerateItems" HorizontalContentAlignment="Stretch" Content="Generate list" Padding="10">
+                        <Button DockPanel.Dock="Top" Name="GenerateItems" HorizontalContentAlignment="Stretch" Content="Generate list" Padding="10" IsEnabled="{TemplateBinding EnabledUi}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <cal:ActionMessage MethodName="GenerateItems">
@@ -37,7 +36,7 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </Button>
-                        <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical">
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical" Height="400" ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <TextBlock Text="{Binding MyCollectionItems.Count, diagnostics:PresentationTraceSources.TraceLevel=High}"/>
                             <DataGrid ItemsSource="{Binding MyCollectionItems.SourceCollection}" />
                         </StackPanel>
@@ -46,5 +45,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    
 
 </ResourceDictionary>

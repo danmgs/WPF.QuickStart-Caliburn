@@ -21,10 +21,28 @@ namespace WPF.QuickStart.UI.ViewModels.Common
 
         protected ExtendedScreen(IEventAggregator eventAgg, IWindowManager windowManager)
         {
+            Enabled = true;
             _eventAgg = eventAgg;
             _eventAgg.Subscribe(this);
             _windowManager = windowManager;
         }
+
+        #endregion
+
+        #region Properties
+
+        bool enabled;
+
+        public bool Enabled
+        {
+            get { return enabled; }
+            set
+            {
+                enabled = value;
+                NotifyOfPropertyChange(() => Enabled);
+            }
+        }
+
 
         #endregion
 

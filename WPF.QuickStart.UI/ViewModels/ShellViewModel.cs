@@ -1,9 +1,11 @@
 using Caliburn.Micro;
+using System.ComponentModel.Composition;
 using System.Windows;
 using WPF.QuickStart.UI.Events;
 using WPF.QuickStart.UI.ViewModels;
 namespace WPF.QuickStart.UI.ViewModels
 {
+    [Export(typeof(IShell))]
     public class ShellViewModel : Conductor<Screen>, IShell, IHandle<StatusEvent>
     {
         #region Fields
@@ -16,16 +18,20 @@ namespace WPF.QuickStart.UI.ViewModels
 
         #region Constructor 
 
+        [ImportingConstructor()]
         public ShellViewModel(IEventAggregator eventAgg, IWindowManager windowManager)
         {
             base.DisplayName = AppSettings.Application.Name;
+            StatusBarContent = "Application started ... ";
 
-            _eventAgg = new SimpleContainer().GetInstance<IEventAggregator>();
+            _eventAgg = eventAgg;
             _eventAgg.Subscribe(this);
             _windowManager = windowManager;
         }
 
         #endregion Constructor
+
+        #region Properties
 
         string name;
 
@@ -52,6 +58,23 @@ namespace WPF.QuickStart.UI.ViewModels
             }
         }
 
+        string _statusBarContent;
+
+        public string StatusBarContent
+        {
+            get { return _statusBarContent; }
+            set
+            {
+                _statusBarContent = value;
+                this.NotifyOfPropertyChange(() => StatusBarContent);
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+
         public bool CanSayHello
         {
             get { return !string.IsNullOrWhiteSpace(Name); }
@@ -64,7 +87,7 @@ namespace WPF.QuickStart.UI.ViewModels
 
         public void ShowMultiTabsScreen()
         {
-            ActivateItem(new ChildTabViewModel("Tab Panel"));
+            ActivateItem(new ChildTabViewModel("Tab Panel", _eventAgg, _windowManager));
         }
 
         public void ShowRedScreen()
@@ -84,7 +107,9 @@ namespace WPF.QuickStart.UI.ViewModels
 
         public void Handle(StatusEvent status)
         {
-            MessageBox.Show(string.Format("Status : {0} ...", status.Content)); 
+            StatusBarContent = string.Format("Status : {0} ...", status.Content);
         }
+
+        #endregion
     }
 }

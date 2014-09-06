@@ -6,7 +6,10 @@
                     mc:Ignorable="ignore">
 
     <!-- Common resources included and shared by others resources files -->
-    
+
+    <converter:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+    <converter:InverseBooleanConverter x:Key="inverseBoolConverter" />
+
     <!-- Custom Color Palette -->
     <Color x:Key="AquaBlueColor">#FFA3C3EC</Color>
     <Brush x:Key="AquaBlueBrush">#FFA3C3EC</Brush>
