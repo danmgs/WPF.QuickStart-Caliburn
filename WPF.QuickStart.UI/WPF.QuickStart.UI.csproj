@@ -77,8 +77,8 @@
     </Compile>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
-    <Compile Include="CustomControls\DialogControl.cs" />
-    <Compile Include="CustomControls\MyCustomControl.cs" />
+    <Compile Include="Views\Common\Controls\DialogControl.cs" />
+    <Compile Include="Views\Common\Controls\MyCustomControl.cs" />
     <Compile Include="Events\StatusEvent.cs" />
     <Compile Include="MefBootstrapper.cs" />
     <Compile Include="Utils\ColorHelper.cs" />

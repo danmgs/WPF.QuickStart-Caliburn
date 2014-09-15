@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.CustomControls"
+                    xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls"
                     xmlns:cal="http://www.caliburnproject.org"
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:debug="clr-namespace:System.Diagnostics;assembly=WindowsBase"

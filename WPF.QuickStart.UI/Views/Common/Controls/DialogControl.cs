@@ -1,4 +1,4 @@
-﻿namespace WPF.QuickStart.UI.CustomControls
+﻿namespace WPF.QuickStart.UI.Common.Controls
 {
 	using System;
 	using System.Windows;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace WPF.QuickStart.UI.CustomControls
+namespace WPF.QuickStart.UI.Common.Controls
 {
     public class MyCustomControl : Control
     {
