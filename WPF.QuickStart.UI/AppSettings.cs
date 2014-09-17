@@ -13,6 +13,27 @@ namespace WPF.QuickStart.UI
                 get { return ConfigurationManager.AppSettings["Application.name"]; }
             }
         }
+
+        public static class Twitter
+        {
+            public static class OAuth
+            {
+                public static string ApiUrl
+                {
+                    get { return ConfigurationManager.AppSettings["Twitter.oAuth.ApiUrl"]; }
+                }
+
+                public static string ConsumerKey
+                {
+                    get { return ConfigurationManager.AppSettings["Twitter.oAuth.ConsumerKey"]; }
+                }
+
+                public static string ConsumerSecret
+                {
+                    get { return ConfigurationManager.AppSettings["Twitter.oAuth.ConsumerSecret"]; }
+                }
+            }
+        }
     }
 }
 

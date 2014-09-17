@@ -21,15 +21,6 @@ namespace WPF.QuickStart.UI.ViewModels
             base.DisplayName = displayName;
         }
 
-        private void PublishStatusEvent(string content)
-        {
-            var le = new StatusEvent() 
-            {
-                Content = content
-            };
-            _eventAgg.PublishOnUIThread(le);
-        }
-
         protected override void OnInitialize()
         {
             base.OnInitialize();

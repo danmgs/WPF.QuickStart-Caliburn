@@ -40,6 +40,10 @@
     <Reference Include="Caliburn.Micro.Platform">
       <HintPath>..\packages\Caliburn.Micro.2.0.1\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.Composition.Initialization">
@@ -77,11 +81,13 @@
     </Compile>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Utils\TwitterHelperWrapper.cs" />
+    <Compile Include="ViewModels\ITwitterViewModel.cs" />
+    <Compile Include="ViewModels\TwitterViewModel.cs" />
     <Compile Include="Views\Common\Controls\DialogControl.cs" />
     <Compile Include="Views\Common\Controls\MyCustomControl.cs" />
     <Compile Include="Events\StatusEvent.cs" />
     <Compile Include="MefBootstrapper.cs" />
-    <Compile Include="Utils\ColorHelper.cs" />
     <Compile Include="ViewModels\ChildTabViewModel.cs" />
     <Compile Include="ViewModels\ChildViewModel.cs" />
     <Compile Include="IShell.cs" />
@@ -121,6 +127,10 @@
     <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TwitterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +188,20 @@
     <Resource Include="Images\DialogWindow\48x48\question.png" />
     <Resource Include="Images\DialogWindow\48x48\warning.png" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPF.Quickstart.Model\WPF.Quickstart.Model.csproj">
+      <Project>{d808ea7a-2e44-42d6-aaf7-6b5ff60db73b}</Project>
+      <Name>WPF.Quickstart.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPFQuickstart.Core\WPFQuickstart.Core.csproj">
+      <Project>{9ee8ca9e-1ed5-41e1-a67e-6b6f39acc5c5}</Project>
+      <Name>WPFQuickstart.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="WPF.QuickStart.UI.Views.TwitterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cal="http://www.caliburnproject.org"   
+             xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ViewResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <ControlTemplate x:Key="validationTemplate">
+                ...
+            </ControlTemplate>
+            <style x:key="textBoxWithError" TargetType="{x:Type TextBox}">
+                ...
+            </style>-->
+            <x:Array x:Key="countElements" Type="sys:String" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                <sys:String>10</sys:String>
+                <sys:String>20</sys:String>
+                <sys:String>30</sys:String>
+                <sys:String>40</sys:String>
+                <sys:String>50</sys:String>
+            </x:Array>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Width="500" Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="300" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Screen name : "/>
+                <TextBox x:Name="ScreenName" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Number of tweets to display : "/>
+                <ComboBox 
+                    x:Name="CountCombo" 
+                    ItemsSource="{StaticResource countElements}" 
+                    SelectedValue="{Binding Count, Mode=TwoWay}" 
+                    cal:Message.Attach="[Event SelectionChanged] = [Action CountSelectionChanged($this,$eventArgs)]">
+                </ComboBox>
+            </StackPanel>            
+
+            <Button x:Name="Load" Content="Load Tweets" HorizontalAlignment="Left" />
+
+        </StackPanel>
+
+        <DataGrid
+            Grid.Column="0" Grid.Row="1"
+            AutoGenerateColumns="True"
+            Width="Auto"
+            ItemsSource="{Binding Tweets}"
+            ScrollViewer.CanContentScroll="True" 
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto">
+        </DataGrid>
+    </Grid>
+
+</UserControl>

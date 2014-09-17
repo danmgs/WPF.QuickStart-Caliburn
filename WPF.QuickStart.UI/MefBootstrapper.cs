@@ -8,6 +8,7 @@
     using System.ComponentModel.Composition.Primitives;
     using System.Linq;
     using System.Windows;
+    using WPF.QuickStart.UI.ViewModels;
 
     public class MefBootstrapper : BootstrapperBase
     {
@@ -32,6 +33,7 @@
 
             batch.AddExportedValue<IWindowManager>(new WindowManager());
             batch.AddExportedValue<IEventAggregator>(new EventAggregator());
+            batch.AddExportedValue<Func<ITwitterViewModel>>(() => container.GetExportedValue<ITwitterViewModel>());
             batch.AddExportedValue(container);
 
             container.Compose(batch);

@@ -34,4 +34,34 @@
     <Brush x:Key="DxGridBlueBrush">#FFAFD2FE</Brush>
     <!-- End Custom Color Palette -->
 
+    <Style x:Key="WindowStyle" TargetType="Window">
+        <Setter Property="Width" Value="1000" />
+        <Setter Property="Height" Value="800" />
+        <Setter Property="MinWidth" Value="800" />
+        <Setter Property="MinHeight" Value="600" />
+        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="WindowState" Value="Maximized" />
+    </Style>
+
+    <Style x:Key="baseStyle" TargetType="{x:Type Control}">
+        <Setter Property="Width" Value="120" />
+        <Setter Property="Height" Value="30" />
+               <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type TextBox}">
+    </Style>
+
+    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type Button}">
+    </Style>
+
+    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type ComboBox}">
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
 </ResourceDictionary>

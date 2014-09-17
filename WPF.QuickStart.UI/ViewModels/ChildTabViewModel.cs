@@ -17,10 +17,16 @@ namespace WPF.QuickStart.UI.ViewModels
             DisplayName = displayName;
             IsEnabled = true;
             Items.Add(new ChildViewModel("Tab 1", eventAgg, windowManager));
-            var tab2ViewModel = new ChildViewModel("Tab 2", eventAgg, windowManager);
-            Items.Add(tab2ViewModel);
-            ActivateItem(tab2ViewModel);
+            Items.Add(new ChildViewModel("Tab 2", eventAgg, windowManager));
+
+            //var twitterViewModel = new TwitterViewModel("Tab 3", eventAgg, windowManager);
+            //var twitterViewModel = IoC.Get<ITwitterViewModel>();
+            Items.Add(TwitterViewModel);
+            ActivateItem(TwitterViewModel);
         }
+
+        [Import]
+        ITwitterViewModel TwitterViewModel { get; set;  }
 
         private bool _isEnabled;
 

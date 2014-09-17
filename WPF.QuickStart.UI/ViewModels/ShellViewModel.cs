@@ -107,7 +107,7 @@ namespace WPF.QuickStart.UI.ViewModels
 
         public void Handle(StatusEvent status)
         {
-            StatusBarContent = string.Format("Status : {0} ...", status.Content);
+            StatusBarContent = string.Format("Status : {0} ", status.Content);
         }
 
         #endregion
