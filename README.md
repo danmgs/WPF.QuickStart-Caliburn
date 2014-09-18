@@ -14,3 +14,5 @@ http://blog.stephencleary.com/2012/02/async-and-await.html
 http://www.wpf-tutorial.com/styles/using-styles/
 
 https://caliburnmicro.codeplex.com/wikipage?title=Customizing%20The%20Bootstrapper
+
+https://wpftoolkit.codeplex.com/

@@ -46,15 +46,16 @@
     <Style x:Key="baseStyle" TargetType="{x:Type Control}">
         <Setter Property="Width" Value="120" />
         <Setter Property="Height" Value="30" />
-               <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <!--<Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />-->
     </Style>
 
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type TextBox}">
     </Style>
 
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="5,5,5,5" />
     </Style>
 
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type ComboBox}">
@@ -62,6 +63,7 @@
 
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="250" />
     </Style>
 
 </ResourceDictionary>

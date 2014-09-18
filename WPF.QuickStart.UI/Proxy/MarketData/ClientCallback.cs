@@ -45,7 +45,7 @@ namespace WPF.QuickStart.UI.Proxy.MarketData
                     m_viewModel.ShowConnected(param);
                 };
 
-            _uiSyncContext.Post(callback, param);//, guestName);
+            _uiSyncContext.Post(callback, null);//, guestName);
 
 
 
