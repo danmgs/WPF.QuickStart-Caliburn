@@ -3,11 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using WPF.QuickStart.UI.Events;
+using WPF.QuickStart.UI.MarketDataProxy;
+using WPF.QuickStart.UI.Proxy.MarketData;
 using WPF.QuickStart.UI.ViewModels.Common;
 using WPF.QuickStart.UI.ViewModels.Common.Dialog;
 
@@ -15,6 +18,33 @@ namespace WPF.QuickStart.UI.ViewModels
 {
     public class ChildViewModel : ExtendedScreen
     {
+        private MarketDataClient m_pMarketDataClient = null;
+
+        private ICollectionView _myCollectionItems;
+        public ICollectionView MyCollectionItems
+        {
+            get
+            {
+                return _myCollectionItems;
+            }
+            set
+            {
+                _myCollectionItems = value;
+                this.NotifyOfPropertyChange(() => MyCollectionItems);
+            }
+        }
+        private bool connected;
+
+        public bool Connected
+        {
+            get { return connected; }
+            set
+            {
+                connected = value;
+                NotifyOfPropertyChange(() => Connected);
+            }
+        }
+
 		public ChildViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
 			: base(eventAgg, windowManager)
 		{
@@ -86,20 +116,61 @@ namespace WPF.QuickStart.UI.ViewModels
                 });
                 PublishStatusEvent(message);
             }
-        } 
+        }
 
-        private ICollectionView _myCollectionItems;
-        public ICollectionView MyCollectionItems
-		{
-			get
-			{
-                return _myCollectionItems;
-			}
-			set
-			{
-                _myCollectionItems = value;
-                this.NotifyOfPropertyChange(() => MyCollectionItems);
-			}
-		}
+        public void ShowConnected(int param)
+        {
+            var message = Connected ? "Connected" : "Not Connected";
+            _windowManager.ShowDialog(new DialogViewModel()
+            {
+                Text = String.Format(message + "with {0} items in collection", param),
+                DisplayName = "Connection State",
+                NotificationType = NotificationType.Info
+            });
+        }
+
+        public void ConnectBtn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Disconnect surrent connection
+                if (m_pMarketDataClient != null)
+                    if (m_pMarketDataClient.State == System.ServiceModel.CommunicationState.Opened)
+                    {
+                        //Log("Closing connection...");
+                        m_pMarketDataClient.Close();
+                    }
+            }
+            catch (Exception ex)
+            {
+                //Log(ex);
+            }
+
+            try
+            {
+                // Construct InstanceContext to handle messages on callback interface.
+                InstanceContext instanceContext = new InstanceContext(new ClientCallback(this));
+
+                // Connect
+                m_pMarketDataClient = new MarketDataClient(instanceContext);
+                //Log(string.Format("Connecting to WCF Service at {0}...", m_pMarketDataClient.Endpoint.Address));
+                m_pMarketDataClient.Open();
+
+                // Load Symbols list
+                if (m_pMarketDataClient.State == System.ServiceModel.CommunicationState.Opened)
+                {
+                    Connected = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                //Log(ex);
+            }
+        }
+
+        public void GetDataSourceList()
+        {
+            var list = m_pMarketDataClient.GetDataSourceList();
+        }
     }
 }

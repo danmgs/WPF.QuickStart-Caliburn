@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Quickstart.Model", "WPF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFQuickstart.Core", "WPFQuickstart.Core\WPFQuickstart.Core.csproj", "{9EE8CA9E-1ED5-41E1-A67E-6B6F39ACC5C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Quickstart.Server", "WPF.Quickstart.Server\WPF.Quickstart.Server.csproj", "{84F780FD-56E4-496D-92B6-940DB11151DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{9EE8CA9E-1ED5-41E1-A67E-6B6F39ACC5C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EE8CA9E-1ED5-41E1-A67E-6B6F39ACC5C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EE8CA9E-1ED5-41E1-A67E-6B6F39ACC5C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F780FD-56E4-496D-92B6-940DB11151DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F780FD-56E4-496D-92B6-940DB11151DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F780FD-56E4-496D-92B6-940DB11151DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F780FD-56E4-496D-92B6-940DB11151DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,7 +7,11 @@
 
         <TextBlock Text="{Binding DisplayName}" FontSize="48" FontWeight="Bold" Foreground="#FF463D" VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Top" />
 
-        <ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="{Binding Enabled}" IsExportable="Visible" DockPanel.Dock="Bottom" />
+        <ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="{Binding Enabled}" IsExportable="Visible" />
+
+        <Button x:Name="ConnectBtn" Content="Connected" IsEnabled="{Binding !Connected}" />
+
+        <Button x:Name="GetDataSourceList" Content="GetDataSourceList" IsEnabled="{Binding Connected}" />
 
     </DockPanel>
 
