@@ -16,3 +16,6 @@ http://www.wpf-tutorial.com/styles/using-styles/
 https://caliburnmicro.codeplex.com/wikipage?title=Customizing%20The%20Bootstrapper
 
 https://wpftoolkit.codeplex.com/
+
+http://stackoverflow.com/questions/21611674/how-to-auto-generate-a-c-sharp-class-file-from-a-json-object-string
+http://json2csharp.com/

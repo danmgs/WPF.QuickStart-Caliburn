@@ -67,6 +67,8 @@
     </Compile>
     <Compile Include="Twitter\Tweet.cs" />
     <Compile Include="Twitter\TwitAuthenticateResponse.cs" />
+    <Compile Include="Yahoo\HistoricalQuotationApi.cs" />
+    <Compile Include="Yahoo\QuotationApi.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

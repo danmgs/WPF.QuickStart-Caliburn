@@ -117,6 +117,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Utils\TwitterHelperWrapper.cs" />
+    <Compile Include="ViewModels\HistoricalQuoteViewModel.cs" />
     <Compile Include="ViewModels\ITwitterViewModel.cs" />
     <Compile Include="ViewModels\TwitterViewModel.cs" />
     <Compile Include="Views\Common\Controls\DialogControl.cs" />
@@ -134,6 +135,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\HistoricalQuoteView.xaml.cs">
+      <DependentUpon>HistoricalQuoteView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\ControlTemplates\MyCustomControl.xaml">
       <SubType>Designer</SubType>
@@ -158,6 +162,10 @@
     <Page Include="Views\Common\Dialog\DialogView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HistoricalQuoteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>

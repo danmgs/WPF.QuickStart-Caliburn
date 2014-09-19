@@ -92,7 +92,7 @@ namespace WPF.QuickStart.UI.ViewModels
 
         public void ShowRedScreen()
         {
-            ActivateItem(new ChildViewModel("Red", _eventAgg, _windowManager));
+            ActivateItem(new HistoricalQuoteViewModel("Red", _eventAgg, _windowManager));
         }
  
         public void ShowGreenScreen()
