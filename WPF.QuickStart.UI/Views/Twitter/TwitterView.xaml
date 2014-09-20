@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPF.QuickStart.UI.Views.TwitterView"
+﻿<UserControl x:Class="WPF.QuickStart.UI.Views.Twitter.TwitterView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:cal="http://www.caliburnproject.org"   
@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0">
-            <TextBlock Text="Twitter View By ..." Style="{StaticResource HeaderStyle}"/>
+            <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">

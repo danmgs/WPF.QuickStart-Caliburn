@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace WPF.Quickstart.Model.Yahoo
 {
-    /*
-     * Auto-generated with http://json2csharp.com/
-     * */
-    public class QuotationResults
+    public class QuotationSingleResult
     {
         public class Results
         {
-            public List<Quote> quote { get; set; }
+            public Quote quote { get; set; }
         }
 
         public class Query

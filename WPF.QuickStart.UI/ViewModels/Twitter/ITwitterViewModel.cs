@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF.QuickStart.UI.ViewModels
+namespace WPF.QuickStart.UI.ViewModels.Twitter
 {
     public interface ITwitterViewModel : IScreen
     {

@@ -13,6 +13,23 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Dan\Desktop\WebSite\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\NEO\Users\Dan\Desktop\WebSite\</InstallUrl>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +49,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>AA4629B942B1BA31B33DBAC7A59FD10DE2B10281</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WPF.QuickStart.UI_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro">
@@ -118,15 +147,17 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Utils\TwitterHelperWrapper.cs" />
-    <Compile Include="ViewModels\HistoricalQuoteViewModel.cs" />
-    <Compile Include="ViewModels\ITwitterViewModel.cs" />
-    <Compile Include="ViewModels\TwitterSummaryViewModel.cs" />
-    <Compile Include="ViewModels\TwitterViewModel.cs" />
+    <Compile Include="ViewModels\Yahoo\ChildTabYahooViewModel.cs" />
+    <Compile Include="ViewModels\Yahoo\HistoricalQuoteViewModel.cs" />
+    <Compile Include="ViewModels\Twitter\ITwitterViewModel.cs" />
+    <Compile Include="ViewModels\Twitter\TwitterSummaryViewModel.cs" />
+    <Compile Include="ViewModels\Twitter\TwitterViewModel.cs" />
+    <Compile Include="ViewModels\Yahoo\WatchListViewModel.cs" />
     <Compile Include="Views\Common\Controls\DialogControl.cs" />
     <Compile Include="Views\Common\Controls\MyCustomControl.cs" />
     <Compile Include="Events\StatusEvent.cs" />
     <Compile Include="MefBootstrapper.cs" />
-    <Compile Include="ViewModels\ChildTabViewModel.cs" />
+    <Compile Include="ViewModels\Twitter\ChildTabTwitterViewModel.cs" />
     <Compile Include="ViewModels\ChildViewModel.cs" />
     <Compile Include="IShell.cs" />
     <Compile Include="ViewModels\Common\Dialog\DialogResult.cs" />
@@ -138,6 +169,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Common\Controls\TextBoxWatermarked.cs" />
     <Page Include="Resources\ControlTemplates\MyCustomControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,7 +182,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ChildTabView.xaml">
+    <Page Include="Views\Twitter\ChildTabTwitterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,7 +194,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\HistoricalQuoteView.xaml">
+    <Page Include="Views\Yahoo\HistoricalQuoteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,11 +202,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\TwitterSummaryView.xaml">
+    <Page Include="Views\Twitter\TwitterSummaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TwitterView.xaml">
+    <Page Include="Views\Twitter\TwitterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Yahoo\ChildTabYahooView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Yahoo\WatchListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,6 +258,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MarketDataProxy\MarketDataManager.wsdl" />
+    <None Include="WPF.QuickStart.UI_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -276,6 +317,23 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

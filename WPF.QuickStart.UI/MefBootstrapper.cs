@@ -9,6 +9,7 @@
     using System.Linq;
     using System.Windows;
     using WPF.QuickStart.UI.ViewModels;
+    using WPF.QuickStart.UI.ViewModels.Twitter;
 
     public class MefBootstrapper : BootstrapperBase
     {

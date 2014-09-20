@@ -20,7 +20,21 @@ https://wpftoolkit.codeplex.com/
 http://stackoverflow.com/questions/21611674/how-to-auto-generate-a-c-sharp-class-file-from-a-json-object-string
 http://json2csharp.com/
 
+http://stackoverflow.com/questions/833943/watermark-hint-text-placeholder-textbox-in-wpf
+
 ##TODO :
 
 Mise en place de EF + DAL
 Injection avec MEF des services
+
+
+##Installation Notes
+
+**Server side Console**: 
+
+Launch the server side project executable.
+
+**Client Side UI**:
+
+Launch the client.
+In order to be allowed connection and retrieved data, the server console must be started.

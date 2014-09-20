@@ -6,27 +6,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPF.QuickStart.UI.ViewModels.Yahoo;
 
-namespace WPF.QuickStart.UI.ViewModels
+namespace WPF.QuickStart.UI.ViewModels.Twitter
 {
-    public class ChildTabViewModel : Conductor<IScreen>.Collection.OneActive
+    public class ChildTabYahooViewModel : Conductor<IScreen>.Collection.OneActive
     {
         [ImportingConstructor()]
-        public ChildTabViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
+        public ChildTabYahooViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
         {
             DisplayName = displayName;
             IsEnabled = true;
-            Items.Add(new ChildViewModel("Tab 1", eventAgg, windowManager));
-            Items.Add(new ChildViewModel("Tab 2", eventAgg, windowManager));
-
-            //var twitterViewModel = new TwitterViewModel("Tab 3", eventAgg, windowManager);
-            //var twitterViewModel = IoC.Get<ITwitterViewModel>();
-            Items.Add(TwitterViewModel);
-            ActivateItem(TwitterViewModel);
+            Items.Add(new HistoricalQuoteViewModel("Historical Quotations", eventAgg, windowManager));
+            Items.Add(new WatchListViewModel("Watch List", eventAgg, windowManager));            
         }
 
         [Import]
-        ITwitterViewModel TwitterViewModel { get; set;  }
+        ITwitterViewModel TwitterViewModel { get; set; }
 
         private bool _isEnabled;
 

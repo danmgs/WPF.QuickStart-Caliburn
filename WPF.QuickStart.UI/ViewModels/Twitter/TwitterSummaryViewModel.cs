@@ -14,7 +14,7 @@ using WPF.QuickStart.UI.ViewModels.Common.Dialog;
 using System.ComponentModel.Composition;
 using WPF.Quickstart.Data.Mocks;
 
-namespace WPF.QuickStart.UI.ViewModels
+namespace WPF.QuickStart.UI.ViewModels.Twitter
 {
     public class TwitterSummaryViewModel : ExtendedScreen
     {
@@ -29,7 +29,7 @@ namespace WPF.QuickStart.UI.ViewModels
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            PublishStatusEvent(string.Format("Load TwitterSummaryViewModel {0} ...", DisplayName));
+            PublishStatusEvent(string.Format("Load {0} ...", DisplayName));
 
             TwitterScreenNames = TwitterRepository.GetSummaryScreenNames();
             Load();
@@ -57,19 +57,20 @@ namespace WPF.QuickStart.UI.ViewModels
         {
             PublishStatusEvent(string.Format("Begin loading tweets ..."));
             var context = TaskScheduler.FromCurrentSynchronizationContext();
+            List<Tweet> tmpTweetList = new List<Tweet>();
 
             try
             {
                 Task.Run(() =>
                     {
-
                         Tweets.Clear();
                         TwitterScreenNames.ForEach(
                             screenname =>
                             {
                                 var lastTweet = TwitterHelperWrapper.GetLastTweet(screenname);
-                                Tweets.Add(lastTweet);
+                                tmpTweetList.Add(lastTweet);
                             });
+                        Tweets.AddRange(tmpTweetList);
                     }).ContinueWith(previousTask =>
                     {
                         PublishStatusEvent(string.Format("End loading tweets ..."));

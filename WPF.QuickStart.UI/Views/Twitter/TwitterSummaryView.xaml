@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPF.QuickStart.UI.Views.TwitterSummaryView"
+﻿<UserControl x:Class="WPF.QuickStart.UI.Views.Twitter.TwitterSummaryView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:cal="http://www.caliburnproject.org"   
@@ -10,7 +10,7 @@
     
     <StackPanel Orientation="Vertical">
 
-        <TextBlock Text="Today's Financial News" Style="{StaticResource HeaderStyle}"/>
+        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
 
         <ListView ItemsSource="{Binding Tweets}">
             <ListView.ItemTemplate>

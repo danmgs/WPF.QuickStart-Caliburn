@@ -57,11 +57,7 @@ namespace WPF.QuickStart.UI.ViewModels
         {
             base.OnInitialize();
             PublishStatusEvent(string.Format("Load ChildViewModel {0} ...", DisplayName));
-
-            //GenerateItems("10");
             DownloadJson();
-
-            //MessageBox.Show(string.Format("Init: '{0}'", DisplayName));
         }
 
         private void DownloadJson()
@@ -145,7 +141,7 @@ namespace WPF.QuickStart.UI.ViewModels
             var message = Connected ? "Connected" : "Not Connected";
             _windowManager.ShowDialog(new DialogViewModel()
             {
-                Text = String.Format(message + "with {0} items in collection", param),
+                Text = String.Format("{0}  with {1} items in collection", message, param),
                 DisplayName = "Connection State",
                 NotificationType = NotificationType.Info
             });
@@ -187,6 +183,13 @@ namespace WPF.QuickStart.UI.ViewModels
             catch (Exception ex)
             {
                 //Log(ex);
+                var message = "Server is not reachable";
+                _windowManager.ShowDialog(new DialogViewModel()
+                {
+                    Text = String.Format("{0}: \n{1}", message, "Please check if the server is running."),
+                    DisplayName = message,
+                    NotificationType = NotificationType.Error
+                });
             }
         }
 

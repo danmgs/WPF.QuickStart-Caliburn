@@ -3,6 +3,8 @@ using System.ComponentModel.Composition;
 using System.Windows;
 using WPF.QuickStart.UI.Events;
 using WPF.QuickStart.UI.ViewModels;
+using WPF.QuickStart.UI.ViewModels.Twitter;
+using WPF.QuickStart.UI.ViewModels.Yahoo;
 namespace WPF.QuickStart.UI.ViewModels
 {
     [Export(typeof(IShell))]
@@ -85,30 +87,20 @@ namespace WPF.QuickStart.UI.ViewModels
             MessageBox.Show(string.Format("Hello {0}!", Name)); //Don't do this in real life :)
         }
 
-        public void ShowMultiTabsScreen()
+        public void ShowTwitterMultiTabsScreen()
         {
-            ActivateItem(new ChildTabViewModel("Tab Panel", _eventAgg, _windowManager));
+            ActivateItem(new ChildTabTwitterViewModel("Twitter Tab Panel", _eventAgg, _windowManager));
         }
 
-        public void ShowRedScreen()
+        public void ShowYahooMultiTabsScreen()
         {
-            ActivateItem(new HistoricalQuoteViewModel("Red", _eventAgg, _windowManager));
-        }
- 
-        public void ShowGreenScreen()
-        {
-            ActivateItem(new ChildViewModel("Green", _eventAgg, _windowManager));
-        }
- 
-        public void ShowBlueScreen()
-        {
-            ActivateItem(new TwitterSummaryViewModel("Blue", _eventAgg, _windowManager));
+            ActivateItem(new ChildTabYahooViewModel("Yahoo Tab Panel", _eventAgg, _windowManager));
         }
 
-        public void ShowTwitterViewByScreen()
+        public void ShowConnectDataMultiTabsScreen()
         {
-            ActivateItem(new TwitterViewModel("Twitter View By", _eventAgg, _windowManager));
-        }        
+            ActivateItem(new ChildViewModel("ConnectData Tab Panel", _eventAgg, _windowManager));
+        }
 
         public void Handle(StatusEvent status)
         {

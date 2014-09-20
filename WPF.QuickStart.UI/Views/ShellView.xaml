@@ -6,11 +6,9 @@
 
     <DockPanel Background="LightBlue">
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-            <Button x:Name="ShowMultiTabsScreen" Content="Tabs Panel" />
-            <Button x:Name="ShowRedScreen" Content="Historical Data" />
-            <Button x:Name="ShowGreenScreen" Content="Connect Data Yahoo" />
-            <Button x:Name="ShowTwitterViewByScreen" Content="View Tweets By" />
-            <Button x:Name="ShowBlueScreen" Content="Twitter Summary" />
+            <Button x:Name="ShowTwitterMultiTabsScreen" Content="Twitter" />
+            <Button x:Name="ShowYahooMultiTabsScreen" Content="Yahoo !" />
+            <Button x:Name="ShowConnectDataMultiTabsScreen" Content="Connect Data" />
         </StackPanel>
 
         <ContentControl DockPanel.Dock="Top" x:Name="ActiveItem" Height="750"/>

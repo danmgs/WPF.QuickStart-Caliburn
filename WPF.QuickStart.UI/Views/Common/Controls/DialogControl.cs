@@ -9,7 +9,7 @@
 	using System.Windows.Threading;
 	using System.Windows.Shapes;
 
-	public class DialogControl : ContentControl
+	public class DialogControl : Control
 	{
 		//DispatcherTimer _timer = new DispatcherTimer();
 

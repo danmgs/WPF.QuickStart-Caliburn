@@ -10,7 +10,7 @@ using WPF.Quickstart.Model.Yahoo;
 using WPF.QuickStart.UI.ViewModels.Common;
 using WPF.QuickStart.UI.ViewModels.Common.Dialog;
 
-namespace WPF.QuickStart.UI.ViewModels
+namespace WPF.QuickStart.UI.ViewModels.Yahoo
 {
     public class HistoricalQuoteViewModel : ExtendedScreen
     {
@@ -84,7 +84,7 @@ namespace WPF.QuickStart.UI.ViewModels
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            PublishStatusEvent(string.Format("Load HistoricalQuoteViewModel {0} ...", DisplayName));
+            PublishStatusEvent(string.Format("Load {0} ...", DisplayName));
 
             StartDate = DateTime.Today;
             EndDate = DateTime.Today;
@@ -117,7 +117,7 @@ namespace WPF.QuickStart.UI.ViewModels
 
         public bool CanLoad
         {
-            get { return !string.IsNullOrWhiteSpace(SecurityCode) && (StartDate <= EndDate) && (EndDate <= DateTime.Today); } // Add date start / end constraints
+            get { return !string.IsNullOrWhiteSpace(SecurityCode) && (StartDate <= EndDate) && (EndDate <= DateTime.Today); }
         }
     }
 }

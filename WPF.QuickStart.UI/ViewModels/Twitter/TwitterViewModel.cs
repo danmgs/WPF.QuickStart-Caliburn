@@ -16,7 +16,7 @@ using WPF.Quickstart.Data.Mocks;
 using System.ComponentModel;
 using System.Windows.Data;
 
-namespace WPF.QuickStart.UI.ViewModels
+namespace WPF.QuickStart.UI.ViewModels.Twitter
 {
     [Export(typeof(ITwitterViewModel))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
@@ -32,7 +32,7 @@ namespace WPF.QuickStart.UI.ViewModels
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            PublishStatusEvent(string.Format("Load TwitterScreenNames {0} ...", DisplayName));
+            PublishStatusEvent(string.Format("Load {0} ...", DisplayName));
 
             TwitterScreenNames = TwitterRepository.GetSummaryScreenNames();
             LoadCountElements();
