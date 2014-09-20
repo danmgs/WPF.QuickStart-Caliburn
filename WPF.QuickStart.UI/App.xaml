@@ -9,6 +9,7 @@
                     <local:MefBootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
                 <ResourceDictionary Source="/Resources/Shared.xaml" />
+                <ResourceDictionary Source="/Resources/Charts.xaml" />
                 <ResourceDictionary Source="/Resources/ControlTemplates/MyCustomControl.xaml"/>
                 <ResourceDictionary Source="/Resources/ControlTemplates/DialogControl.xaml"/>
             </ResourceDictionary.MergedDictionaries>

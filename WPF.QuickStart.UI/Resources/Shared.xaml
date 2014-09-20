@@ -10,6 +10,8 @@
     <converter:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
     <converter:InverseBooleanConverter x:Key="inverseBoolConverter" />
     <converter:BackgroundConverter x:Key="backgroundConverter" />
+    <converter:EnumToBoolConverter x:Key="enumToBoolConverter" />
+    
 
     <!-- Custom Color Palette -->
     <Color x:Key="AquaBlueColor">#FFA3C3EC</Color>
@@ -31,17 +33,28 @@
 
     <Brush x:Key="OrangeBrush">#FFFEE17A</Brush>
 
-    <Color x:Key="DxGridBlueColor">#FFAFD2FE</Color>
-    <Brush x:Key="DxGridBlueBrush">#FFAFD2FE</Brush>
     <!-- End Custom Color Palette -->
 
     <Style x:Key="WindowStyle" TargetType="Window">
         <Setter Property="Width" Value="Auto" />
-        <Setter Property="Height" Value="800" />
+        <Setter Property="Height" Value="Auto" />
         <Setter Property="MinWidth" Value="800" />
         <Setter Property="MinHeight" Value="600" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
-        <!--<Setter Property="WindowState" Value="Maximized" />-->
+        <Setter Property="WindowState" Value="Maximized" />
+        <Setter Property="Background" Value="FloralWhite" />
+    </Style>
+
+    <Style x:Key="HeaderFooterStyle" TargetType="{x:Type Panel}">
+        <Setter Property="Background" Value="AntiqueWhite" />
+    </Style>
+
+    <Style x:Key="StatusBar" TargetType="{x:Type TextBlock}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="Margin" Value="10" />
     </Style>
 
     <Style x:Key="baseStyle" TargetType="{x:Type Control}">
@@ -57,15 +70,18 @@
         <Setter Property="Margin" Value="10,0" />
     </Style>
 
-    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type TextBox}">
-    </Style>
-
-    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type Button}">
+    <Style x:Key="baseStyleBtn" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="Auto" />
         <Setter Property="Padding" Value="8,1,8,1" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="Margin" Value="10,0" />
+        <Setter Property="Margin" Value="10,5" />
+    </Style>
+
+    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type TextBox}">
+    </Style>
+
+    <Style BasedOn="{StaticResource baseStyleBtn}" TargetType="{x:Type Button}">
     </Style>
 
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type ComboBox}">
@@ -77,8 +93,19 @@
 
     <Style x:Key="HeaderStyle" BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="Margin" Value="5,10" />
-    </Style>    
+    </Style>
+
+    <Style x:Key="subTitleStyle" BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Margin" Value="5,10" />
+    </Style>
+
+    <Style x:Key="categoryBtn" BasedOn="{StaticResource baseStyleBtn}" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+    </Style>
 
 </ResourceDictionary>

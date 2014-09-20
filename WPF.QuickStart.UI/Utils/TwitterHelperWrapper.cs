@@ -21,5 +21,11 @@ namespace WPF.QuickStart.UI.Utils
             TwitterHelper th = new TwitterHelper(AppSettings.Twitter.OAuth.ConsumerKey, AppSettings.Twitter.OAuth.ConsumerSecret, AppSettings.Twitter.OAuth.ApiUrl);
             return th.GetLastTweet(screenname);
         }
+
+        internal static List<Tweet> SearchTweets(string keyword)
+        {
+            TwitterHelper th = new TwitterHelper(AppSettings.Twitter.OAuth.ConsumerKey, AppSettings.Twitter.OAuth.ConsumerSecret, AppSettings.Twitter.OAuth.ApiUrl);
+            return th.SearchTweets(keyword);
+        }
     }
 }

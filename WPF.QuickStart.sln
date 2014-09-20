@@ -18,6 +18,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Quickstart.Server", "WP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Quickstart.Data", "WPF.Quickstart.Data\WPF.Quickstart.Data.csproj", "{F8A2C32C-3591-49D9-922A-515BB84E68A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{E827F33F-A1CB-4A5C-AE39-7F58C2787EC5}"
+	ProjectSection(SolutionItems) = preProject
+		libs\De.TorstenMandelkow.MetroChart.dll = libs\De.TorstenMandelkow.MetroChart.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,5 +52,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E827F33F-A1CB-4A5C-AE39-7F58C2787EC5} = {5FDB5B02-3799-4C4C-8A96-6FAB3C771EDE}
 	EndGlobalSection
 EndGlobal

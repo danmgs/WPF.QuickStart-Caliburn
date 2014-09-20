@@ -4,6 +4,8 @@
              xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+             xmlns:oxy="http://oxyplot.codeplex.com"
+             xmlns:chart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
              HorizontalAlignment="Center">
 
     <StackPanel Height="Auto">
@@ -12,7 +14,7 @@
 
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-            <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
+                <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
                 <ctrl:TextBoxWatermarked x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." Watermark="YHOO" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10">
@@ -21,19 +23,66 @@
                 <TextBlock x:Name="EndDateTxt" Text="End Date" />
                 <xctk:DateTimePicker x:Name="EndDate" Format="ShortDate" Value="{Binding EndDate}" Width="150" Margin="0 5 10 5" Height="25" Tag="" />
             </StackPanel>
-            <Button x:Name="Load" Content="Load historical quotes" />
+            <Button x:Name="LoadHistoricalData" Content="Load historical quotes" />
         </StackPanel>
 
         <Grid Margin="0,10">
 
             <xcdg:DataGridControl 
                 x:Name="_dataGrid" 
-                MaxHeight="400"
-                MinHeight="400"
+                MaxHeight="300"
+                MinHeight="200"
                 MinWidth="1000"
                 Width="Auto"
                 ItemsSource="{Binding MyCollectionItems}"/>
         </Grid>
+        
+        <StackPanel Orientation="Horizontal">
+
+            <chart:PieChart
+                Style="{StaticResource MinimalChartStyle}"
+                ChartTitle="Minimal Pie Chart"
+                ChartSubTitle="Chart with fixed width and height"
+                SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" >
+                <chart:PieChart.Series>
+                    <chart:ChartSeries
+                        SeriesTitle="Errors"
+                        DisplayMember="Category"
+                        ValueMember="Number"
+                        ItemsSource="{Binding Path=Errors}" />
+                </chart:PieChart.Series>
+            </chart:PieChart>
+
+            <StackPanel>
+            
+                <Grid Margin="20,0" Background="AliceBlue" Width="500" Height="200">
+                    <oxy:PlotView Title="Chart">
+                        <oxy:PlotView.Series>
+                            <oxy:LineSeries ItemsSource="{Binding ChartQuotePointsList}"/>
+                        </oxy:PlotView.Series>
+                    </oxy:PlotView>
+                </Grid>
+
+                <GroupBox Name="grpbx_pagerange" Header="Axis Y" Margin="20,5">
+                    <StackPanel Orientation="Horizontal">                    
+                        <!--<RadioButton x:Name="radbtn_Open" Content="Open"  GroupName="chartYtype"  />
+                        <RadioButton Name="radbtn_Close" Content="Close"   GroupName="chartYtype" />-->
+
+                        <RadioButton Content="Open" IsChecked="{Binding PriceTypeOptions, Converter={
+                            StaticResource enumToBoolConverter}, ConverterParameter=Open}" />
+                        <RadioButton Content="Close" IsChecked="{Binding PriceTypeOptions, Converter={
+                            StaticResource enumToBoolConverter}, ConverterParameter=Close}" Margin="10,0" />
+                        <RadioButton Content="High" IsChecked="{Binding PriceTypeOptions, Converter={
+                            StaticResource enumToBoolConverter}, ConverterParameter=High}" Margin="10,0" />
+                        <RadioButton Content="Low" IsChecked="{Binding PriceTypeOptions, Converter={
+                            StaticResource enumToBoolConverter}, ConverterParameter=Low}" Margin="10,0" />                        
+
+                    </StackPanel>
+                </GroupBox>
+
+            </StackPanel>
+
+        </StackPanel>
 
     </StackPanel>
 

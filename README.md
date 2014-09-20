@@ -17,15 +17,19 @@ https://caliburnmicro.codeplex.com/wikipage?title=Customizing%20The%20Bootstrapp
 
 https://wpftoolkit.codeplex.com/
 
-http://stackoverflow.com/questions/21611674/how-to-auto-generate-a-c-sharp-class-file-from-a-json-object-string
 http://json2csharp.com/
+http://stackoverflow.com/questions/21611674/how-to-auto-generate-a-c-sharp-class-file-from-a-json-object-string
 
 http://stackoverflow.com/questions/833943/watermark-hint-text-placeholder-textbox-in-wpf
 
+https://modernuicharts.codeplex.com
+
+https://github.com/oxyplot/oxyplot
+
 ##TODO :
 
-Mise en place de EF + DAL
-Injection avec MEF des services
+- Setup Data layer with Entity Framework
+- Inject IOC for Services using MEF
 
 
 ##Installation Notes

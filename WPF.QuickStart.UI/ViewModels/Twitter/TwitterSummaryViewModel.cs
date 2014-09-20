@@ -35,6 +35,18 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
             Load();
         }
 
+        private bool _isBusy;
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+                NotifyOfPropertyChange(() => IsBusy);
+            }
+        }
+
         private BindableCollection<Tweet> tweets = new BindableCollection<Tweet>();
 
         public BindableCollection<Tweet> Tweets
@@ -56,6 +68,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
         public void Load()
         {
             PublishStatusEvent(string.Format("Begin loading tweets ..."));
+            IsBusy = true;
             var context = TaskScheduler.FromCurrentSynchronizationContext();
             List<Tweet> tmpTweetList = new List<Tweet>();
 
@@ -74,8 +87,8 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     }).ContinueWith(previousTask =>
                     {
                         PublishStatusEvent(string.Format("End loading tweets ..."));
+                        IsBusy = false;
                     }, context);
-                
             }
             catch (WebException ex)
             {
@@ -87,18 +100,9 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     NotificationType = NotificationType.Error
                 });
                 PublishStatusEvent(message);
+                IsBusy = false;
             }
         }
-
-        //private ShowTwitterPanel(bool bShow)
-        //{
-        //    if (bShow)
-        //    {
-        //        ShowInfoPanel = true;
-        //        ShowInfoPanel = true;
-        //    }
-
-        //}
 
         #endregion
     }

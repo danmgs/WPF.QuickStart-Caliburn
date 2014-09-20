@@ -29,28 +29,59 @@
         <StackPanel Grid.Column="0" Grid.Row="0">
             <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Screen name : " Width="159"/>
-                <ComboBox 
+
+
+        <Grid Width="Auto" Height="Auto" Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500" />
+                <ColumnDefinition Width="500" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Background="Salmon">
+
+                <TextBlock Style="{StaticResource subTitleStyle}"  DockPanel.Dock="Top" Text="View tweets From .." HorizontalAlignment="Left" />
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Screen name : " Width="159"/>
+                    <ComboBox 
                     x:Name="ScreenNameCombo" 
                     ItemsSource="{Binding TwitterScreenNames}" 
                     SelectedValue="{Binding ScreenName, Mode=TwoWay}" 
-                    cal:Message.Attach="[Event SelectionChanged] = [Action ScreenNameSelectionChanged($this,$eventArgs)]">
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,10">
-                <TextBlock Text="Number of tweets to display : "/>
-                <ComboBox 
+                    cal:Message.Attach="[Event SelectionChanged] = [Action OnScreenNameSelectionChanged($this,$eventArgs)]">
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <TextBlock Text="Number of tweets to display : "/>
+                    <ComboBox 
                     x:Name="CountCombo" 
                     ItemsSource="{Binding CountElements}" 
                     IsSynchronizedWithCurrentItem="True"
-                    cal:Message.Attach="[Event SelectionChanged] = [Action CountSelectionChanged($this,$eventArgs)]" Width="58">
-                </ComboBox>
+                    cal:Message.Attach="[Event SelectionChanged] = [Action OnCountSelectionChanged($this,$eventArgs)]" Width="58">
+                    </ComboBox>
+                </StackPanel>
+
+                <Button x:Name="Load" Content="Load Tweets" />
             </StackPanel>
 
-            <Button x:Name="Load" Content="Load Tweets" />
-        </StackPanel>
+            <DockPanel Grid.Column="1" Grid.Row="1" Background="CadetBlue" LastChildFill="False">
+
+                <TextBlock Style="{StaticResource subTitleStyle}"  DockPanel.Dock="Top" Text="Make a search" HorizontalAlignment="Left" />
+
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <TextBlock Text="Keyword : " />
+                    <TextBox x:Name="Keyword" Width="155" />
+                </StackPanel>
+
+                <Button x:Name="Search" Content="Search" DockPanel.Dock="Bottom"/>
+            </DockPanel>
+
+        </Grid>
+
+
+
 
         <!--<DataGrid 
             Grid.Column="0" Grid.Row="1"
@@ -67,7 +98,7 @@
             x:Name="_dataGrid"
             Grid.Column="0" Grid.Row="2"
             MinHeight="400"
-            MinWidth="1000"
+            MinWidth="1000" 
             Width="Auto"
             Margin="0,10"
             AutoCreateColumns="False"
@@ -75,11 +106,11 @@
 
             <xcdg:DataGridControl.Columns>
                 <xcdg:Column Title="Date" FieldName="Date" VisiblePosition="0"/>
-                <xcdg:Column Title="Status" FieldName="Text" VisiblePosition="1"/>
+                <xcdg:Column Title="ScreenName" FieldName="ScreenName" VisiblePosition="1"/>
+                <xcdg:Column Title="Status" FieldName="Text" VisiblePosition="2" MinWidth="400" />
             </xcdg:DataGridControl.Columns>
             <xcdg:DataGridControl.View>
-                <xcdg:TableView ColumnStretchMode="All"
-                        FixedColumnCount="2" />
+                <xcdg:TableView ColumnStretchMode="All" ColumnStretchMinWidth="100" />
             </xcdg:DataGridControl.View>
 
         </xcdg:DataGridControl>

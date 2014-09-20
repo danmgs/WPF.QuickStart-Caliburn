@@ -56,25 +56,7 @@ namespace WPF.QuickStart.UI.ViewModels
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            PublishStatusEvent(string.Format("Load ChildViewModel {0} ...", DisplayName));
-            DownloadJson();
-        }
-
-        private void DownloadJson()
-        {
-            using (var webClient = new System.Net.WebClient())
-            {
-                var url = @"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22YHOO%22%2C%22AAPL%22%2C%22GOOG%22%2C%22MSFT%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json";
-                var json = webClient.DownloadString(url);
-
-                QuotationResults.RootObject quotationRes = Newtonsoft.Json.JsonConvert.DeserializeObject<QuotationResults.RootObject>(json);
-                //MyCollectionItems = CollectionViewSource.GetDefaultView(quotationRes.query.results.quote);
-
-                var url2 = @"http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.historicaldata where symbol = %22YHOO%22 and startDate = %222014-01-01%22 and endDate = %222014-12-31%22&diagnostics=true&env=store://datatables.org/alltableswithkeys&format=json";
-                var json2 = webClient.DownloadString(url2);
-                HistoricalQuotationResults.RootObject histoQuotationRes = Newtonsoft.Json.JsonConvert.DeserializeObject<HistoricalQuotationResults.RootObject>(json2);
-                MyCollectionItems = CollectionViewSource.GetDefaultView(histoQuotationRes.query.results.quote);
-            }
+            PublishStatusEvent(string.Format("Load {0} ...", DisplayName));
         }
 
         protected override void OnDeactivate(bool close)
@@ -151,6 +133,8 @@ namespace WPF.QuickStart.UI.ViewModels
         {
             try
             {
+                PublishStatusEvent("Try to connect to server ...");
+
                 // Disconnect surrent connection
                 if (m_pMarketDataClient != null)
                     if (m_pMarketDataClient.State == System.ServiceModel.CommunicationState.Opened)
@@ -162,6 +146,7 @@ namespace WPF.QuickStart.UI.ViewModels
             catch (Exception ex)
             {
                 //Log(ex);
+                PublishStatusEvent("Error connecting to server ...");
             }
 
             try
@@ -190,6 +175,7 @@ namespace WPF.QuickStart.UI.ViewModels
                     DisplayName = message,
                     NotificationType = NotificationType.Error
                 });
+                PublishStatusEvent(message);
             }
         }
 

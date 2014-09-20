@@ -3,55 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
-             HorizontalAlignment="Center">
+             xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid">
 
-    <StackPanel Height="400">
+    <StackPanel>
 
-        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
+        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" />
 
         <!--<ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="{Binding Enabled}" IsExportable="Visible" />-->
 
         <StackPanel Orientation="Horizontal">
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FFC30C0C" Offset="1"/>
+                    <GradientStop Color="#FF615A5A" Offset="0"/>
+                    <GradientStop Color="#FFFFF8F8" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <DockPanel Width="800">
-                <Button x:Name="ConnectBtn" Content="Connected" IsEnabled="{Binding !Connected}" DockPanel.Dock="Left" />
+            <StackPanel Width="Auto">
+                <Button x:Name="ConnectBtn" Content="Connect" ToolTip="Connect to the server" IsEnabled="{Binding !Connected}" DockPanel.Dock="Left" />
                 <Button x:Name="GetDataSourceList" Content="GetDataSourceList" IsEnabled="{Binding Connected}" HorizontalAlignment="Right" />
-            </DockPanel>
+            </StackPanel>
             
         </StackPanel>
-
-        <Grid>
-
-            <xcdg:DataGridControl x:Name="_dataGrid" 
-                            MaxHeight="400"
-                        ItemsSource="{Binding MyCollectionItems}"/>
-
-            <!--<xcdg:DataGridControl x:Name="_dataGrid" 
-                            MaxHeight="400"
-                            ItemsSource="{Binding Source={StaticResource cvsOrders} }" >
-                <xcdg:DataGridControl.View>
-                    <xcdg:TableflowView FixedColumnCount="2" />
-                </xcdg:DataGridControl.View>-->
-
-                <!--<xcdg:DataGridControl.Columns>
-                    --><!--Preconfigure the OrderID Column of the grid with CellValidationRule. --><!--
-                    <xcdg:Column FieldName="OrderID"
-                         IsMainColumn="True">
-                        <xcdg:Column.CellValidationRules>
-                            <local:UniqueIDCellValidationRule />
-                        </xcdg:Column.CellValidationRules>
-                    </xcdg:Column>
-                </xcdg:DataGridControl.Columns>-->
-
-        </Grid>
-
-        <TextBlock Text="{Binding DisplayName}" FontSize="20" FontWeight="Bold" Foreground="#FF463D" HorizontalAlignment="Left" />
 
     </StackPanel>
 

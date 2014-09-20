@@ -62,29 +62,26 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
 
         public void AddSingleStock()
         {
-            try
+            using (var webClient = new System.Net.WebClient())
             {
-                using (var webClient = new System.Net.WebClient())
+                var url = @"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20=%22{0}%22&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json";
+                var json = webClient.DownloadString(string.Format(url, SecurityCode));
+                QuotationSingleResult.RootObject quotationRes = Newtonsoft.Json.JsonConvert.DeserializeObject<QuotationSingleResult.RootObject>(json);
+                if (Quotes != null && quotationRes != null)
                 {
-                    var url = @"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20=%22{0}%22&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json";
-                    var json = webClient.DownloadString(string.Format(url, SecurityCode));
-                    QuotationSingleResult.RootObject quotationRes = Newtonsoft.Json.JsonConvert.DeserializeObject<QuotationSingleResult.RootObject>(json);
-                    if (Quotes != null && quotationRes != null)
-                    {
-                        Quotes.Add(quotationRes.query.results.quote);
-                    }
+                    Quotes.Add(quotationRes.query.results.quote);
                 }
-            }
-            catch(JsonSerializationException ex)
-            {
-                var message = "Wrong security code or no data for security code .....";
-                _windowManager.ShowDialog(new DialogViewModel()
+                else
                 {
-                    Text = String.Format(message),
-                    DisplayName = message,
-                    NotificationType = NotificationType.Error
-                });
-                PublishStatusEvent(message);
+                    var message = "Wrong security code or no data for security code .....";
+                    _windowManager.ShowDialog(new DialogViewModel()
+                    {
+                        Text = String.Format(message),
+                        DisplayName = message,
+                        NotificationType = NotificationType.Error
+                    });
+                    PublishStatusEvent(message);
+                }
             }
         }
 

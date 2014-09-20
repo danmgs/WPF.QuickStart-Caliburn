@@ -5,10 +5,15 @@
              xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">             
-    
-    <StackPanel Orientation="Vertical">
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <StackPanel>
+
+        <xctk:BusyIndicator IsBusy="{Binding IsBusy}" >
+            <ContentControl />
+        </xctk:BusyIndicator>
 
         <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
 

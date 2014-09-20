@@ -4,16 +4,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Style="{StaticResource WindowStyle}">
 
-    <DockPanel Background="LightBlue">
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-            <Button x:Name="ShowTwitterMultiTabsScreen" Content="Twitter" />
-            <Button x:Name="ShowYahooMultiTabsScreen" Content="Yahoo !" />
-            <Button x:Name="ShowConnectDataMultiTabsScreen" Content="Connect Data" />
+    <DockPanel>
+
+        <Grid DockPanel.Dock="Top" Style="{StaticResource HeaderFooterStyle}" HorizontalAlignment="Stretch">
+
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" >
+                <Button x:Name="ShowTwitterMultiTabsScreen" Style="{StaticResource categoryBtn}" Content="Twitter" />
+                <Button x:Name="ShowYahooMultiTabsScreen" Style="{StaticResource categoryBtn}" Content="Yahoo !" />
+                <Button x:Name="ShowConnectDataMultiTabsScreen" Style="{StaticResource categoryBtn}" Content="Connect" />
+            </StackPanel>
+
+        </Grid>
+
+        <ContentControl DockPanel.Dock="Top" x:Name="ActiveItem" MinHeight="700"/>
+
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource HeaderFooterStyle}" HorizontalAlignment="Stretch">
+            <!--<Separator Background="Salmon" Height="5" Margin="5" />-->
+            <TextBlock x:Name="StatusBar" DockPanel.Dock="Bottom" Text="{Binding StatusBarContent}" Style="{StaticResource StatusBar}" />
         </StackPanel>
-
-        <ContentControl DockPanel.Dock="Top" x:Name="ActiveItem" Height="750"/>
-
-        <TextBlock x:Name="StatusBar" DockPanel.Dock="Bottom" Text="{Binding StatusBarContent}" HorizontalAlignment="Left" Width="Auto" Height="Auto" Background="Red" />
 
     </DockPanel>
 

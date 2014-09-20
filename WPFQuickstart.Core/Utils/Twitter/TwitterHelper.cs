@@ -123,5 +123,37 @@ namespace WPF.QuickStart.UI.Utils.Twitter
         }
 
         #endregion
+
+        public List<Tweet> SearchTweets(string keyword)
+        {
+            var urlFormat = "https://api.twitter.com/1.1/search/tweets.json?q={0}";
+            var url = string.Format(urlFormat, keyword);
+            var urlResponseJson = GetJsonFrom(url);
+            ResultSearchedTweet.RootObject resultSearchedTweets;
+
+            try
+            {
+                resultSearchedTweets = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultSearchedTweet.RootObject>(urlResponseJson);
+            }
+            catch(JsonException ex)
+            {
+                return null;
+            }
+
+            List<Tweet> tweets = new List<Tweet>();
+            resultSearchedTweets.statuses.ForEach(
+                s => { 
+                    Tweet t = new Tweet()
+                    {
+                        Text = s.text,
+                        Date = DateTime.ParseExact(s.created_at, "ddd MMM dd HH:mm:ss zzz yyyy", CultureInfo.InvariantCulture),
+                        UserProfileImageUrl = s.user.profile_background_image_url,
+                        ScreenName = s.user.screen_name
+                    };
+                    tweets.Add(t);                
+                });
+
+            return tweets;            
+        }
     }
 }
