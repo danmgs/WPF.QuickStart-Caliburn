@@ -102,8 +102,13 @@ namespace WPF.QuickStart.UI.ViewModels
  
         public void ShowBlueScreen()
         {
-            ActivateItem(new ChildViewModel("Blue", _eventAgg, _windowManager));
+            ActivateItem(new TwitterSummaryViewModel("Blue", _eventAgg, _windowManager));
         }
+
+        public void ShowTwitterViewByScreen()
+        {
+            ActivateItem(new TwitterViewModel("Twitter View By", _eventAgg, _windowManager));
+        }        
 
         public void Handle(StatusEvent status)
         {

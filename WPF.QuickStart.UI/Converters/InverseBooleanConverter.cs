@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace WPF.QuickStart.UI.CustomControls.Converters
+namespace WPF.QuickStart.UI.Converters
 {
 	[ValueConversion(typeof(bool), typeof(bool))]
 	public class InverseBooleanConverter : IValueConverter

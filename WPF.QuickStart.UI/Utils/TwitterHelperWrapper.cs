@@ -8,11 +8,18 @@ using WPF.QuickStart.UI.Utils.Twitter;
 
 namespace WPF.QuickStart.UI.Utils
 {
-    internal class TwitterHelperWrapper
+    internal static class TwitterHelperWrapper
     {
-        public static List<Tweet> GetTweets(string screenname, int count)
+        internal static List<Tweet> GetTweets(string screenname, int count)
         {
-            return TwitterHelper.GetTweets(screenname, count, AppSettings.Twitter.OAuth.ConsumerKey, AppSettings.Twitter.OAuth.ConsumerSecret, AppSettings.Twitter.OAuth.ApiUrl);
+            TwitterHelper th = new TwitterHelper(AppSettings.Twitter.OAuth.ConsumerKey, AppSettings.Twitter.OAuth.ConsumerSecret, AppSettings.Twitter.OAuth.ApiUrl);
+            return th.GetOrderedTweets(screenname, count);
+        }
+
+        internal static Tweet GetLastTweet(string screenname)
+        {
+            TwitterHelper th = new TwitterHelper(AppSettings.Twitter.OAuth.ConsumerKey, AppSettings.Twitter.OAuth.ConsumerSecret, AppSettings.Twitter.OAuth.ApiUrl);
+            return th.GetLastTweet(screenname);
         }
     }
 }

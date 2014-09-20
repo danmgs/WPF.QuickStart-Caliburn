@@ -6,47 +6,31 @@
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
              HorizontalAlignment="Center">
 
-    <StackPanel Height="400">
+    <StackPanel Height="Auto">
 
-        <!--<ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="{Binding Enabled}" IsExportable="Visible" />-->
-
-        <StackPanel Orientation="Horizontal">
-            <DockPanel Width="1000">
-                <TextBox x:Name="SecurityCode" DockPanel.Dock="Left" />
-                <TextBlock x:Name="StartDateTxt" Text="Start Date" />
-                <xctk:DateTimePicker x:Name="StartDate" Format="ShortDate" Value="{Binding StartDate}" Width="150" Margin="10 5 10 5" />
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
+            <TextBox x:Name="SecurityCode" Width="134" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <TextBlock x:Name="StartDateTxt" Text="Start Date" Width="74" />
+                <xctk:DateTimePicker x:Name="StartDate" Format="ShortDate" Value="{Binding StartDate}" Width="150" Margin="0 5 10 5" Height="25" />
                 <TextBlock x:Name="EndDateTxt" Text="End Date" />
-                <xctk:DateTimePicker x:Name="EndDate" Format="ShortDate" Value="{Binding EndDate}" Width="150" Margin="10 5 10 5" />
-                <Button x:Name="Load" Content="Load historical quotes" HorizontalAlignment="Right" />
-            </DockPanel>
-
+                <xctk:DateTimePicker x:Name="EndDate" Format="ShortDate" Value="{Binding EndDate}" Width="150" Margin="0 5 10 5" Height="25" />
+            </StackPanel>
+            <Button x:Name="Load" Content="Load historical quotes" />
         </StackPanel>
 
-        <Grid>
+        <Grid Margin="0,10">
 
-            <xcdg:DataGridControl x:Name="_dataGrid" 
-                            MaxHeight="400"
-                        ItemsSource="{Binding MyCollectionItems}"/>
-
-            <!--<xcdg:DataGridControl x:Name="_dataGrid" 
-                            MaxHeight="400"
-                            ItemsSource="{Binding Source={StaticResource cvsOrders} }" >
-                <xcdg:DataGridControl.View>
-                    <xcdg:TableflowView FixedColumnCount="2" />
-                </xcdg:DataGridControl.View>-->
-
-            <!--<xcdg:DataGridControl.Columns>
-                    -->
-            <!--Preconfigure the OrderID Column of the grid with CellValidationRule. -->
-            <!--
-                    <xcdg:Column FieldName="OrderID"
-                         IsMainColumn="True">
-                        <xcdg:Column.CellValidationRules>
-                            <local:UniqueIDCellValidationRule />
-                        </xcdg:Column.CellValidationRules>
-                    </xcdg:Column>
-                </xcdg:DataGridControl.Columns>-->
-
+            <xcdg:DataGridControl 
+                x:Name="_dataGrid" 
+                MaxHeight="400"
+                MinHeight="400"
+                MinWidth="1000"
+                Width="Auto"
+                ItemsSource="{Binding MyCollectionItems}"/>
         </Grid>
 
     </StackPanel>

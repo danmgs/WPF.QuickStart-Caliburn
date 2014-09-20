@@ -5,7 +5,7 @@
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:debug="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                    
-                    xmlns:converter="clr-namespace:WPF.QuickStart.UI.CustomControls.Converters"
+                    xmlns:converter="clr-namespace:WPF.QuickStart.UI.Converters"
                     xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                     xmlns:ignore="dummy"
                     mc:Ignorable="ignore">

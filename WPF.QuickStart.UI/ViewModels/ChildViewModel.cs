@@ -64,7 +64,6 @@ namespace WPF.QuickStart.UI.ViewModels
             //MessageBox.Show(string.Format("Init: '{0}'", DisplayName));
         }
 
-
         private void DownloadJson()
         {
             using (var webClient = new System.Net.WebClient())

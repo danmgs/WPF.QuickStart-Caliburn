@@ -117,7 +117,7 @@ namespace WPF.QuickStart.UI.ViewModels
 
         public bool CanLoad
         {
-            get { return !string.IsNullOrWhiteSpace(SecurityCode) && (StartDate <= EndDate); } // Add date start / end constraints
+            get { return !string.IsNullOrWhiteSpace(SecurityCode) && (StartDate <= EndDate) && (EndDate <= DateTime.Today); } // Add date start / end constraints
         }
     }
 }

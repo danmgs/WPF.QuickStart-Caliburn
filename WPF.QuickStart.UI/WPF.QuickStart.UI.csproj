@@ -108,6 +108,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppSettings.tt</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BackgroundConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Proxy\MarketData\ClientCallback.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Utils\TwitterHelperWrapper.cs" />
     <Compile Include="ViewModels\HistoricalQuoteViewModel.cs" />
     <Compile Include="ViewModels\ITwitterViewModel.cs" />
+    <Compile Include="ViewModels\TwitterSummaryViewModel.cs" />
     <Compile Include="ViewModels\TwitterViewModel.cs" />
     <Compile Include="Views\Common\Controls\DialogControl.cs" />
     <Compile Include="Views\Common\Controls\MyCustomControl.cs" />
@@ -135,9 +137,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Views\HistoricalQuoteView.xaml.cs">
-      <DependentUpon>HistoricalQuoteView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\ControlTemplates\MyCustomControl.xaml">
       <SubType>Designer</SubType>
@@ -170,6 +169,10 @@
     <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TwitterSummaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TwitterView.xaml">
       <SubType>Designer</SubType>
@@ -246,6 +249,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WPF.Quickstart.Data\WPF.Quickstart.Data.csproj">
+      <Project>{f8a2c32c-3591-49d9-922a-515bb84e68a0}</Project>
+      <Name>WPF.Quickstart.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WPF.Quickstart.Model\WPF.Quickstart.Model.csproj">
       <Project>{d808ea7a-2e44-42d6-aaf7-6b5ff60db73b}</Project>
       <Name>WPF.Quickstart.Model</Name>

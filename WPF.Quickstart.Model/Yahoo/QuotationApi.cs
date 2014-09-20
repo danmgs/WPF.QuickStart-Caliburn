@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPF.Quickstart.Model.Yahoo
 {
+    /*
+     * Auto-generated with http://json2csharp.com/
+     * */
     public class QuotationResults
     {
         public class Quote

@@ -19,3 +19,8 @@ https://wpftoolkit.codeplex.com/
 
 http://stackoverflow.com/questions/21611674/how-to-auto-generate-a-c-sharp-class-file-from-a-json-object-string
 http://json2csharp.com/
+
+##TODO :
+
+Mise en place de EF + DAL
+Injection avec MEF des services

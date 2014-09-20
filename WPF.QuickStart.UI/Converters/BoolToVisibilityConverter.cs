@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace WPF.QuickStart.UI.CustomControls.Converters
+namespace WPF.QuickStart.UI.Converters
 {
     public class BoolToVisibilityConverter : IValueConverter
     {

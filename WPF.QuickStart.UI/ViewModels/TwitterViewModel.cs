@@ -12,6 +12,9 @@ using System.Windows.Controls;
 using System.Net;
 using WPF.QuickStart.UI.ViewModels.Common.Dialog;
 using System.ComponentModel.Composition;
+using WPF.Quickstart.Data.Mocks;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace WPF.QuickStart.UI.ViewModels
 {
@@ -24,34 +27,60 @@ namespace WPF.QuickStart.UI.ViewModels
 			: base(eventAgg, windowManager)
 		{
             base.DisplayName = displayName;
-            Count = 1;
+            
+        }
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+            PublishStatusEvent(string.Format("Load TwitterScreenNames {0} ...", DisplayName));
+
+            TwitterScreenNames = TwitterRepository.GetSummaryScreenNames();
+            LoadCountElements();
         }
 
-        string screenName;
-
-        public string ScreenName
+        protected override void OnActivate()
         {
-            get { return screenName; }
+            base.OnActivate();
+        }
+
+        ICollectionView _countElements;
+
+        public ICollectionView CountElements
+        {
+            get { return _countElements; }
             set
             {
-                screenName = value;
+                _countElements = value;
+                NotifyOfPropertyChange(() => CountElements);
+                NotifyOfPropertyChange(() => CanLoad);
+            }
+        }
+
+        List<string> _twitterScreenNames;
+
+        public List<string> TwitterScreenNames
+        {
+            get { return _twitterScreenNames; }
+            set
+            {
+                _twitterScreenNames = value;
                 NotifyOfPropertyChange(() => ScreenName);
                 NotifyOfPropertyChange(() => CanLoad);
             }
         }
 
-        int count;
+        string _screenName;
 
-        public int Count
+        public string ScreenName
         {
-            get { return count; }
+            get { return _screenName; }
             set
             {
-                count = value;
-                NotifyOfPropertyChange(() => Count);
+                _screenName = value;
+                NotifyOfPropertyChange(() => ScreenName);
                 NotifyOfPropertyChange(() => CanLoad);
             }
-        }        
+        }  
 
         private BindableCollection<Tweet> tweets = new BindableCollection<Tweet>();
 
@@ -69,40 +98,47 @@ namespace WPF.QuickStart.UI.ViewModels
             }
         }
 
-        bool showInfoPanel;
-
-        public bool ShowInfoPanel
-        {
-            get { return showInfoPanel; }
-            set
-            {
-                showInfoPanel = value;
-                NotifyOfPropertyChange(() => ShowInfoPanel);
-            }
-        }    
-
         #region Methods
+        private void LoadCountElements()
+        {
+            IEnumerable<int> countElems = TwitterRepository.GetCountElementsForCombo();
+            CountElements = CollectionViewSource.GetDefaultView(countElems);
+        }
 
         public bool CanLoad
         {
-            get { return !string.IsNullOrWhiteSpace(ScreenName) && Count > 0; }
+            get 
+            { 
+                int? selectedCountValue = CountElements.CurrentItem as int?;
+                return !string.IsNullOrWhiteSpace(ScreenName) && (selectedCountValue.Value > 0); 
+            }
         }
 
         public void CountSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
         }
 
+        public void ScreenNameSelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+        }        
+
         public void Load()
         {
-            PublishStatusEvent(string.Format("Begin loading {0} tweets from profile '{1}'...", Count, ScreenName));
+            int? selectedCountValue = CountElements.CurrentItem as int?;
+            PublishStatusEvent(string.Format("Begin loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName));
+            var context = TaskScheduler.FromCurrentSynchronizationContext();
 
-            //BNPPwarrants
             try
             {
-                Tweets.Clear();
-                var tweets = TwitterHelperWrapper.GetTweets(ScreenName, Count);
-                Tweets = new BindableCollection<Tweet>(tweets);
-                PublishStatusEvent(string.Format("End loading {0} tweets from profile '{1}'...", Count, ScreenName));
+                Task.Run(() =>
+                {
+                    Tweets.Clear();
+                    var tweets = TwitterHelperWrapper.GetTweets(ScreenName, selectedCountValue.Value);
+                    Tweets = new BindableCollection<Tweet>(tweets);
+                }).ContinueWith(previousTask =>
+                {
+                    PublishStatusEvent(string.Format("End loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName));
+                }, context);
             }
             catch(WebException ex)
             {
@@ -116,16 +152,6 @@ namespace WPF.QuickStart.UI.ViewModels
                 PublishStatusEvent(message);
             }            
         }
-
-        //private ShowTwitterPanel(bool bShow)
-        //{
-        //    if (bShow)
-        //    {
-        //        ShowInfoPanel = true;
-        //        ShowInfoPanel = true;
-        //    }
-            
-        //}
 
         #endregion
     }

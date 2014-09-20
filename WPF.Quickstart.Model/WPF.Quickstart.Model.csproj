@@ -66,6 +66,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Twitter\Tweet.cs" />
+    <Compile Include="Twitter\TweetInformation.cs" />
     <Compile Include="Twitter\TwitAuthenticateResponse.cs" />
     <Compile Include="Yahoo\HistoricalQuotationApi.cs" />
     <Compile Include="Yahoo\QuotationApi.cs" />

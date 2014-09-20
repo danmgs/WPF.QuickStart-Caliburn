@@ -14,7 +14,16 @@ namespace WPF.QuickStart.UI.Utils.Twitter
 {
     public class TwitterHelper
     {
-        public static List<Tweet> GetTweets(string screenname, int count, string oAuthConsumerKey, string oAuthConsumerSecret, string oAuthUrl)
+        TwitAuthenticateResponse TwitAuthResponse { get; set; }
+
+        public TwitterHelper(string oAuthConsumerKey, string oAuthConsumerSecret, string oAuthUrl)
+        {
+            TwitAuthResponse = Connect(oAuthConsumerKey, oAuthConsumerSecret, oAuthUrl);
+        }
+
+        #region Private Methods
+
+        private TwitAuthenticateResponse Connect(string oAuthConsumerKey, string oAuthConsumerSecret, string oAuthUrl)
         {
             // Do the Authenticate
             var authHeaderFormat = "Basic {0}";
@@ -42,7 +51,7 @@ namespace WPF.QuickStart.UI.Utils.Twitter
 
             WebResponse authResponse = authRequest.GetResponse();
             // deserialize into an object
-            TwitAuthenticateResponse twitAuthResponse;
+            TwitAuthenticateResponse twitAuthResponse = null;
             using (authResponse)
             {
                 using (var reader = new StreamReader(authResponse.GetResponseStream()))
@@ -52,16 +61,19 @@ namespace WPF.QuickStart.UI.Utils.Twitter
                 }
             }
 
+            return twitAuthResponse;
+        }
+
+        private string GetJsonFrom(string timelineUrl)
+        {
+            string timeLineJson = string.Empty;
             // Do the timeline
-            var timelineFormat = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={0}&include_rts=1&exclude_replies=1&count={1}";
-            var timelineUrl = string.Format(timelineFormat, screenname, count);
             HttpWebRequest timeLineRequest = (HttpWebRequest)WebRequest.Create(timelineUrl);
             var timelineHeaderFormat = "{0} {1}";
-            timeLineRequest.Headers.Add("Authorization", string.Format(timelineHeaderFormat, twitAuthResponse.token_type, twitAuthResponse.access_token));
+            timeLineRequest.Headers.Add("Authorization", string.Format(timelineHeaderFormat, TwitAuthResponse.token_type, TwitAuthResponse.access_token));
             timeLineRequest.Method = "Get";
 
             WebResponse timeLineResponse = timeLineRequest.GetResponse();
-            var timeLineJson = string.Empty;
             using (timeLineResponse)
             {
                 using (var reader = new StreamReader(timeLineResponse.GetResponseStream()))
@@ -69,6 +81,20 @@ namespace WPF.QuickStart.UI.Utils.Twitter
                     timeLineJson = reader.ReadToEnd();
                 }
             }
+
+            return timeLineJson;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public List<Tweet> GetOrderedTweets(string screenname, int count)
+        {
+            // Do the timeline
+            var timelineFormat = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={0}&include_rts=1&exclude_replies=1&count={1}";
+            var timelineUrl = string.Format(timelineFormat, screenname, count);
+            var timeLineJson = GetJsonFrom(timelineUrl);
 
             List<Tweet> tweets = new List<Tweet>();
             JArray jsonDat = JArray.Parse(timeLineJson);
@@ -79,7 +105,9 @@ namespace WPF.QuickStart.UI.Utils.Twitter
                 Tweet t = new Tweet()
                 {
                     Text = tweet["text"].ToString(),
-                    Date = DateTime.ParseExact(tweet["created_at"].ToString(), "ddd MMM dd HH:mm:ss zzz yyyy", CultureInfo.InvariantCulture)
+                    Date = DateTime.ParseExact(tweet["created_at"].ToString(), "ddd MMM dd HH:mm:ss zzz yyyy", CultureInfo.InvariantCulture),
+                    UserProfileImageUrl = tweet["user"]["profile_image_url"].ToString(),
+                    ScreenName = tweet["user"]["screen_name"].ToString()
                 };
 
                 tweets.Add(t);
@@ -88,5 +116,12 @@ namespace WPF.QuickStart.UI.Utils.Twitter
 
             return tweets.OrderByDescending(t => t.Date).ToList();
         }
+
+        public Tweet GetLastTweet(string screename)
+        {
+            return GetOrderedTweets(screename, 1).FirstOrDefault();
+        }
+
+        #endregion
     }
 }
