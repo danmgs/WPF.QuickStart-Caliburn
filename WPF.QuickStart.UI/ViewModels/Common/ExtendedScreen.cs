@@ -24,7 +24,7 @@ namespace WPF.QuickStart.UI.ViewModels.Common
         [ImportingConstructor()]
         protected ExtendedScreen(IEventAggregator eventAgg, IWindowManager windowManager)
         {
-            Enabled = true;
+            IsBusy = false;
             _eventAgg = eventAgg;
             _eventAgg.Subscribe(this);
             _windowManager = windowManager;
@@ -34,18 +34,17 @@ namespace WPF.QuickStart.UI.ViewModels.Common
 
         #region Properties
 
-        bool enabled;
+        private bool _isBusy;
 
-        public bool Enabled
+        public bool IsBusy
         {
-            get { return enabled; }
+            get { return _isBusy; }
             set
             {
-                enabled = value;
-                NotifyOfPropertyChange(() => Enabled);
+                _isBusy = value;
+                NotifyOfPropertyChange(() => IsBusy);
             }
         }
-
 
         #endregion
 

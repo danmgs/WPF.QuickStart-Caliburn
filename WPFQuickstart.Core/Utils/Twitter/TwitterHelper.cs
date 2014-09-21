@@ -49,7 +49,17 @@ namespace WPF.QuickStart.UI.Utils.Twitter
 
             authRequest.Headers.Add("Accept-Encoding", "gzip");
 
-            WebResponse authResponse = authRequest.GetResponse();
+            WebResponse authResponse;
+            try
+            {
+                authResponse = authRequest.GetResponse();
+            }
+            catch
+            {
+                // Log error.
+                return null;
+            }
+
             // deserialize into an object
             TwitAuthenticateResponse twitAuthResponse = null;
             using (authResponse)

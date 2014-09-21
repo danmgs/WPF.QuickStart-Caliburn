@@ -1,17 +1,17 @@
-﻿<UserControl x:Class="WPF.QuickStart.UI.Views.ChildView"
+﻿<UserControl x:Class="WPF.QuickStart.UI.Views.ClientServer.ChildView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid">
 
-    <StackPanel>
+    <DockPanel>
 
-        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" />
+        <TextBlock DockPanel.Dock="Top" Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" />
 
         <!--<ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="{Binding Enabled}" IsExportable="Visible" />-->
 
-        <StackPanel Orientation="Horizontal">
+        <!--<StackPanel Orientation="Horizontal">
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF615A5A" Offset="0"/>
@@ -23,8 +23,24 @@
                 <Button x:Name="GetDataSourceList" Content="GetDataSourceList" IsEnabled="{Binding Connected}" HorizontalAlignment="Right" />
             </StackPanel>
             
+        </StackPanel>-->
+
+
+        <DockPanel DockPanel.Dock="Top">
+            <Button DockPanel.Dock="Left" x:Name="ConnectBtn" Content="Connect" ToolTip="Connect to the server" IsEnabled="{Binding !Connected}" />
+            <Button DockPanel.Dock="Right" x:Name="GetDataSourceList" Content="GetDataSourceList" IsEnabled="{Binding Connected}" HorizontalAlignment="Right" />
+        </DockPanel>
+
+        <StackPanel DockPanel.Dock="Top" Margin="0,20">
+            <TextBlock Style="{StaticResource subTitleStyle}" Text="Server Responses History"/>
+            <ListView ItemsSource="{Binding ServerResponseItems}" Height="200" Width="800" />
         </StackPanel>
 
-    </StackPanel>
+        <StackPanel>
+            <TextBlock Style="{StaticResource subTitleStyle}" Text="Detailed Items"/>
+            <ListView ItemsSource="{Binding MyCollectionItems}" Height="400" Width="800" />
+        </StackPanel>
+
+    </DockPanel>
 
 </UserControl>

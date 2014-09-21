@@ -35,18 +35,6 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
             Load();
         }
 
-        private bool _isBusy;
-
-        public bool IsBusy
-        {
-            get { return _isBusy; }
-            set
-            {
-                _isBusy = value;
-                NotifyOfPropertyChange(() => IsBusy);
-            }
-        }
-
         private BindableCollection<Tweet> tweets = new BindableCollection<Tweet>();
 
         public BindableCollection<Tweet> Tweets

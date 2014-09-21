@@ -171,7 +171,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
                 }
 
                 DateTime qDate = DateTime.ParseExact(q.Date, "yyyy-MM-dd", null);
-                list.Add(new DataPoint(TimeSpanAxis.ToDouble(qDate), yPrice));
+                list.Add(new DataPoint(DateTimeAxis.ToDouble(qDate), yPrice));
             });
 
             ChartQuotePointsList = new ObservableCollection<DataPoint>(list);

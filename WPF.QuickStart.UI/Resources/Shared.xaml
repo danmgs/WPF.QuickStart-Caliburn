@@ -58,8 +58,9 @@
     </Style>
 
     <Style x:Key="baseStyle" TargetType="{x:Type Control}">
-        <!--<Setter Property="Width" Value="120" />-->
-        <Setter Property="Height" Value="25" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="30" />
     </Style>
 
     <Style x:Key="baseStyleTextBlock" TargetType="{x:Type TextBlock}">
@@ -70,42 +71,48 @@
         <Setter Property="Margin" Value="10,0" />
     </Style>
 
-    <Style x:Key="baseStyleBtn" TargetType="{x:Type Button}">
+    <Style x:Key="baseStyleBtn" BasedOn="{StaticResource baseStyle}" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="Auto" />
-        <Setter Property="Padding" Value="8,1,8,1" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Padding" Value="5,1,5,1" />
         <Setter Property="Margin" Value="10,5" />
     </Style>
 
-    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type TextBox}">
-    </Style>
-
     <Style BasedOn="{StaticResource baseStyleBtn}" TargetType="{x:Type Button}">
+    </Style>    
+    
+    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type TextBox}">
     </Style>
 
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type ComboBox}">
         <Setter Property="Width" Value="250" />
     </Style>
 
-    <Style BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">  
+    
+    <Style BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">        
     </Style>
 
-    <Style x:Key="HeaderStyle" BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">
+    <Style x:Key="baseStyleTitleTextBlock" BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="Margin" Value="5,10" />
     </Style>
 
-    <Style x:Key="subTitleStyle" BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">
-        <Setter Property="FontWeight" Value="Bold" />
+    <Style x:Key="HeaderStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="Foreground" Value="#CC119EDA" />
+    </Style>
+
+    <Style x:Key="subTitleStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="Margin" Value="5,10" />
     </Style>
 
     <Style x:Key="categoryBtn" BasedOn="{StaticResource baseStyleBtn}" TargetType="{x:Type Button}">
-        <Setter Property="Width" Value="100" />
-        <Setter Property="Height" Value="100" />
+        <Setter Property="Width" Value="110" />
+        <Setter Property="Height" Value="110" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="Background" Value="LightBlue" />
     </Style>
 
 </ResourceDictionary>

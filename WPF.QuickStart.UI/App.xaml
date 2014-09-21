@@ -1,17 +1,20 @@
 ﻿<Application x:Class="WPF.QuickStart.UI.App"
              xmlns:local="clr-namespace:WPF.QuickStart.UI"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mahactrl="http://metro.mahapps.com/winfx/xaml/controls">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <local:MefBootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
-                <ResourceDictionary Source="/Resources/Shared.xaml" />
+                <ResourceDictionary Source="/Resources/MahApp.Metro.xaml"/>
+                <ResourceDictionary Source="/Resources/Shared.xaml" />                
                 <ResourceDictionary Source="/Resources/Charts.xaml" />
                 <ResourceDictionary Source="/Resources/ControlTemplates/MyCustomControl.xaml"/>
                 <ResourceDictionary Source="/Resources/ControlTemplates/DialogControl.xaml"/>
+                <ResourceDictionary Source="/Resources/ControlTemplates/BusyIndicator.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

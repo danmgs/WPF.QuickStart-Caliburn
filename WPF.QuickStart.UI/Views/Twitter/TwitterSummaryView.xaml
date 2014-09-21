@@ -9,36 +9,37 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <StackPanel>
+    <DockPanel>
 
-        <xctk:BusyIndicator IsBusy="{Binding IsBusy}" >
-            <ContentControl />
-        </xctk:BusyIndicator>
+        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top"/>
 
-        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
+        <Grid>
 
-        <ListView ItemsSource="{Binding Tweets}">
-            <ListView.ItemTemplate>
+            <ListView ItemsSource="{Binding Tweets}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource backgroundConverter}}">
+                            <Grid x:Name="statusBox" Height="auto" Width="auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.168*"/>
+                                    <ColumnDefinition Width="0.832*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Path=UserProfileImageUrl}" Grid.Column="0" Grid.Row="0" x:Name="userImage"/>
+                                <Label Margin="8,0,8,0" x:Name="status" Grid.Column="1">
+                                    <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=Text}"></TextBlock>
+                                </Label>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-                <DataTemplate>
+            <xctk:BusyIndicator IsBusy="{Binding IsBusy}" />
+        </Grid>
+        
 
-                    <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource backgroundConverter}}">
-                        <Grid x:Name="statusBox" Height="auto" Width="auto">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.168*"/>
-                                <ColumnDefinition Width="0.832*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Image Source="{Binding Path=UserProfileImageUrl}" Grid.Column="0" Grid.Row="0" x:Name="userImage"/>
-                            <Label Margin="8,0,8,0" x:Name="status" Grid.Column="1">
-                                <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=Text}"></TextBlock>
-                            </Label>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackPanel>
+    </DockPanel>
 </UserControl>

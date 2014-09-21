@@ -6,19 +6,17 @@
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
              HorizontalAlignment="Center">
 
-    <StackPanel Height="Auto">
+    <DockPanel Height="Auto">
 
-        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
+        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top" />
 
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
-                <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." />
-            </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
+            <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." />
             <Button x:Name="AddSingleStock" Content="Add Stock" HorizontalAlignment="Left" Margin="10,10" />
         </StackPanel>
 
-        <Grid Margin="0,10">
+        <Grid Margin="0,10" VerticalAlignment="Top">
 
             <xcdg:DataGridControl 
                 x:Name="_dataGrid" 
@@ -29,6 +27,6 @@
                 ItemsSource="{Binding Quotes}"/>
         </Grid>
 
-    </StackPanel>
+    </DockPanel>
 
 </UserControl>    

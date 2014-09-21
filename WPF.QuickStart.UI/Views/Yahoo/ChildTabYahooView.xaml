@@ -6,12 +6,14 @@
 
         <TabControl x:Name="Items"
                     Grid.Row="1"
-                    TabStripPlacement="Left">
+                    TabStripPlacement="Top">
+            <!--
             <TabControl.ItemContainerStyle>
                 <Style TargetType="{x:Type TabItem}">
                     <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
                 </Style>
             </TabControl.ItemContainerStyle>
+            -->
         </TabControl>
 
     </Grid>

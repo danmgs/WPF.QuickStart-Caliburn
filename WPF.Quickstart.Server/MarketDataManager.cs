@@ -29,14 +29,16 @@ namespace WPF.Quickstart.Server
 
             Logger.Debug(string.Format("GetDataSourceList Random number is {0}", rdnNum));
 
-            for (var i = 0; i < rdnNum; i++)
+            for (var i = 1; i <= rdnNum; i++)
             {
                 collection.Add(string.Format("item{0}", i));
             }
 
             Logger.Debug(string.Format("GetDataSourceList with {0} items", collection.Count));
 
-            m_pIClientCallback.SendTickUpdate(collection.Count); // est ce qu'on peut renvoyer la collection, si oui, a mon avis elle devrait etre serializable avant :)
+            // On peut appeler cette ligne plusieurs fois !!
+            // Q : Est ce qu'on peut renvoyer la collection, si oui, a mon avis elle devrait etre serializable avant :). 
+            m_pIClientCallback.SendTickUpdate(collection.Count);
             
             return collection;
         }

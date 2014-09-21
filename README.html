@@ -1,44 +1,116 @@
 <h1>WPF.QuickStart Caliburn - 2014</h1>
 
-<p><em>Designed by <a href="https://www.linkedin.com/in/nguyendaniel">@Daniel NGUYEN</a></em></p>
+<p><em>Designed by <a href="https://www.linkedin.com/in/nguyendaniel">@Daniel NGUYEN</a></em> :+1:</p>
 
 <p>If you are looking for WPF quickstart project, designed with <a href="https://github.com/Caliburn-Micro">Caliburn.Micro</a> ...</p>
 
-<h2>Useful links :</h2>
-
-<p>https://github.com/marcemarc/oAuthTwitterTimeline
-http://stackoverflow.com/questions/10065000/running-long-tasks-without-freezing-the-ui
-http://blog.stephencleary.com/2012/02/async-and-await.html</p>
-
-<p>http://www.wpf-tutorial.com/styles/using-styles/</p>
-
-<p>https://caliburnmicro.codeplex.com/wikipage?title=Customizing%20The%20Bootstrapper</p>
-
-<p>https://wpftoolkit.codeplex.com/</p>
-
-<p>http://json2csharp.com/
-http://stackoverflow.com/questions/21611674/how-to-auto-generate-a-c-sharp-class-file-from-a-json-object-string</p>
-
-<p>http://stackoverflow.com/questions/833943/watermark-hint-text-placeholder-textbox-in-wpf</p>
-
-<p>https://modernuicharts.codeplex.com</p>
-
-<p>https://github.com/oxyplot/oxyplot</p>
-
-<h2>TODO :</h2>
-
-<ul>
-<li>Setup Data layer with Entity Framework</li>
-<li>Inject IOC for Services using MEF</li>
-</ul>
-
 <h2>Installation Notes</h2>
 
-<p><strong>Server side Console</strong>: </p>
+<h3>Server side Console:</h3>
 
 <p>Launch the server side project executable.</p>
 
-<p><strong>Client Side UI</strong>:</p>
+<h3>Client Side UI:</h3>
 
 <p>Launch the client.
 In order to be allowed connection and retrieved data, the server console must be started.</p>
+
+<h2>Useful links :</h2>
+
+<h3>WPF FAQ</h3>
+
+<blockquote>
+  <h4>WPF Layout :</h4>
+  
+  <blockquote>
+    <p><a href="http://wpftutorial.net/DockPanel.html">Dockpanel</a>
+    <em>The order of element added is important, last element will filled the remaining space, when LastFillChild = true</em></p>
+    
+    <p><a href="http://stackoverflow.com/questions/5450985/how-to-make-overlay-control-above-all-other-controls">Grid &amp; Overlay</a>
+    <em>Controls in the same cell of a Grid are rendered back-to-front</em></p>
+  </blockquote>
+  
+  <h4>WPF Styling :</h4>
+  
+  <blockquote>
+    <p>http://www.wpf-tutorial.com/styles/using-styles/</p>
+  </blockquote>
+  
+  <h4>WPF Binding :</h4>
+  
+  <blockquote>
+    <p><a href="http://stackoverflow.com/questions/84278/how-do-i-use-wpf-bindings-with-relativesource">How do I use WPF bindings with RelativeSource?</a></p>
+  </blockquote>
+  
+  <h4>WPF UI Freezing FAQ :</h4>
+  
+  <blockquote>
+    <p>http://stackoverflow.com/questions/10065000/running-long-tasks-without-freezing-the-ui</p>
+    
+    <p>http://blog.stephencleary.com/2012/02/async-and-await.html</p>
+  </blockquote>
+</blockquote>
+
+<h3>Twitter :</h3>
+
+<p><a href="https://github.com/marcemarc/oAuthTwitterTimeline">oAuthTwitterTimeline</a></p>
+
+<h3>Caliburn :</h3>
+
+<p><a href="https://caliburnmicro.codeplex.com/wikipage?title=All%20About%20Actions">All about actions</a></p>
+
+<p><a href="https://caliburnmicro.codeplex.com/wikipage?title=Customizing%20The%20Bootstrapper">Customizing bootstrapper</a></p>
+
+<h3>WPF library on github/codeplex :</h3>
+
+<p><a href="https://wpftoolkit.codeplex.com/">wpftoolkit</a></p>
+
+<p><a href="https://modernuicharts.codeplex.com">modernuicharts</a></p>
+
+<p><a href="https://github.com/oxyplot/oxyplot">oxyplot</a></p>
+
+<p><a href="http://wpfanimatedgif.codeplex.com/">wpfanimatedgif</a></p>
+
+<p><a href="http://mahapps.com/">mahapps</a> <em>Great UI Styles</em></p>
+
+<h3>Others/library/tools :</h3>
+
+<h4>Json</h4>
+
+<blockquote>
+  <p><a href="http://json2csharp.com/">json2csharp Generate class from json</a></p>
+  
+  <p>http://stackoverflow.com/questions/21611674/how-to-auto-generate-a-c-sharp-class-file-from-a-json-object-string</p>
+</blockquote>
+
+<p>http://stackoverflow.com/questions/833943/watermark-hint-text-placeholder-textbox-in-wpf</p>
+
+<p><a href="http://xamlspy.com/">xaml Spy</a></p>
+
+<h2>Probl�me rencontr� de dll en provenance du WEB :</h2>
+
+<p>Pour les probl�mes d'import dans le XAML de namespaces non reconnu lorsque les dll proviennent du WEB :</p>
+
+<p>https://wpfanimatedgif.codeplex.com/discussions/392120</p>
+
+<p>Par ordre de priorit� :</p>
+
+<ol>
+<li><p><strong>Si disponible, installer la dll via nugget manager.</strong></p></li>
+<li><p><strong>Ou bien, aller dans les propri�t�s de la dll => "Unblock"/"D�bloquer".</strong></p></li>
+<li><p><strong>Ou bien, ajouter dans le .config du projet</strong> :</p></li>
+</ol>
+
+<p><code>html
+  &lt;runtime&gt;
+    &lt;loadFromRemoteSources enabled="true" /&gt;
+  &lt;/runtime&gt;
+</code></p>
+
+<h2>TODO</h2>
+
+<ul>
+<li>[:construction_worker:] Setup Data layer with Entity Framework instead of using mock repositories.</li>
+<li>[:construction_worker: ] Inject IOC for Services using MEF</li>
+<li>[:construction_worker: ] Find a way to flash the row when an item is an in a listbox (event/trigger ..)</li>
+</ul>

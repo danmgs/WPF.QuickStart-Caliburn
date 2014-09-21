@@ -3,6 +3,7 @@ using System.ComponentModel.Composition;
 using System.Windows;
 using WPF.QuickStart.UI.Events;
 using WPF.QuickStart.UI.ViewModels;
+using WPF.QuickStart.UI.ViewModels.ClientServer;
 using WPF.QuickStart.UI.ViewModels.Twitter;
 using WPF.QuickStart.UI.ViewModels.Yahoo;
 namespace WPF.QuickStart.UI.ViewModels
@@ -76,37 +77,37 @@ namespace WPF.QuickStart.UI.ViewModels
 
         #region Methods
 
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+            ShowYahooMultiTabsScreen("Twitter");
+        }
 
         public bool CanSayHello
         {
             get { return !string.IsNullOrWhiteSpace(Name); }
         }
 
-        public void SayHello()
+        public void ShowTwitterMultiTabsScreen(string titleParam)
         {
-            MessageBox.Show(string.Format("Hello {0}!", Name)); //Don't do this in real life :)
+            ActivateItem(new ChildTabTwitterViewModel(titleParam, _eventAgg, _windowManager));
         }
 
-        public void ShowTwitterMultiTabsScreen()
+        public void ShowYahooMultiTabsScreen(string titleParam)
         {
-            ActivateItem(new ChildTabTwitterViewModel("Twitter Tab Panel", _eventAgg, _windowManager));
+            ActivateItem(new ChildTabYahooViewModel(titleParam, _eventAgg, _windowManager));
         }
 
-        public void ShowYahooMultiTabsScreen()
+        public void ShowClientServerMultiTabsScreen(string titleParam)
         {
-            ActivateItem(new ChildTabYahooViewModel("Yahoo Tab Panel", _eventAgg, _windowManager));
-        }
-
-        public void ShowConnectDataMultiTabsScreen()
-        {
-            ActivateItem(new ChildViewModel("ConnectData Tab Panel", _eventAgg, _windowManager));
+            ActivateItem(new ChildViewModel(titleParam, _eventAgg, _windowManager));
         }
 
         public void Handle(StatusEvent status)
         {
             StatusBarContent = string.Format("Status : {0} ", status.Content);
         }
-
+        
         #endregion
     }
 }

@@ -16,8 +16,8 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
         {
             DisplayName = displayName;
             IsEnabled = true;
-            Items.Add(new TwitterViewModel("View tweets by", eventAgg, windowManager));
             Items.Add(new TwitterSummaryViewModel("Financial News", eventAgg, windowManager));
+            Items.Add(new TwitterViewModel("View tweets by", eventAgg, windowManager));
 
             //Items.Add(TwitterViewModel);
             //ActivateItem(TwitterViewModel);

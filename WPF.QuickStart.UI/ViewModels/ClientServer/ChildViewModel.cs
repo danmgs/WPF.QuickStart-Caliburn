@@ -15,11 +15,25 @@ using WPF.QuickStart.UI.Proxy.MarketData;
 using WPF.QuickStart.UI.ViewModels.Common;
 using WPF.QuickStart.UI.ViewModels.Common.Dialog;
 
-namespace WPF.QuickStart.UI.ViewModels
+namespace WPF.QuickStart.UI.ViewModels.ClientServer
 {
     public class ChildViewModel : ExtendedScreen
     {
         private MarketDataClient m_pMarketDataClient = null;
+
+        private BindableCollection<string> _serverResponseItems = new BindableCollection<string>();
+        public BindableCollection<string> ServerResponseItems
+        {
+            get
+            {
+                return _serverResponseItems;
+            }
+            set
+            {
+                _serverResponseItems = value;
+                this.NotifyOfPropertyChange(() => ServerResponseItems);
+            }
+        }
 
         private ICollectionView _myCollectionItems;
         public ICollectionView MyCollectionItems
@@ -69,12 +83,14 @@ namespace WPF.QuickStart.UI.ViewModels
             }
         }
 
+        #region Methods
+
         private async Task<List<object>> LongRetrieveMockElements(int count)
         {
             PublishStatusEvent(string.Format("Loading {0} elements ...", count));
             var context = TaskScheduler.FromCurrentSynchronizationContext();
             var listElements = new List<object>();
-            Enabled = false;
+            IsBusy = true;
 
             await Task.Delay(5000);
 
@@ -89,7 +105,7 @@ namespace WPF.QuickStart.UI.ViewModels
             .ContinueWith(previousTask =>
                 {
                     PublishStatusEvent(string.Format("Finish loading {0} elements !", count));
-                    Enabled = true;
+                    IsBusy = false;
                     // Add Caliburn Logger.Error ...
                 }, context);
 
@@ -118,15 +134,19 @@ namespace WPF.QuickStart.UI.ViewModels
             }
         }
 
+        // Method called from the service callback
         public void ShowConnected(int param)
         {
-            var message = Connected ? "Connected" : "Not Connected";
-            _windowManager.ShowDialog(new DialogViewModel()
-            {
-                Text = String.Format("{0}  with {1} items in collection", message, param),
-                DisplayName = "Connection State",
-                NotificationType = NotificationType.Info
-            });
+            var serverResponse = String.Format("The number of items returned by Server is '{0}'", param);
+            //_windowManager.ShowDialog(new DialogViewModel()
+            //{
+            //    Text = serverResponse,
+            //    DisplayName = "Callback from Server",
+            //    NotificationType = NotificationType.Info
+            //});
+
+            PublishStatusEvent(serverResponse);
+            ServerResponseItems.Add(serverResponse);
         }
 
         public void ConnectBtn(object sender, RoutedEventArgs e)
@@ -182,6 +202,9 @@ namespace WPF.QuickStart.UI.ViewModels
         public void GetDataSourceList()
         {
             var list = m_pMarketDataClient.GetDataSourceList();
+            MyCollectionItems = CollectionViewSource.GetDefaultView(list);
         }
+
+        #endregion
     }
 }

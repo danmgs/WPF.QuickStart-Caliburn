@@ -138,6 +138,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
 
         public void Load()
         {
+            IsBusy = true;
             int? selectedCountValue = CountElements.CurrentItem as int?;
             PublishStatusEvent(string.Format("Begin loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName));
             var context = TaskScheduler.FromCurrentSynchronizationContext();
@@ -152,6 +153,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                 }).ContinueWith(previousTask =>
                 {
                     PublishStatusEvent(string.Format("End loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName));
+                    IsBusy = false;
                 }, context);
             }
             catch(WebException ex)
@@ -164,6 +166,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     NotificationType = NotificationType.Error
                 });
                 PublishStatusEvent(message);
+                IsBusy = false;
             }            
         }
 
@@ -177,6 +180,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
 
         public void Search()
         {
+            IsBusy = true;
             PublishStatusEvent(string.Format("Begin search with keyword {0} ...", Keyword));
             var context = TaskScheduler.FromCurrentSynchronizationContext();
 
@@ -190,6 +194,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                 }).ContinueWith(previousTask =>
                 {
                     PublishStatusEvent(string.Format("End search with keyword {0} ...", Keyword));
+                    IsBusy = false;
                 }, context);
             }
             catch(WebException ex)
@@ -202,6 +207,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     NotificationType = NotificationType.Error
                 });
                 PublishStatusEvent(message);
+                IsBusy = false;
             }     
         }
 

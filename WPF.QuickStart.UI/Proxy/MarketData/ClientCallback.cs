@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using WPF.QuickStart.UI.MarketDataProxy;
 using WPF.QuickStart.UI.ViewModels;
+using WPF.QuickStart.UI.ViewModels.ClientServer;
 
 namespace WPF.QuickStart.UI.Proxy.MarketData
 {

@@ -1,28 +1,79 @@
-<Window x:Class="WPF.QuickStart.UI.Views.ShellView"
+<Controls:MetroWindow x:Class="WPF.QuickStart.UI.Views.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:cal="http://www.caliburnproject.org"   
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         Style="{StaticResource WindowStyle}">
 
-    <DockPanel>
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="settings" />
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_cupcake}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="deploy cupcakes" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
 
+    <DockPanel>
         <Grid DockPanel.Dock="Top" Style="{StaticResource HeaderFooterStyle}" HorizontalAlignment="Stretch">
 
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" >
-                <Button x:Name="ShowTwitterMultiTabsScreen" Style="{StaticResource categoryBtn}" Content="Twitter" />
-                <Button x:Name="ShowYahooMultiTabsScreen" Style="{StaticResource categoryBtn}" Content="Yahoo !" />
-                <Button x:Name="ShowConnectDataMultiTabsScreen" Style="{StaticResource categoryBtn}" Content="Connect" />
-            </StackPanel>
+                <Button Style="{StaticResource categoryBtn}" Content="Twitter">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <cal:ActionMessage MethodName="ShowTwitterMultiTabsScreen">
+                                <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
+                            </cal:ActionMessage>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
 
+                <Button Style="{StaticResource categoryBtn}" Content="Yahoo !">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <cal:ActionMessage MethodName="ShowYahooMultiTabsScreen">
+                                <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
+                            </cal:ActionMessage>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>                    
+                </Button>
+                <Button Style="{StaticResource categoryBtn}" Content="Client/Server">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <cal:ActionMessage MethodName="ShowClientServerMultiTabsScreen">
+                                <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
+                            </cal:ActionMessage>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>                    
+                </Button>
+            </StackPanel>
         </Grid>
 
-        <ContentControl DockPanel.Dock="Top" x:Name="ActiveItem" MinHeight="700"/>
-
-        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource HeaderFooterStyle}" HorizontalAlignment="Stretch">
-            <!--<Separator Background="Salmon" Height="5" Margin="5" />-->
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource HeaderFooterStyle}" HorizontalAlignment="Stretch" Height="Auto" Orientation="Horizontal">
+            <Rectangle Width="20" Height="20" Margin="20,0">
+                <Rectangle.Resources>
+                </Rectangle.Resources>
+                <Rectangle.Fill>
+                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_book_open_information}" />
+                </Rectangle.Fill>
+            </Rectangle>            
             <TextBlock x:Name="StatusBar" DockPanel.Dock="Bottom" Text="{Binding StatusBarContent}" Style="{StaticResource StatusBar}" />
         </StackPanel>
 
+        <ContentControl x:Name="ActiveItem" VerticalAlignment="Stretch" />
+
     </DockPanel>
 
-</Window>
+</Controls:MetroWindow>
