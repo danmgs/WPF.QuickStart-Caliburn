@@ -9,6 +9,7 @@
                     xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                     xmlns:gif="http://wpfanimatedgif.codeplex.com"
+                    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:ignore="dummy"
                     mc:Ignorable="ignore">
 
@@ -17,18 +18,24 @@
         <Setter Property="BusyContentTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <StackPanel Margin="4">
+                    <StackPanel Margin="4" Width="350" Height="140">
                         <StackPanel.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFFFFF" Offset="0"/>
-                                <GradientStop Color="#FFFFF8F8" Offset="1"/>
+                                <GradientStop Color="{StaticResource ColorLightBlue}" Offset="0"/>
+                                <GradientStop Color="#FFFFFF" Offset="1"/>
                             </LinearGradientBrush>
                         </StackPanel.Background>
                         <TextBlock Text="Loading ..." FontWeight="Bold" HorizontalAlignment="Center"/>
                         <Image gif:ImageBehavior.AnimatedSource="/Images/wait.gif" Height="32" Width="32" Margin="0,5" />
                         <StackPanel Margin="4">
-                            <TextBlock Text="Please Wait..."/>
-                            <ProgressBar Value="40" Height="15"/>
+                            <TextBlock Text="Please Wait..."/>                            
+                            <!--<ProgressBar Value="40" Height="15"/>-->                            
+                            <Controls:MetroProgressBar Width="300"
+                                Margin="0, 10, 0, 0"
+                                Foreground="{DynamicResource AccentColorBrush}"
+                                IsIndeterminate="True"
+                                Maximum="100"
+                                Minimum="0" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

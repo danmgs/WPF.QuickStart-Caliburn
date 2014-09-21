@@ -46,7 +46,13 @@
                             Style="{DynamicResource AccentedSquareButtonStyle}" 
                             Width="172" Height="41"
                             Margin="10 "/>
-                        <TextBox x:Name="Keyword" IsEnabled="{Binding ConnectedTwitter, Converter={StaticResource inverseBoolConverter}}"  Width="200" Controls:TextboxHelper.Watermark="Type a keyword ..." Controls:TextboxHelper.ClearTextButton="True" Height="43" />
+                        <TextBox x:Name="Keyword" 
+                                 IsEnabled="{Binding ConnectedTwitter, Converter={StaticResource inverseBoolConverter}}"  
+                                 Width="200" 
+                                 Height="43"                                 
+                                 Controls:TextboxHelper.Watermark="Type a keyword ..." 
+                                 Controls:TextboxHelper.ClearTextButton="True" 
+                                 VerticalContentAlignment="Center" />
                         <Image gif:ImageBehavior.AnimatedSource="/Images/wait.gif" 
                            Height="24" Width="24" Margin="5,5" 
                            Visibility="{Binding ConnectedTwitter, Converter={StaticResource boolToVisibilityConverter}}" />

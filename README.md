@@ -19,6 +19,7 @@ Launch the server side project executable.
 ###Client Side UI:
 
 Launch the client.
+
 :heavy_exclamation_mark: *In order to be allowed connection and retrieved data, the server console must be started.*
 
 :bulb: *Under VS Debug Mode, you can start multiple projects WPF.QuickStart.UI & WPF.QuickStart.Server*

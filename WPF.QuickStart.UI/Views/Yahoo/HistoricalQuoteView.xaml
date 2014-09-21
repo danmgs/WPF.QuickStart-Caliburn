@@ -11,13 +11,13 @@
 
     <DockPanel>
 
-
         <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top" />
 
         <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
-                <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." Controls:TextboxHelper.Watermark="YHOO" Controls:TextboxHelper.ClearTextButton="True" />
+                <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." 
+                         Controls:TextboxHelper.Watermark="YHOO" Controls:TextboxHelper.ClearTextButton="True" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10">
                 <TextBlock x:Name="StartDateTxt" Text="Start Date" Width="74" />
@@ -41,7 +41,6 @@
 
 
         <DockPanel>
-
             <chart:PieChart 
                 DockPanel.Dock="Left"
                 Style="{StaticResource MinimalChartStyle}"
@@ -57,8 +56,7 @@
                 </chart:PieChart.Series>
             </chart:PieChart>
 
-            <DockPanel DockPanel.Dock="Right" Background="CadetBlue">
-
+            <DockPanel DockPanel.Dock="Right" Background="AliceBlue">
                 <GroupBox Name="PriceTypeOptionsPanelGrp" Header="Axis Y" Margin="20,5" DockPanel.Dock="Bottom">
                     <StackPanel Orientation="Horizontal">
                         <RadioButton Content="Open" IsChecked="{Binding PriceTypeOptions, Converter={

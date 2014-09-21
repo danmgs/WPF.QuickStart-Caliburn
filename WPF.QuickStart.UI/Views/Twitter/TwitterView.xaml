@@ -25,17 +25,18 @@
 
         <DockPanel DockPanel.Dock="Top">
 
-            <UniformGrid Columns="2">
+            <UniformGrid Columns="2" Height="Auto">
 
-                <StackPanel Background="Salmon">
-                    <TextBlock Style="{StaticResource subTitleStyle}"  Text="View tweets From .." HorizontalAlignment="Left" />
+                <StackPanel Background="Crimson">
+                    <TextBlock Style="{StaticResource subTitleStyle}"  Text="Tweets Finder" HorizontalAlignment="Left" />
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Screen name : " Width="159"/>
                         <ComboBox 
-                        x:Name="ScreenNameCombo" 
-                        ItemsSource="{Binding TwitterScreenNames}" 
-                        SelectedValue="{Binding ScreenName, Mode=TwoWay}" 
-                        cal:Message.Attach="[Event SelectionChanged] = [Action OnScreenNameSelectionChanged($this,$eventArgs)]">
+                            x:Name="ScreenNameCombo" 
+                            ItemsSource="{Binding TwitterScreenNames}" 
+                            SelectedValue="{Binding ScreenName, Mode=TwoWay}" 
+                            cal:Message.Attach="[Event SelectionChanged] = [Action OnScreenNameSelectionChanged($this,$eventArgs)]"
+                            Margin="0,0,10,0">
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10">
@@ -50,13 +51,13 @@
                     <Button x:Name="Load" Content="Load Tweets" />
                 </StackPanel>
 
-                <StackPanel Background="LightBlue">
+                <StackPanel Background="Linen">
                     <TextBlock Style="{StaticResource subTitleStyle}" Text="Make a search" HorizontalAlignment="Left" />
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Keyword : " />
                         <TextBox x:Name="Keyword" Width="200" Controls:TextboxHelper.Watermark="Type a keyword ..." Controls:TextboxHelper.ClearTextButton="True" />
                     </StackPanel>
-                    <Button x:Name="Search" Content="Search" Margin="10,55" />
+                    <Button x:Name="Search" Content="Search" Margin="10,56,0,0" />
                 </StackPanel>
 
             </UniformGrid>
@@ -84,17 +85,18 @@
                 </xcdg:DataGridControl.View>
             </xcdg:DataGridControl>-->
             <DataGrid ItemsSource="{Binding Tweets}" Margin="10,20,10,0"
+                      Visibility="{Binding Tweets.Count, Converter={StaticResource intToVisibilityConverter}}"
                   AutoGenerateColumns="False"
                   Style="{StaticResource AzureDataGrid}">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Image" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding UserProfileImageUrl}" Width="100" Height="100"/>
+                                <Image Source="{Binding UserProfileImageUrl}" Width="48" Height="48"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Screen Name" Binding="{Binding ScreenName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Screen Name" Binding="{Binding ScreenName, StringFormat={}@{0}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Date" Binding="{Binding Date}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Tweet" Width="SizeToCells" Binding="{Binding Text}"></DataGridTextColumn>
                     <DataGridTextColumn Header="UserProfileImageUrl" Binding="{Binding UserProfileImageUrl}"></DataGridTextColumn>

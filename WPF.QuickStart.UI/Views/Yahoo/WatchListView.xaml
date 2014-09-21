@@ -14,8 +14,9 @@
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
             <!--<TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." />-->
-            <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." Controls:TextboxHelper.Watermark="MSCI..." Controls:TextboxHelper.ClearTextButton="True" />
-
+            <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." 
+                     Controls:TextboxHelper.Watermark="MSCI..." Controls:TextboxHelper.ClearTextButton="True"
+                     VerticalContentAlignment="Center" />
             <Button x:Name="AddSingleStock" Content="Add Stock" HorizontalAlignment="Left" />
         </StackPanel>
 
@@ -23,8 +24,6 @@
 
             <xcdg:DataGridControl 
                 x:Name="_dataGrid" 
-                MaxHeight="400"
-                MinHeight="400"
                 MinWidth="1000"
                 Width="Auto"
                 ItemsSource="{Binding Quotes}"/>

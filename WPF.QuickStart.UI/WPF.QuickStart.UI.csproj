@@ -160,6 +160,7 @@
     <Compile Include="Converters\BackgroundConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\EnumToBoolConverter.cs" />
+    <Compile Include="Converters\IntToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Proxy\MarketData\ClientCallback.cs" />
     <Compile Include="Service References\MarketDataProxy\Reference.cs">

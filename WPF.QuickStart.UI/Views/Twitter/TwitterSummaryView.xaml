@@ -11,9 +11,11 @@
 
     <DockPanel>
 
-        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top"/>
+        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top" />
 
-        <Grid>
+        <TextBlock Text="Can Tiny Tweets Predict Financial Markets?" Style="{StaticResource noteHeaderStyle}" DockPanel.Dock="Top"/>
+
+        <Grid Width="500" HorizontalAlignment="Center" Margin="20">
 
             <ListView ItemsSource="{Binding Tweets}">
                 <ListView.ItemTemplate>

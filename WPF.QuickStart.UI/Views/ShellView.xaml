@@ -4,6 +4,9 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        WindowStartupLocation="CenterScreen"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
         Style="{StaticResource WindowStyle}">
 
     <Controls:MetroWindow.RightWindowCommands>

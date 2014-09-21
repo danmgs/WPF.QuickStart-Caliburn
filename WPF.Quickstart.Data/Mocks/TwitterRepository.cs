@@ -10,7 +10,7 @@ namespace WPF.Quickstart.Data.Mocks
     {
         public static List<string> GetSummaryScreenNames()
         {
-            return new List<string>() { "ecoledelabourse", "dlantoine", "TradingCentral", "Boursier_com", "InvestirFr", "LesEchos", "lemondefr", "Reuters", "FinancialTimes" };
+            return new List<string>() { "ecoledelabourse", "dlantoine", "TradingCentral", "Boursier_com", "InvestirFr", "LesEchos", "lemondefr", "Reuters", "FinancialTimes", "TheEconomist", "BloombergNews", "financialpost", "FinancialReview", "EconomicTimes", "ETMarkets", "Fin_Events" };
         }
 
         public static List<int> GetCountElementsForCombo()

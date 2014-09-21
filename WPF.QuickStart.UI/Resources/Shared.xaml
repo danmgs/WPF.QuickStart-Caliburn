@@ -9,6 +9,7 @@
     <!-- Common resources included and shared by others resources files -->
 
     <converter:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+    <converter:IntToVisibilityConverter x:Key="intToVisibilityConverter" />
     <converter:InverseBooleanConverter x:Key="inverseBoolConverter" />
     <converter:BackgroundConverter x:Key="backgroundConverter" />
     <converter:EnumToBoolConverter x:Key="enumToBoolConverter" />
@@ -16,6 +17,9 @@
     <!-- Custom Color Palette -->
     <Color x:Key="AquaBlueColor">#FFA3C3EC</Color>
     <Brush x:Key="AquaBlueBrush">#FFA3C3EC</Brush>
+
+    <SolidColorBrush x:Key="BrushLightBlue">#CC119EDA</SolidColorBrush>
+    <Color x:Key="ColorLightBlue">#CC119EDA</Color>
 
     <LinearGradientBrush x:Key="AquaBlueBrushGradient" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="#FFA3C3EC" Offset="0.4"/>
@@ -48,6 +52,7 @@
         <Setter Property="WindowState" Value="Maximized" />
         <Setter Property="Background" Value="FloralWhite" />
         <Setter Property="Foreground" Value="#CC119EDA" />
+        <Setter Property="Title" Value="MainWindow" />
     </Style>
 
     <Style x:Key="HeaderFooterStyle" TargetType="{x:Type Panel}">
@@ -80,12 +85,12 @@
         <Setter Property="Width" Value="Auto" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="Padding" Value="5,1,5,1" />
-        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="Margin" Value="10,0" />
     </Style>
 
     <Style BasedOn="{StaticResource baseStyleBtn}" TargetType="{x:Type Button}">
         <Setter Property="MinWidth" Value="200" />
-        <Setter Property="MinHeight" Value="35" />
+        <Setter Property="MinHeight" Value="26" />
     </Style>    
     
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type ComboBox}">
@@ -103,7 +108,14 @@
 
     <Style x:Key="HeaderStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="30" />
+        <Setter Property="Foreground" Value="{DynamicResource BrushLightBlue}" />
     </Style>
+
+    <Style x:Key="noteHeaderStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontStyle" Value="Italic" />
+    </Style>    
 
     <Style x:Key="subTitleStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="15" />
@@ -118,4 +130,4 @@
         <Setter Property="Margin" Value="10,5" />        
     </Style>  
 
-</ResourceDictionary>
+</ResourceDictionary> 

@@ -18,7 +18,7 @@
     <Style TargetType="{x:Type ctrl:DialogControl}">
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Background" Value="#FFEFEFEA"/>
-        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Height" Value="400" />
         <Setter Property="MinHeight" Value="120" />
         <Setter Property="Width" Value="Auto" />
         <Setter Property="Template">
@@ -33,7 +33,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
 
                         <Rectangle Grid.Column="0"
@@ -51,7 +51,7 @@
                                            FontFamily="Verdana" 
                                            FontSize="11" 
                                            TextWrapping="Wrap"
-                                           Margin="5,0,5,5"/>
+                                           Margin="5,0,50,5"/>
                         <Image Source="{TemplateBinding Icon}" 
                                        Grid.ColumnSpan="2"
                                        Grid.RowSpan="3"

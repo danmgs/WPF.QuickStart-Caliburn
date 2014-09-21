@@ -154,6 +154,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                 {
                     PublishStatusEvent(string.Format("End loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName));
                     IsBusy = false;
+                    ShowNotFoundTweet(Tweets);
                 }, context);
             }
             catch(WebException ex)
@@ -195,6 +196,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                 {
                     PublishStatusEvent(string.Format("End search with keyword {0} ...", Keyword));
                     IsBusy = false;
+                    ShowNotFoundTweet(Tweets);
                 }, context);
             }
             catch(WebException ex)
@@ -208,7 +210,22 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                 });
                 PublishStatusEvent(message);
                 IsBusy = false;
-            }     
+            }
+        }
+
+        private void ShowNotFoundTweet(IEnumerable<Tweet> tweets)
+        { 
+            if (tweets.Count() == 0)
+            {
+                var message = "No tweets founds";
+                _windowManager.ShowDialog(new DialogViewModel()
+                {
+                    Text = String.Format(message),
+                    DisplayName = message,
+                    NotificationType = NotificationType.Info
+                });
+                PublishStatusEvent(message);
+            }
         }
 
         #endregion
