@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using WPF.Quickstart.Model.Twitter;
 using WPF.Quickstart.Model.Yahoo;
 using WPF.QuickStart.UI.Events;
 using WPF.QuickStart.UI.MarketDataProxy;
@@ -35,6 +36,20 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
             }
         }
 
+        private BindableCollection<Tweet> _serverResponseTweets = new BindableCollection<Tweet>();
+        public BindableCollection<Tweet> ServerResponseTweets
+        {
+            get
+            {
+                return _serverResponseTweets;
+            }
+            set
+            {
+                _serverResponseTweets = value;
+                this.NotifyOfPropertyChange(() => ServerResponseTweets);
+            }
+        }
+
         private ICollectionView _myCollectionItems;
         public ICollectionView MyCollectionItems
         {
@@ -49,15 +64,39 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
             }
         }
 
-        private bool connected;
+        private bool _connected;
 
         public bool Connected
         {
-            get { return connected; }
+            get { return _connected; }
             set
             {
-                connected = value;
+                _connected = value;
                 NotifyOfPropertyChange(() => Connected);
+            }
+        }
+
+        private bool _connectedTwitter;
+
+        public bool ConnectedTwitter
+        {
+            get { return _connectedTwitter; }
+            set
+            {
+                _connectedTwitter = value;
+                NotifyOfPropertyChange(() => ConnectedTwitter);
+            }
+        }        
+
+        public string _keyword;
+
+        public string Keyword
+        {
+            get { return _keyword; }
+            set
+            {
+                _keyword = value;
+                NotifyOfPropertyChange(() => Keyword);
             }
         }
 
@@ -79,7 +118,28 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
 
             if (close)
             {
-                //MessageBox.Show(string.Format("Closed: '{0}'", DisplayName));
+                MessageBox.Show(string.Format("Closed: '{0}'", DisplayName));
+                Disconnect();
+            }
+        }
+
+        // TODO : provide a fix to manage exception because client is still receiving callbacks from server
+        private void Disconnect()
+        {
+            try
+            {
+
+                if (m_pMarketDataClient != null)
+                {
+                    if (m_pMarketDataClient.State == System.ServiceModel.CommunicationState.Opened)
+                    {
+                        m_pMarketDataClient.Close();
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+
             }
         }
 
@@ -134,21 +194,6 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
             }
         }
 
-        // Method called from the service callback
-        public void ShowConnected(int param)
-        {
-            var serverResponse = String.Format("The number of items returned by Server is '{0}'", param);
-            //_windowManager.ShowDialog(new DialogViewModel()
-            //{
-            //    Text = serverResponse,
-            //    DisplayName = "Callback from Server",
-            //    NotificationType = NotificationType.Info
-            //});
-
-            PublishStatusEvent(serverResponse);
-            ServerResponseItems.Add(serverResponse);
-        }
-
         public void ConnectBtn(object sender, RoutedEventArgs e)
         {
             try
@@ -197,12 +242,46 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
                 });
                 PublishStatusEvent(message);
             }
+
+            if (Connected)
+            {
+                PublishStatusEvent("Connected to server ...");
+            }
         }
 
         public void GetDataSourceList()
         {
             var list = m_pMarketDataClient.GetDataSourceList();
             MyCollectionItems = CollectionViewSource.GetDefaultView(list);
+        }
+
+        public void GetNewsFeed()
+        {
+            ConnectedTwitter = true;
+            m_pMarketDataClient.GetRandomTweet(Keyword);
+        }        
+
+        #endregion
+
+        #region Callbacks called by Server
+
+        public void OnSendTickUpdate(int param)
+        {
+            var serverResponse = String.Format("The number of items returned by Server is '{0}'", param);
+            //_windowManager.ShowDialog(new DialogViewModel()
+            //{
+            //    Text = serverResponse,
+            //    DisplayName = "Callback from Server",
+            //    NotificationType = NotificationType.Info
+            //});
+
+            PublishStatusEvent(serverResponse);
+            ServerResponseItems.Add(serverResponse);
+        }
+
+        public void OnPullRandomTweet(Tweet t)
+        {
+            ServerResponseTweets.Add(t);
         }
 
         #endregion

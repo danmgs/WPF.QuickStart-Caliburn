@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:8081/MarketData?xsd=xsd0" namespace="tcp://localhost/" />
       <xsd:import schemaLocation="http://localhost:8081/MarketData?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8081/MarketData?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8081/MarketData?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WPF.Quickstart.Model.Twitter" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMarketData_GetDataSourceList_InputMessage">
@@ -13,16 +14,28 @@
   <wsdl:message name="IMarketData_GetDataSourceList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataSourceListResponse" />
   </wsdl:message>
+  <wsdl:message name="IMarketData_GetRandomTweet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomTweet" />
+  </wsdl:message>
   <wsdl:message name="IMarketData_SendTickUpdate_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendTickUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IMarketData_PullRandomTweet_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:PullRandomTweet" />
   </wsdl:message>
   <wsdl:portType name="IMarketData">
     <wsdl:operation name="GetDataSourceList">
       <wsdl:input wsaw:Action="tcp://localhost/IMarketData/GetDataSourceList" message="tns:IMarketData_GetDataSourceList_InputMessage" />
       <wsdl:output wsaw:Action="tcp://localhost/IMarketData/GetDataSourceListResponse" message="tns:IMarketData_GetDataSourceList_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetRandomTweet">
+      <wsdl:input wsaw:Action="tcp://localhost/IMarketData/GetRandomTweet" message="tns:IMarketData_GetRandomTweet_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SendTickUpdate">
       <wsdl:output wsaw:Action="tcp://localhost/IMarketData/SendTickUpdate" message="tns:IMarketData_SendTickUpdate_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PullRandomTweet">
+      <wsdl:output wsaw:Action="tcp://localhost/IMarketData/PullRandomTweet" message="tns:IMarketData_PullRandomTweet_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

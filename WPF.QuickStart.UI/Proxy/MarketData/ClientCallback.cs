@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using WPF.Quickstart.Model.Twitter;
 using WPF.QuickStart.UI.MarketDataProxy;
 using WPF.QuickStart.UI.ViewModels;
 using WPF.QuickStart.UI.ViewModels.ClientServer;
@@ -33,7 +34,7 @@ namespace WPF.QuickStart.UI.Proxy.MarketData
             SendOrPostCallback callback =
                 delegate(object state)
                 {
-                    m_viewModel.ShowConnected(param);
+                    m_viewModel.OnSendTickUpdate(param);
                 };
 
             _uiSyncContext.Post(callback, null);
@@ -45,6 +46,27 @@ namespace WPF.QuickStart.UI.Proxy.MarketData
         }
 
         public void EndSendTickUpdate(IAsyncResult result)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PullRandomTweet(Tweet t)
+        {
+            SendOrPostCallback callback =
+                delegate(object state)
+                {
+                    m_viewModel.OnPullRandomTweet(t);
+                };
+
+            _uiSyncContext.Post(callback, null);
+        }
+        
+        public IAsyncResult BeginPullRandomTweet(Quickstart.Model.Twitter.Tweet t, AsyncCallback callback, object asyncState)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EndPullRandomTweet(IAsyncResult result)
         {
             throw new NotImplementedException();
         }

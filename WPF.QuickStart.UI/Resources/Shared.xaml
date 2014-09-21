@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:converter="clr-namespace:WPF.QuickStart.UI.Converters"
+                    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:ignore="dummy"
                     mc:Ignorable="ignore">
 
@@ -12,7 +13,6 @@
     <converter:BackgroundConverter x:Key="backgroundConverter" />
     <converter:EnumToBoolConverter x:Key="enumToBoolConverter" />
     
-
     <!-- Custom Color Palette -->
     <Color x:Key="AquaBlueColor">#FFA3C3EC</Color>
     <Brush x:Key="AquaBlueBrush">#FFA3C3EC</Brush>
@@ -35,7 +35,11 @@
 
     <!-- End Custom Color Palette -->
 
-    <Style x:Key="WindowStyle" TargetType="Window">
+    <Style x:Key="windowBaseStyle" TargetType="Window">
+        <Setter Property="Icon" Value="/Images/icontwitter.ico" />
+    </Style>
+
+    <Style x:Key="WindowStyle" BasedOn="{StaticResource windowBaseStyle}" TargetType="Window">
         <Setter Property="Width" Value="Auto" />
         <Setter Property="Height" Value="Auto" />
         <Setter Property="MinWidth" Value="800" />
@@ -43,6 +47,7 @@
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="WindowState" Value="Maximized" />
         <Setter Property="Background" Value="FloralWhite" />
+        <Setter Property="Foreground" Value="#CC119EDA" />
     </Style>
 
     <Style x:Key="HeaderFooterStyle" TargetType="{x:Type Panel}">
@@ -79,15 +84,13 @@
     </Style>
 
     <Style BasedOn="{StaticResource baseStyleBtn}" TargetType="{x:Type Button}">
+        <Setter Property="MinWidth" Value="200" />
+        <Setter Property="MinHeight" Value="35" />
     </Style>    
     
-    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type TextBox}">
-    </Style>
-
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type ComboBox}">
         <Setter Property="Width" Value="250" />
     </Style>
-
     
     <Style BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">        
     </Style>
@@ -95,24 +98,24 @@
     <Style x:Key="baseStyleTitleTextBlock" BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontFamily" Value="Arial" />
-        <Setter Property="Margin" Value="5,10" />
+        <Setter Property="Margin" Value="10,10" />
     </Style>
 
     <Style x:Key="HeaderStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="30" />
-        <Setter Property="Foreground" Value="#CC119EDA" />
     </Style>
 
     <Style x:Key="subTitleStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="15" />
     </Style>
 
-    <Style x:Key="categoryBtn" BasedOn="{StaticResource baseStyleBtn}" TargetType="{x:Type Button}">
+    <Style x:Key="categoryBtn" BasedOn="{StaticResource AccentedSquareButtonStyle}" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="110" />
         <Setter Property="Height" Value="110" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontFamily" Value="Arial" />
-        <Setter Property="Background" Value="LightBlue" />
-    </Style>
+        <Setter Property="Padding" Value="5,1,5,1" />
+        <Setter Property="Margin" Value="10,5" />        
+    </Style>  
 
 </ResourceDictionary>

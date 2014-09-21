@@ -119,6 +119,16 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPF.Quickstart.Model\WPF.Quickstart.Model.csproj">
+      <Project>{d808ea7a-2e44-42d6-aaf7-6b5ff60db73b}</Project>
+      <Name>WPF.Quickstart.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPFQuickstart.Core\WPFQuickstart.Core.csproj">
+      <Project>{9ee8ca9e-1ed5-41e1-a67e-6b6f39acc5c5}</Project>
+      <Name>WPFQuickstart.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

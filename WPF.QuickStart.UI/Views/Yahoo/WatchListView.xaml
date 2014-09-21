@@ -4,6 +4,7 @@
              xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              HorizontalAlignment="Center">
 
     <DockPanel Height="Auto">
@@ -12,11 +13,13 @@
 
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
-            <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." />
-            <Button x:Name="AddSingleStock" Content="Add Stock" HorizontalAlignment="Left" Margin="10,10" />
+            <!--<TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." />-->
+            <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." Controls:TextboxHelper.Watermark="MSCI..." Controls:TextboxHelper.ClearTextButton="True" />
+
+            <Button x:Name="AddSingleStock" Content="Add Stock" HorizontalAlignment="Left" />
         </StackPanel>
 
-        <Grid Margin="0,10" VerticalAlignment="Top">
+        <Grid Margin="20" VerticalAlignment="Top">
 
             <xcdg:DataGridControl 
                 x:Name="_dataGrid" 

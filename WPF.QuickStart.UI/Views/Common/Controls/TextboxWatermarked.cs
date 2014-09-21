@@ -106,7 +106,15 @@ namespace WPF.QuickStart.UI.Common.Controls
                 _isWatermarked = false;
                 ClearValue(ForegroundProperty);
                 base.Text = "";
-                SetBinding(TextProperty, _textBinding ?? new Binding());
+                //SetBinding(TextProperty, _textBinding ?? new Binding());
+                if (_textBinding != null)
+                {
+                    SetBinding(TextProperty, _textBinding);
+                }
+                else
+                {
+                    BindingOperations.ClearBinding(this, TextProperty);
+                }
             }
         }
 

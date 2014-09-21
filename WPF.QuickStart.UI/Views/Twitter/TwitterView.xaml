@@ -4,7 +4,8 @@
              xmlns:cal="http://www.caliburnproject.org"   
              xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid">
+             xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls">
     <UserControl.Resources>
         <ResourceDictionary>
             <x:Array x:Key="countElements" Type="sys:String" 
@@ -16,83 +17,54 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Width="Auto" Height="Auto" HorizontalAlignment="Center">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+    <DockPanel>
 
-        <StackPanel Grid.Column="0" Grid.Row="0">
+        <StackPanel DockPanel.Dock="Top">
             <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
         </StackPanel>
 
-        <Grid Width="Auto" Height="Auto" Grid.Column="0" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="500" />
-                <ColumnDefinition Width="500" />
-            </Grid.ColumnDefinitions>
+        <DockPanel DockPanel.Dock="Top">
 
-            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Background="Salmon">
+            <UniformGrid Columns="2">
 
-                <TextBlock Style="{StaticResource subTitleStyle}"  DockPanel.Dock="Top" Text="View tweets From .." HorizontalAlignment="Left" />
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Screen name : " Width="159"/>
-                    <ComboBox 
-                    x:Name="ScreenNameCombo" 
-                    ItemsSource="{Binding TwitterScreenNames}" 
-                    SelectedValue="{Binding ScreenName, Mode=TwoWay}" 
-                    cal:Message.Attach="[Event SelectionChanged] = [Action OnScreenNameSelectionChanged($this,$eventArgs)]">
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <TextBlock Text="Number of tweets to display : "/>
-                    <ComboBox 
-                    x:Name="CountCombo" 
-                    ItemsSource="{Binding CountElements}" 
-                    IsSynchronizedWithCurrentItem="True"
-                    cal:Message.Attach="[Event SelectionChanged] = [Action OnCountSelectionChanged($this,$eventArgs)]" Width="80">
-                    </ComboBox>
+                <StackPanel Background="Salmon">
+                    <TextBlock Style="{StaticResource subTitleStyle}"  Text="View tweets From .." HorizontalAlignment="Left" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Screen name : " Width="159"/>
+                        <ComboBox 
+                        x:Name="ScreenNameCombo" 
+                        ItemsSource="{Binding TwitterScreenNames}" 
+                        SelectedValue="{Binding ScreenName, Mode=TwoWay}" 
+                        cal:Message.Attach="[Event SelectionChanged] = [Action OnScreenNameSelectionChanged($this,$eventArgs)]">
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10">
+                        <TextBlock Text="Number of tweets to display : "/>
+                        <ComboBox 
+                        x:Name="CountCombo" 
+                        ItemsSource="{Binding CountElements}" 
+                        IsSynchronizedWithCurrentItem="True"
+                        cal:Message.Attach="[Event SelectionChanged] = [Action OnCountSelectionChanged($this,$eventArgs)]" Width="80">
+                        </ComboBox>
+                    </StackPanel>
+                    <Button x:Name="Load" Content="Load Tweets" />
                 </StackPanel>
 
-                <Button x:Name="Load" Content="Load Tweets" />
-            </StackPanel>
-
-            <DockPanel Grid.Column="1" Grid.Row="1" Background="CadetBlue" LastChildFill="False">
-
-                <TextBlock Style="{StaticResource subTitleStyle}"  DockPanel.Dock="Top" Text="Make a search" HorizontalAlignment="Left" />
-
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                    <TextBlock Text="Keyword : " />
-                    <TextBox x:Name="Keyword" Width="155" />
+                <StackPanel Background="LightBlue">
+                    <TextBlock Style="{StaticResource subTitleStyle}" Text="Make a search" HorizontalAlignment="Left" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Keyword : " />
+                        <TextBox x:Name="Keyword" Width="200" Controls:TextboxHelper.Watermark="Type a keyword ..." Controls:TextboxHelper.ClearTextButton="True" />
+                    </StackPanel>
+                    <Button x:Name="Search" Content="Search" Margin="10,55" />
                 </StackPanel>
 
-                <Button x:Name="Search" Content="Search" DockPanel.Dock="Bottom"/>
-            </DockPanel>
+            </UniformGrid>
 
-        </Grid>
+        </DockPanel>
 
-        <!--<DataGrid 
-            Grid.Column="0" Grid.Row="1"
-            AutoGenerateColumns="True"
-            Width="Auto"
-            Margin="0,10"
-            ItemsSource="{Binding Tweets}"
-            ScrollViewer.CanContentScroll="True" 
-            ScrollViewer.VerticalScrollBarVisibility="Auto"
-            ScrollViewer.HorizontalScrollBarVisibility="Auto">
-        </DataGrid>-->
-
-        <Grid Grid.Column="0" Grid.Row="2">
-        
-            <xcdg:DataGridControl 
+        <Grid>
+            <!--<xcdg:DataGridControl 
                 x:Name="_dataGrid"            
                 MinHeight="400"
                 MinWidth="1000" 
@@ -100,23 +72,37 @@
                 Margin="0,10"
                 AutoCreateColumns="False"
                 IsEnabled="False"
+                IsEnabledChanged="False"
                 ItemsSource="{Binding Tweets}">
-
                 <xcdg:DataGridControl.Columns>
                     <xcdg:Column Title="Date" FieldName="Date" VisiblePosition="0"/>
                     <xcdg:Column Title="ScreenName" FieldName="ScreenName" VisiblePosition="1"/>
-                    <xcdg:Column Title="Status" FieldName="Text" VisiblePosition="2" MinWidth="400" />
+                    <xcdg:Column Title="Status" FieldName="Text" VisiblePosition="2" MinWidth="500" />
                 </xcdg:DataGridControl.Columns>
                 <xcdg:DataGridControl.View>
                     <xcdg:TableView ColumnStretchMode="All" ColumnStretchMinWidth="100" />
                 </xcdg:DataGridControl.View>
-
-            </xcdg:DataGridControl>
-
+            </xcdg:DataGridControl>-->
+            <DataGrid ItemsSource="{Binding Tweets}" Margin="10,20,10,0"
+                  AutoGenerateColumns="False"
+                  Style="{StaticResource AzureDataGrid}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Image" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding UserProfileImageUrl}" Width="100" Height="100"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Screen Name" Binding="{Binding ScreenName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tweet" Width="SizeToCells" Binding="{Binding Text}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="UserProfileImageUrl" Binding="{Binding UserProfileImageUrl}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
             <xctk:BusyIndicator IsBusy="{Binding IsBusy}" />
-
         </Grid>
 
-    </Grid>
+    </DockPanel>
 
 </UserControl>

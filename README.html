@@ -1,8 +1,16 @@
 <h1>WPF.QuickStart Caliburn - 2014</h1>
 
-<p><em>Designed by <a href="https://www.linkedin.com/in/nguyendaniel">@Daniel NGUYEN</a></em> :+1:</p>
+<p><em>Designed by <a href="https://www.linkedin.com/in/nguyendaniel">@Daniel NGUYEN</a></em> :smirk_cat:</p>
 
-<p>If you are looking for WPF quickstart project, designed with <a href="https://github.com/Caliburn-Micro">Caliburn.Micro</a> ...</p>
+<p>WPF quickstart caliburn is a ready-to-use project that uses :</p>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/fr-fr/library/dd456779%28v=vs.110%29.aspx">WCF Services</a> <em>for Client/Server communication in duplex</em></li>
+<li><a href="http://mahapps.com/">MahApps.Metro</a> <em>for UI design</em></li>
+<li><a href="https://github.com/Caliburn-Micro/Caliburn.Micro">Caliburn.Micro</a> <em>to setup MVVM</em></li>
+<li><a href="https://dev.twitter.com/">Twitter API</a></li>
+<li><a href="https://code.google.com/p/yahoo-finance-managed/wiki/YahooFinanceAPIs">Yahoo! Finance API</a></li>
+</ul>
 
 <h2>Installation Notes</h2>
 
@@ -13,7 +21,7 @@
 <h3>Client Side UI:</h3>
 
 <p>Launch the client.
-In order to be allowed connection and retrieved data, the server console must be started.</p>
+:heavy<em>exclamation</em>mark: <em>In order to be allowed connection and retrieved data, the server console must be started.</em></p>
 
 <h2>Useful links :</h2>
 
@@ -42,6 +50,12 @@ In order to be allowed connection and retrieved data, the server console must be
     <p><a href="http://stackoverflow.com/questions/84278/how-do-i-use-wpf-bindings-with-relativesource">How do I use WPF bindings with RelativeSource?</a></p>
   </blockquote>
   
+  <h4>WPF Controls :</h4>
+  
+  <blockquote>
+    <p>http://wpftutorial.net/DataGrid.html></p>
+  </blockquote>
+  
   <h4>WPF UI Freezing FAQ :</h4>
   
   <blockquote>
@@ -51,17 +65,17 @@ In order to be allowed connection and retrieved data, the server console must be
   </blockquote>
 </blockquote>
 
-<h3>Twitter :</h3>
+<h3>TWITTER :</h3>
 
 <p><a href="https://github.com/marcemarc/oAuthTwitterTimeline">oAuthTwitterTimeline</a></p>
 
-<h3>Caliburn :</h3>
+<h3>CALIBURN.MICRO :</h3>
 
 <p><a href="https://caliburnmicro.codeplex.com/wikipage?title=All%20About%20Actions">All about actions</a></p>
 
 <p><a href="https://caliburnmicro.codeplex.com/wikipage?title=Customizing%20The%20Bootstrapper">Customizing bootstrapper</a></p>
 
-<h3>WPF library on github/codeplex :</h3>
+<h3>WPF LIBS ON GITHUB/CODEPLEX :</h3>
 
 <p><a href="https://wpftoolkit.codeplex.com/">wpftoolkit</a></p>
 
@@ -73,7 +87,7 @@ In order to be allowed connection and retrieved data, the server console must be
 
 <p><a href="http://mahapps.com/">mahapps</a> <em>Great UI Styles</em></p>
 
-<h3>Others/library/tools :</h3>
+<h3>OTHER TOOLS :</h3>
 
 <h4>Json</h4>
 
@@ -107,10 +121,19 @@ In order to be allowed connection and retrieved data, the server console must be
   &lt;/runtime&gt;
 </code></p>
 
-<h2>TODO</h2>
+<h2>TASKS LIST</h2>
 
 <ul>
 <li>[:construction_worker:] Setup Data layer with Entity Framework instead of using mock repositories.</li>
-<li>[:construction_worker: ] Inject IOC for Services using MEF</li>
-<li>[:construction_worker: ] Find a way to flash the row when an item is an in a listbox (event/trigger ..)</li>
+<li>[:construction_worker:] Inject IOC for Services using MEF</li>
+<li>[:construction_worker:] Find a way to flash the row when an item is an in a listbox (event/trigger ..)</li>
+<li>[:construction_worker:] Implement a DialogWindow with a webbrowser when clicking on the top bar on Twitter/Yahoo.</li>
+</ul>
+
+<h2>KNOWN BUGS :</h2>
+
+<ul>
+<li>[:scream_cat:] Close WCF Service OnDeactivate ChildViewModel (i.e stop twitter from pushing data automatically).</li>
+<li>[:scream_cat:] Client Server Screen : fix bug when get tweets then query server. Cannot call the snd operation because same channel is still open to callback the tweets.</li>
+<li>[:scream_cat:] Screen Display Name not working</li>
 </ul>

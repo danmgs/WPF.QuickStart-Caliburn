@@ -15,14 +15,28 @@
                    Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                         <Rectangle.OpacityMask>
                             <VisualBrush Stretch="Fill"
-                         Visual="{StaticResource appbar_cupcake}" />
+                         Visual="{StaticResource appbar_social_yahoo}" />
                         </Rectangle.OpacityMask>
                     </Rectangle>
                     <TextBlock Margin="4 0 0 0"
                    VerticalAlignment="Center"
-                   Text="deploy cupcakes" />
+                   Text="Yahoo !" />
                 </StackPanel>
             </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_twitter_bird}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="#Twitter" />
+                </StackPanel>
+            </Button>            
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
 
@@ -49,7 +63,7 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>                    
                 </Button>
-                <Button Style="{StaticResource categoryBtn}" Content="Client/Server">
+                <Button Style="{StaticResource categoryBtn}" Content="Client Server">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <cal:ActionMessage MethodName="ShowClientServerMultiTabsScreen">

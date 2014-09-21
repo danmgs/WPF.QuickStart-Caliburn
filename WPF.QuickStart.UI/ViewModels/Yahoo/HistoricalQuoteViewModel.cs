@@ -135,7 +135,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             base.OnInitialize();
             PublishStatusEvent(string.Format("Load {0} ...", DisplayName));
 
-            StartDate = DateTime.Today;
+            StartDate = DateTime.Today.AddMonths(-3);
             EndDate = DateTime.Today;
 
             PriceTypeOptions = PriceTypeOptions.Open;

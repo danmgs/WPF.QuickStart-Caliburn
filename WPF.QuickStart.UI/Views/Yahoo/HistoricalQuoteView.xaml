@@ -6,6 +6,7 @@
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
              xmlns:oxy="http://oxyplot.codeplex.com"
              xmlns:chart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              HorizontalAlignment="Center">
 
     <DockPanel>
@@ -16,7 +17,7 @@
         <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
-                <ctrl:TextBoxWatermarked x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." Watermark="YHOO" />
+                <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." Controls:TextboxHelper.Watermark="YHOO" Controls:TextboxHelper.ClearTextButton="True" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10">
                 <TextBlock x:Name="StartDateTxt" Text="Start Date" Width="74" />
@@ -58,11 +59,8 @@
 
             <DockPanel DockPanel.Dock="Right" Background="CadetBlue">
 
-                <GroupBox Name="PriceTypeOptionsGrp" Header="Axis Y" Margin="20,5" DockPanel.Dock="Bottom">
+                <GroupBox Name="PriceTypeOptionsPanelGrp" Header="Axis Y" Margin="20,5" DockPanel.Dock="Bottom">
                     <StackPanel Orientation="Horizontal">
-                        <!--<RadioButton x:Name="radbtn_Open" Content="Open"  GroupName="chartYtype"  />
-                        <RadioButton Name="radbtn_Close" Content="Close"   GroupName="chartYtype" />-->
-
                         <RadioButton Content="Open" IsChecked="{Binding PriceTypeOptions, Converter={
                             StaticResource enumToBoolConverter}, ConverterParameter=Open}" />
                         <RadioButton Content="Close" IsChecked="{Binding PriceTypeOptions, Converter={
@@ -71,12 +69,11 @@
                             StaticResource enumToBoolConverter}, ConverterParameter=High}" Margin="10,0" />
                         <RadioButton Content="Low" IsChecked="{Binding PriceTypeOptions, Converter={
                             StaticResource enumToBoolConverter}, ConverterParameter=Low}" Margin="10,0" />
-
                     </StackPanel>
                 </GroupBox>
 
-                <Grid Margin="20,0">
-                    <oxy:PlotView Title="Chart" Width="500" Height="250">
+                <Grid Margin="10">
+                    <oxy:PlotView Title="Chart" Width="600" Height="250">
                         <oxy:PlotView.Series>
                             <oxy:LineSeries ItemsSource="{Binding ChartQuotePointsList}"/>
                         </oxy:PlotView.Series>

@@ -88,19 +88,19 @@ namespace WPF.QuickStart.UI.ViewModels
             get { return !string.IsNullOrWhiteSpace(Name); }
         }
 
-        public void ShowTwitterMultiTabsScreen(string titleParam)
+        public void ShowTwitterMultiTabsScreen(string content)
         {
-            ActivateItem(new ChildTabTwitterViewModel(titleParam, _eventAgg, _windowManager));
+            ActivateItem(new ChildTabTwitterViewModel(content, _eventAgg, _windowManager));
         }
 
-        public void ShowYahooMultiTabsScreen(string titleParam)
+        public void ShowYahooMultiTabsScreen(string content)
         {
-            ActivateItem(new ChildTabYahooViewModel(titleParam, _eventAgg, _windowManager));
+            ActivateItem(new ChildTabYahooViewModel(content, _eventAgg, _windowManager));
         }
 
-        public void ShowClientServerMultiTabsScreen(string titleParam)
+        public void ShowClientServerMultiTabsScreen(string content)
         {
-            ActivateItem(new ChildViewModel(titleParam, _eventAgg, _windowManager));
+            ActivateItem(new ChildViewModel(content, _eventAgg, _windowManager));
         }
 
         public void Handle(StatusEvent status)

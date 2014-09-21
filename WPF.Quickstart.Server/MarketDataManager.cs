@@ -5,7 +5,10 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using WPF.Quickstart.Model.Twitter;
+using WPF.QuickStart.UI.Utils.Twitter;
 
 namespace WPF.Quickstart.Server
 {
@@ -41,6 +44,31 @@ namespace WPF.Quickstart.Server
             m_pIClientCallback.SendTickUpdate(collection.Count);
             
             return collection;
+        }
+
+        public void GetRandomTweet(string keyword)
+        {
+            while (true)
+            {
+                Tweet t = SearchRandomTweet(keyword);
+                m_pIClientCallback.PullRandomTweet(t);
+                Thread.Sleep(Convert.ToInt32(AppSettings.WCFService.MarketData.RefreshFrequency.Tweet));
+            }
+        }
+
+        private Tweet SearchRandomTweet(string keyword)
+        {
+            if(string.IsNullOrEmpty(keyword))
+            {
+                keyword = "finance";
+            }
+            TwitterHelper twitterHelper = new TwitterHelper(AppSettings.Twitter.OAuth.ConsumerKey, AppSettings.Twitter.OAuth.ConsumerSecret, AppSettings.Twitter.OAuth.ApiUrl);
+            var resTweets = twitterHelper.SearchTweets(keyword);
+
+            Random rand = new Random();
+            int toSkip = rand.Next(0, resTweets.Count);
+
+            return resTweets.Skip(toSkip).Take(1).FirstOrDefault();
         }
     }
 }

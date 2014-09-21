@@ -43,8 +43,20 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetRandomTweet">
+      <soap12:operation soapAction="tcp://localhost/IMarketData/GetRandomTweet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="SendTickUpdate">
       <soap12:operation soapAction="tcp://localhost/IMarketData/SendTickUpdate" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PullRandomTweet">
+      <soap12:operation soapAction="tcp://localhost/IMarketData/PullRandomTweet" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -56,7 +68,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8080/MarketData</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>daniel.nguyen@Novencia.local</Upn>
+          <Upn>NEO\Dan</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

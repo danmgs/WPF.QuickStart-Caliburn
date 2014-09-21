@@ -3,43 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ctrl="clr-namespace:WPF.QuickStart.UI.Common.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid">
+             xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com">
 
-    <DockPanel>
+    <DockPanel Height="Auto">
 
         <TextBlock DockPanel.Dock="Top" Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" />
 
         <!--<ctrl:MyCustomControl Margin="40,10" BorderBrush="Red" BorderThickness="2" ItemsSource="{Binding MyCollectionItems}" EnabledUi="{Binding Enabled}" IsExportable="Visible" />-->
 
-        <!--<StackPanel Orientation="Horizontal">
-            <StackPanel.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF615A5A" Offset="0"/>
-                    <GradientStop Color="#FFFFF8F8" Offset="1"/>
-                </LinearGradientBrush>
-            </StackPanel.Background>
-            <StackPanel Width="Auto">
-                <Button x:Name="ConnectBtn" Content="Connect" ToolTip="Connect to the server" IsEnabled="{Binding !Connected}" DockPanel.Dock="Left" />
-                <Button x:Name="GetDataSourceList" Content="GetDataSourceList" IsEnabled="{Binding Connected}" HorizontalAlignment="Right" />
-            </StackPanel>
-            
-        </StackPanel>-->
-
-
-        <DockPanel DockPanel.Dock="Top">
-            <Button DockPanel.Dock="Left" x:Name="ConnectBtn" Content="Connect" ToolTip="Connect to the server" IsEnabled="{Binding !Connected}" />
-            <Button DockPanel.Dock="Right" x:Name="GetDataSourceList" Content="GetDataSourceList" IsEnabled="{Binding Connected}" HorizontalAlignment="Right" />
+        <DockPanel DockPanel.Dock="Top"  LastChildFill="False">
+            <Button DockPanel.Dock="Left" 
+                    x:Name="ConnectBtn" 
+                    Content="Connect" 
+                    ToolTip="Connect to the server" 
+                    IsEnabled="{Binding Connected, Converter={StaticResource inverseBoolConverter}}" 
+                    Style="{DynamicResource AccentedSquareButtonStyle}" 
+                    Width="172" Height="52" 
+                    Background="Black"
+                    Margin="20, 0, 10, 5"
+                    />
+            <Rectangle DockPanel.Dock="Left" Width="30" Height="30" 
+                       Visibility="{Binding Connected, Converter={StaticResource boolToVisibilityConverter}}">
+                <Rectangle.Resources>
+                </Rectangle.Resources>
+                <Rectangle.Fill>
+                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_connect}" />
+                </Rectangle.Fill>
+            </Rectangle>
         </DockPanel>
 
-        <StackPanel DockPanel.Dock="Top" Margin="0,20">
-            <TextBlock Style="{StaticResource subTitleStyle}" Text="Server Responses History"/>
-            <ListView ItemsSource="{Binding ServerResponseItems}" Height="200" Width="800" />
-        </StackPanel>
+        <Grid DockPanel.Dock="Top" Margin="10">
+            <GroupBox Name="TwitterPanelGrp" Header="Twitter News Feed">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button DockPanel.Dock="Left" 
+                            x:Name="GetNewsFeed" 
+                            Content="Show news" 
+                            IsEnabled="{Binding Connected}" 
+                            HorizontalAlignment="Left" 
+                            Style="{DynamicResource AccentedSquareButtonStyle}" 
+                            Width="172" Height="41"
+                            Margin="10 "/>
+                        <TextBox x:Name="Keyword" IsEnabled="{Binding ConnectedTwitter, Converter={StaticResource inverseBoolConverter}}"  Width="200" Controls:TextboxHelper.Watermark="Type a keyword ..." Controls:TextboxHelper.ClearTextButton="True" Height="43" />
+                        <Image gif:ImageBehavior.AnimatedSource="/Images/wait.gif" 
+                           Height="24" Width="24" Margin="5,5" 
+                           Visibility="{Binding ConnectedTwitter, Converter={StaticResource boolToVisibilityConverter}}" />
+                    </StackPanel>
+                    <ListView  ItemsSource="{Binding ServerResponseTweets}" Width="Auto" Height="100">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=Text}" Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource backgroundConverter}}" Width="Auto" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
 
-        <StackPanel>
-            <TextBlock Style="{StaticResource subTitleStyle}" Text="Detailed Items"/>
-            <ListView ItemsSource="{Binding MyCollectionItems}" Height="400" Width="800" />
-        </StackPanel>
+        <Grid DockPanel.Dock="Top" Margin="10" Height="Auto" >
+            <GroupBox Name="GetDataSourceItemsPanelGrp" Header="Query the Server">
+                <StackPanel>
+                    <Button DockPanel.Dock="Left" 
+                            x:Name="GetDataSourceList" 
+                            Content="Query Server"
+                            IsEnabled="{Binding Connected}" 
+                            HorizontalAlignment="Left" 
+                            Style="{DynamicResource AccentedSquareButtonStyle}" 
+                            Width="172" Height="41"
+                            Margin="10 "/>
+                    <UniformGrid Columns="2">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource subTitleStyle}" Text="SERVER RESPONSES HISTORY"/>
+                            <ListView ItemsSource="{Binding ServerResponseItems}" Height="200" Background="Honeydew" />
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource subTitleStyle}" Text="DETAILED ITEMS"/>
+                            <ListView ItemsSource="{Binding MyCollectionItems}" Height="200" Background="AliceBlue" />
+                        </StackPanel>
+                    </UniformGrid>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
 
     </DockPanel>
 
