@@ -1,4 +1,4 @@
-<Controls:MetroWindow x:Class="WPF.QuickStart.UI.Views.ShellView"
+﻿<Controls:MetroWindow x:Class="WPF.QuickStart.UI.Views.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -8,11 +8,54 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Style="{StaticResource WindowStyle}">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="/Resources/MahApp.Metro.xaml"/>-->
+            </ResourceDictionary.MergedDictionaries>
+
+            <Ellipse x:Key="AppThemeMenuIcon"
+                     x:Shared="False"
+                     Width="16"
+                     Height="16"
+                     StrokeThickness="1"
+                     Stroke="{Binding BorderColorBrush, Mode=OneWay}"
+                     Fill="{Binding ColorBrush, Mode=OneWay}" />
+            <Ellipse x:Key="AccentMenuIcon"
+                     x:Shared="False"
+                     Width="16"
+                     Height="16"
+                     Fill="{Binding ColorBrush, Mode=OneWay}" />
+
+            <Style x:Key="AppThemeMenuItemStyle"
+                   TargetType="{x:Type MenuItem}"
+                   BasedOn="{StaticResource MetroMenuItem}">
+                <Setter Property="Command"
+                        Value="{Binding ChangeAccentCommand}" />
+                <Setter Property="Icon"
+                        Value="{StaticResource AppThemeMenuIcon}" />
+                <Setter Property="Header"
+                        Value="{Binding Name, Mode=OneWay}" />
+            </Style>
+
+            <Style x:Key="AccentColorMenuItemStyle"
+                   TargetType="{x:Type MenuItem}"
+                   BasedOn="{StaticResource MetroMenuItem}">
+                <Setter Property="Command"
+                        Value="{Binding ChangeAccentCommand}" />
+                <Setter Property="Icon"
+                        Value="{StaticResource AccentMenuIcon}" />
+                <Setter Property="Header"
+                        Value="{Binding Name, Mode=OneWay}" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button Content="settings" />
-            <Button>
+            <Button Click="GoYahoo" ToolTip="Go Yahoo!">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20"
                    Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -26,7 +69,7 @@
                    Text="Yahoo !" />
                 </StackPanel>
             </Button>
-            <Button>
+            <Button Click="GoTwitter" ToolTip="Go Twitter">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20"
                    Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -39,55 +82,72 @@
                    VerticalAlignment="Center"
                    Text="#Twitter" />
                 </StackPanel>
-            </Button>            
+            </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
 
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Style="{StaticResource HeaderFooterStyle}" HorizontalAlignment="Stretch">
 
-            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" >
-                <Button Style="{StaticResource categoryBtn}" Content="Twitter">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <cal:ActionMessage MethodName="ShowTwitterMultiTabsScreen">
-                                <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
-                            </cal:ActionMessage>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-
-                <Button Style="{StaticResource categoryBtn}" Content="Yahoo !">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <cal:ActionMessage MethodName="ShowYahooMultiTabsScreen">
-                                <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
-                            </cal:ActionMessage>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>                    
-                </Button>
-                <Button Style="{StaticResource categoryBtn}" Content="Client Server">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <cal:ActionMessage MethodName="ShowClientServerMultiTabsScreen">
-                                <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
-                            </cal:ActionMessage>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>                    
-                </Button>
-            </StackPanel>
+        <Grid DockPanel.Dock="Top">
+            <Menu Grid.Row="0"
+                      Margin="5"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Left">
+                <MenuItem Header="Theme"
+                              ItemsSource="{Binding AppThemes, Mode=OneWay}"
+                              ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}" />
+                <MenuItem Header="Accent"
+                              ItemsSource="{Binding AccentColors, Mode=OneWay}"
+                              ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}" />
+            </Menu>
         </Grid>
 
-        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource HeaderFooterStyle}" HorizontalAlignment="Stretch" Height="Auto" Orientation="Horizontal">
-            <Rectangle Width="20" Height="20" Margin="20,0">
-                <Rectangle.Resources>
-                </Rectangle.Resources>
-                <Rectangle.Fill>
-                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_book_open_information}" />
-                </Rectangle.Fill>
-            </Rectangle>            
-            <TextBlock x:Name="StatusBar" DockPanel.Dock="Bottom" Text="{Binding StatusBarContent}" Style="{StaticResource StatusBar}" />
-        </StackPanel>
+        <Border DockPanel.Dock="Top" BorderBrush="{DynamicResource AccentBrush}" BorderThickness="1" HorizontalAlignment="Stretch">
+            <Grid>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" >
+                    <Button Style="{StaticResource categoryBtn}" Content="Twitter">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <cal:ActionMessage MethodName="ShowTwitterMultiTabsScreen">
+                                    <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Button Style="{StaticResource categoryBtn}" Content="Yahoo !">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <cal:ActionMessage MethodName="ShowYahooMultiTabsScreen">
+                                    <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Button Style="{StaticResource categoryBtn}" Content="Client Server">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <cal:ActionMessage MethodName="ShowClientServerMultiTabsScreen">
+                                    <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border DockPanel.Dock="Bottom" BorderBrush="{DynamicResource AccentBrush}" BorderThickness="1" HorizontalAlignment="Stretch">
+            <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Height="Auto" Orientation="Horizontal">
+                <Rectangle Width="20" Height="20" Margin="20,0">
+                    <Rectangle.Resources>
+                    </Rectangle.Resources>
+                    <Rectangle.Fill>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_book_open_information}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock x:Name="StatusBar" DockPanel.Dock="Bottom" Text="{Binding StatusBarContent}" Style="{StaticResource StatusBar}" />
+            </StackPanel>
+        </Border>
 
         <ContentControl x:Name="ActiveItem" VerticalAlignment="Stretch" />
 

@@ -1,10 +1,12 @@
 ﻿<UserControl x:Class="WPF.QuickStart.UI.Views.Twitter.ChildTabYahooView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"             
         Height="Auto" Width="Auto">
     <Grid>
 
         <TabControl x:Name="Items"
+                    Controls:ControlsHelper.IsUnderlined="True"
                     Grid.Row="1"
                     TabStripPlacement="Top">
             <!--

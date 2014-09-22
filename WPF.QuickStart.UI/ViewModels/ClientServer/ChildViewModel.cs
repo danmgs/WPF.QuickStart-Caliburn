@@ -118,7 +118,7 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
 
             if (close)
             {
-                MessageBox.Show(string.Format("Closed: '{0}'", DisplayName));
+                //MessageBox.Show(string.Format("Closed: '{0}'", DisplayName));
                 Disconnect();
             }
         }

@@ -1,11 +1,17 @@
 using Caliburn.Micro;
+using MahApps.Metro;
 using System.ComponentModel.Composition;
 using System.Windows;
 using WPF.QuickStart.UI.Events;
+using WPF.QuickStart.UI.Utils.Themes;
 using WPF.QuickStart.UI.ViewModels;
 using WPF.QuickStart.UI.ViewModels.ClientServer;
 using WPF.QuickStart.UI.ViewModels.Twitter;
 using WPF.QuickStart.UI.ViewModels.Yahoo;
+using System.Linq;
+using System.Collections.Generic;
+using System.Windows.Media;
+
 namespace WPF.QuickStart.UI.ViewModels
 {
     [Export(typeof(IShell))]
@@ -16,6 +22,9 @@ namespace WPF.QuickStart.UI.ViewModels
         protected static readonly ILog Logger = LogManager.GetLog(typeof(ShellViewModel));
         private readonly IEventAggregator _eventAgg;
         private IWindowManager _windowManager;
+
+        public List<AccentColorMenuData> AccentColors { get; set; }
+        public List<AppThemeMenuData> AppThemes { get; set; }
 
         #endregion
 
@@ -30,6 +39,16 @@ namespace WPF.QuickStart.UI.ViewModels
             _eventAgg = eventAgg;
             _eventAgg.Subscribe(this);
             _windowManager = windowManager;
+
+            // create accent color menu items for the demo
+            this.AccentColors = ThemeManager.Accents
+                                            .Select(a => new AccentColorMenuData() { Name = a.Name, ColorBrush = a.Resources["AccentColorBrush"] as Brush })
+                                            .ToList();
+
+            // create metro theme color menu items for the demo
+            this.AppThemes = ThemeManager.AppThemes
+                                           .Select(a => new AppThemeMenuData() { Name = a.Name, BorderColorBrush = a.Resources["BlackColorBrush"] as Brush, ColorBrush = a.Resources["WhiteColorBrush"] as Brush })
+                                           .ToList();
         }
 
         #endregion Constructor

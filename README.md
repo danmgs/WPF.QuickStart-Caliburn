@@ -42,7 +42,9 @@ Launch the client.
 
 > ####WPF Binding :
 
->> [How do I use WPF bindings with RelativeSource?](http://stackoverflow.com/questions/84278/how-do-i-use-wpf-bindings-with-relativesource)
+>> [HOW TO use WPF bindings with RelativeSource?](http://stackoverflow.com/questions/84278/how-do-i-use-wpf-bindings-with-relativesource)
+
+>> [HOW TO debug data binding issue]()http://stackoverflow.com/questions/4225867/how-can-i-turn-binding-errors-into-runtime-exceptions)
 
 > ####WPF Controls :
 
