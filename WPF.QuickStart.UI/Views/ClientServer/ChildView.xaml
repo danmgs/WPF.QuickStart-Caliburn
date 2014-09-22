@@ -21,7 +21,6 @@
                     IsEnabled="{Binding Connected, Converter={StaticResource inverseBoolConverter}}" 
                     Style="{DynamicResource AccentedSquareButtonStyle}" 
                     Width="172" Height="52" 
-                    Background="Black"
                     Margin="20, 0, 10, 5"
                     />
             <Rectangle DockPanel.Dock="Left" Width="30" Height="30" 
@@ -43,7 +42,6 @@
                             Content="Show news" 
                             IsEnabled="{Binding Connected}" 
                             HorizontalAlignment="Left" 
-                            Style="{DynamicResource AccentedSquareButtonStyle}" 
                             Width="172" Height="41"
                             Margin="10 "/>
                         <TextBox x:Name="Keyword" 
@@ -76,17 +74,20 @@
                             Content="Query Server"
                             IsEnabled="{Binding Connected}" 
                             HorizontalAlignment="Left" 
-                            Style="{DynamicResource AccentedSquareButtonStyle}" 
                             Width="172" Height="41"
                             Margin="10 "/>
                     <UniformGrid Columns="2">
                         <StackPanel>
-                            <TextBlock Style="{StaticResource subTitleStyle}" Text="SERVER RESPONSES HISTORY"/>
-                            <ListView ItemsSource="{Binding ServerResponseItems}" Height="200" Background="Honeydew" />
+                            <TextBlock Style="{DynamicResource subTitleStyle}" Text="SERVER RESPONSES HISTORY"/>
+                            <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" Padding="5" Margin="5">
+                                <ListView ItemsSource="{Binding ServerResponseItems}" Height="200" Background="{DynamicResource AccentColorBrush4}" />
+                            </Border>
                         </StackPanel>
                         <StackPanel>
-                            <TextBlock Style="{StaticResource subTitleStyle}" Text="DETAILED ITEMS"/>
-                            <ListView ItemsSource="{Binding MyCollectionItems}" Height="200" Background="AliceBlue" />
+                            <TextBlock Style="{DynamicResource subTitleStyle}" Text="DETAILED ITEMS"/>
+                            <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" Padding="5" Margin="5">
+                                <ListView ItemsSource="{Binding MyCollectionItems}" Height="200" Background="{DynamicResource AccentColorBrush4}" />
+                            </Border>
                         </StackPanel>
                     </UniformGrid>
                 </StackPanel>

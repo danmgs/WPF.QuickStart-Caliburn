@@ -62,6 +62,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
 
         public void AddSingleStock()
         {
+            IsBusy = true;
             using (var webClient = new System.Net.WebClient())
             {
                 var url = @"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20=%22{0}%22&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json";
@@ -83,6 +84,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
                     PublishStatusEvent(message);
                 }
             }
+            IsBusy = false;
         }
 
         public bool CanAddSingleStock
@@ -92,6 +94,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
 
         private void LoadDefaultStocks()
         {
+            IsBusy = true;
             using (var webClient = new System.Net.WebClient())
             {
                 var url = @"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22YHOO%22%2C%22AAPL%22%2C%22GOOG%22%2C%22MSFT%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json";
@@ -100,6 +103,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
                 QuotationResults.RootObject quotationRes = Newtonsoft.Json.JsonConvert.DeserializeObject<QuotationResults.RootObject>(json);
                 Quotes = new BindableCollection<Quote>(quotationRes.query.results.quote);
             }
+            IsBusy = false;
         }
     }
 }

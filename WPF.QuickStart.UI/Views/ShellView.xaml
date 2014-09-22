@@ -88,11 +88,13 @@
 
     <DockPanel>
 
-        <Grid DockPanel.Dock="Top">
+        <Grid DockPanel.Dock="Top" 
+                    Background="{DynamicResource AccentColorBrush3}">
             <Menu Grid.Row="0"
-                      Margin="5"
-                      VerticalAlignment="Stretch"
-                      HorizontalAlignment="Left">
+                    Margin="5"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Left"                  
+                    Background="{DynamicResource AccentColorBrush3}">
                 <MenuItem Header="Theme"
                               ItemsSource="{Binding AppThemes, Mode=OneWay}"
                               ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}" />
@@ -102,7 +104,9 @@
             </Menu>
         </Grid>
 
-        <Border DockPanel.Dock="Top" BorderBrush="{DynamicResource AccentBrush}" BorderThickness="1" HorizontalAlignment="Stretch">
+        <Border DockPanel.Dock="Top" BorderBrush="{DynamicResource AccentColorBrush}" 
+                    Background="{DynamicResource AccentColorBrush4}"
+                    BorderThickness="1" HorizontalAlignment="Stretch">
             <Grid>
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" >
                     <Button Style="{StaticResource categoryBtn}" Content="Twitter">
@@ -136,7 +140,7 @@
             </Grid>
         </Border>
 
-        <Border DockPanel.Dock="Bottom" BorderBrush="{DynamicResource AccentBrush}" BorderThickness="1" HorizontalAlignment="Stretch">
+        <Border DockPanel.Dock="Bottom" BorderBrush="{DynamicResource AccentColorBrush}" Background="{DynamicResource AccentColorBrush3}" BorderThickness="1" HorizontalAlignment="Stretch">
             <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Height="Auto" Orientation="Horizontal">
                 <Rectangle Width="20" Height="20" Margin="20,0">
                     <Rectangle.Resources>

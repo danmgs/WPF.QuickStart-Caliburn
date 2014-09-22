@@ -18,7 +18,7 @@
     <Style TargetType="{x:Type ctrl:DialogControl}">
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Background" Value="#FFEFEFEA"/>
-        <Setter Property="Height" Value="400" />
+        <Setter Property="Height" Value="Auto" />
         <Setter Property="MinHeight" Value="120" />
         <Setter Property="Width" Value="Auto" />
         <Setter Property="Template">

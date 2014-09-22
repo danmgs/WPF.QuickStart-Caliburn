@@ -27,38 +27,42 @@
 
             <UniformGrid Columns="2" Height="Auto">
 
-                <StackPanel Background="Crimson">
-                    <TextBlock Style="{StaticResource subTitleStyle}"  Text="Tweets Finder" HorizontalAlignment="Left" />
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Screen name : " Width="159"/>
-                        <ComboBox 
+                <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" Padding="5"  Margin="5">
+                    <StackPanel Background="{DynamicResource AccentColorBrush2}">
+                        <TextBlock Style="{StaticResource subTitleStyle}"  Text="Tweets Finder" HorizontalAlignment="Left" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Screen name : " Width="159"/>
+                            <ComboBox 
                             x:Name="ScreenNameCombo" 
                             ItemsSource="{Binding TwitterScreenNames}" 
                             SelectedValue="{Binding ScreenName, Mode=TwoWay}" 
                             cal:Message.Attach="[Event SelectionChanged] = [Action OnScreenNameSelectionChanged($this,$eventArgs)]"
                             Margin="0,0,10,0">
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,10">
-                        <TextBlock Text="Number of tweets to display : "/>
-                        <ComboBox 
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10">
+                            <TextBlock Text="Number of tweets to display : "/>
+                            <ComboBox 
                         x:Name="CountCombo" 
                         ItemsSource="{Binding CountElements}" 
                         IsSynchronizedWithCurrentItem="True"
                         cal:Message.Attach="[Event SelectionChanged] = [Action OnCountSelectionChanged($this,$eventArgs)]" Width="80">
-                        </ComboBox>
+                            </ComboBox>
+                        </StackPanel>
+                        <Button x:Name="Load" Content="Load Tweets" Margin="5" />
                     </StackPanel>
-                    <Button x:Name="Load" Content="Load Tweets" />
-                </StackPanel>
+                </Border>
 
-                <StackPanel Background="Linen">
-                    <TextBlock Style="{StaticResource subTitleStyle}" Text="Make a search" HorizontalAlignment="Left" />
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Keyword : " />
-                        <TextBox x:Name="Keyword" Width="200" Controls:TextboxHelper.Watermark="Type a keyword ..." Controls:TextboxHelper.ClearTextButton="True" />
+                <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" Padding="5" Margin="5">
+                    <StackPanel  Background="{DynamicResource AccentColorBrush2}">
+                        <TextBlock Style="{StaticResource subTitleStyle}" Text="Make a search" HorizontalAlignment="Left" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Keyword : " />
+                            <TextBox x:Name="Keyword" Width="170" Controls:TextboxHelper.Watermark="Type a keyword ..." Controls:TextboxHelper.ClearTextButton="True" />
+                        </StackPanel>
+                        <Button x:Name="Search" Content="Search" Margin="5,52,5,5" />
                     </StackPanel>
-                    <Button x:Name="Search" Content="Search" Margin="10,56,0,0" />
-                </StackPanel>
+                </Border>
 
             </UniformGrid>
 
@@ -86,8 +90,7 @@
             </xcdg:DataGridControl>-->
             <DataGrid ItemsSource="{Binding Tweets}" Margin="10,20,10,0"
                       Visibility="{Binding Tweets.Count, Converter={StaticResource intToVisibilityConverter}}"
-                  AutoGenerateColumns="False"
-                  Style="{StaticResource AzureDataGrid}">
+                  AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Image" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>

@@ -185,6 +185,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             }
 
             PublishStatusEvent("Begin Load historical data");
+            IsBusy = true;
 
             using (var webClient = new System.Net.WebClient())
             {
@@ -209,6 +210,8 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
                     PublishStatusEvent(message);
                 }
             }
+
+            IsBusy = false;
         }
 
         public bool CanLoadHistoricalData

@@ -18,25 +18,18 @@
         <Setter Property="BusyContentTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <StackPanel Margin="4" Width="350" Height="140">
-                        <StackPanel.Background>
+                    <StackPanel Width="350" Height="10">
+                        <!--<StackPanel.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="{DynamicResource AccentColor}" Offset="0"/>
                                 <GradientStop Color="#FFFFFF" Offset="1"/>
                             </LinearGradientBrush>
-                        </StackPanel.Background>
-                        <TextBlock Text="Loading ..." FontWeight="Bold" HorizontalAlignment="Center"/>
-                        <Image gif:ImageBehavior.AnimatedSource="/Images/wait.gif" Height="32" Width="32" Margin="0,5" />
-                        <StackPanel Margin="4">
-                            <TextBlock Text="Please Wait..."/>                            
-                            <!--<ProgressBar Value="40" Height="15"/>-->                            
-                            <Controls:MetroProgressBar Width="300"
-                                Margin="0, 10, 0, 0"
-                                Foreground="{DynamicResource AccentColorBrush}"
-                                IsIndeterminate="True"
-                                Maximum="100"
-                                Minimum="0" />
-                        </StackPanel>
+                        </StackPanel.Background>-->
+                        <Controls:MetroProgressBar Width="340"
+                            Foreground="{DynamicResource AccentColorBrush3}"
+                            IsIndeterminate="True"
+                            Maximum="100"
+                            Minimum="0" />
                     </StackPanel>
                 </DataTemplate>
             </Setter.Value>
@@ -44,7 +37,7 @@
         <Setter Property="OverlayStyle">
             <Setter.Value>
                 <Style TargetType="Rectangle">
-                    <Setter Property="Fill" Value="#ffffeeee"/>
+                    <Setter Property="Fill" Value="{DynamicResource AccentColorBrush}"/>
                 </Style>
             </Setter.Value>
         </Setter>
@@ -54,7 +47,7 @@
                     <Setter Property="Visibility" Value="Collapsed"/>
                 </Style>
             </Setter.Value>
-        </Setter>
+        </Setter>        
     </Style>
     
 </ResourceDictionary>

@@ -17,16 +17,17 @@
             <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." 
                      Controls:TextboxHelper.Watermark="MSCI..." Controls:TextboxHelper.ClearTextButton="True"
                      VerticalContentAlignment="Center" />
-            <Button x:Name="AddSingleStock" Content="Add Stock" HorizontalAlignment="Left" />
-        </StackPanel>
+            <Button x:Name="AddSingleStock" Content="Add Stock" HorizontalAlignment="Left" Margin="10,0" />
+        </StackPanel>        
 
-        <Grid Margin="20" VerticalAlignment="Top">
-
-            <xcdg:DataGridControl 
-                x:Name="_dataGrid" 
-                MinWidth="1000"
-                Width="Auto"
-                ItemsSource="{Binding Quotes}"/>
+        <Grid  Margin="20" VerticalAlignment="Top">
+            <DataGrid ItemsSource="{Binding Quotes}"
+                        Margin="10,20,10,0"
+                        MinWidth="1000"
+                        Width="Auto"                      
+                        Visibility="{Binding Quotes.Count, Converter={StaticResource intToVisibilityConverter}}"
+                  AutoGenerateColumns="True" />
+            <xctk:BusyIndicator IsBusy="{Binding IsBusy}" />
         </Grid>
 
     </DockPanel>

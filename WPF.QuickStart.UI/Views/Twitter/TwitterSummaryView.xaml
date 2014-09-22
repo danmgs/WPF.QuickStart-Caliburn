@@ -20,7 +20,8 @@
             <ListView ItemsSource="{Binding Tweets}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource backgroundConverter}}">
+                        <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" 
+                                Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource backgroundConverter}}">
                             <Grid x:Name="statusBox" Height="auto" Width="auto">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.168*"/>
