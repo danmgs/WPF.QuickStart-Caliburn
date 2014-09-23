@@ -74,6 +74,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
                 }
                 else
                 {
+                    IsBusy = false;
                     var message = "Wrong security code or no data for security code .....";
                     _windowManager.ShowDialog(new DialogViewModel()
                     {

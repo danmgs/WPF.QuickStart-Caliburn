@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Utils\ColorHelper.cs" />
     <Compile Include="Utils\PriceTypeOptions.cs" />
+    <Compile Include="Utils\StringHelper.cs" />
     <Compile Include="Utils\Twitter\TwitterHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

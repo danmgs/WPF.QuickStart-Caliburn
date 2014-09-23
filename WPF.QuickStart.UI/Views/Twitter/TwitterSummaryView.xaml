@@ -13,7 +13,7 @@
 
         <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top" />
 
-        <TextBlock Text="Can Tiny Tweets Predict Financial Markets?" Style="{StaticResource noteHeaderStyle}" DockPanel.Dock="Top"/>
+        <TextBlock Text="Can Tiny Tweets Predict Financial Markets?" Style="{StaticResource noteHeaderStyle}" HorizontalAlignment="Center" DockPanel.Dock="Top" />
 
         <Grid Width="500" HorizontalAlignment="Center" Margin="20">
 
@@ -21,7 +21,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" 
-                                Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource backgroundConverter}}">
+                                Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource metroBackgroundConverter}}">
                             <Grid x:Name="statusBox" Height="auto" Width="auto">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.168*"/>

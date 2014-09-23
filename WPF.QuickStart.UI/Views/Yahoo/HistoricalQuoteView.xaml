@@ -32,61 +32,50 @@
                     </StackPanel>
                 </StackPanel>
 
-                <Grid Margin="0,5" DockPanel.Dock="Top">
+                <Grid Margin="0,5" DockPanel.Dock="Top" Visibility="{Binding MyCollectionItems.Count, Converter={StaticResource intToVisibilityConverter}}">
 
                     <DataGrid ItemsSource="{Binding MyCollectionItems}"
                             Margin="10"
                             MaxHeight="300"
-                            MinHeight="200"
                             MinWidth="1000"
-                            Width="Auto"                      
-                            Visibility="{Binding MyCollectionItems.Count, Converter={StaticResource intToVisibilityConverter}}"
-                      AutoGenerateColumns="True" />
+                            Width="Auto"
+                            AutoGenerateColumns="True" />
                     <xctk:BusyIndicator IsBusy="{Binding IsBusy}" />
 
                 </Grid>
 
-                <DockPanel>
-                    <chart:PieChart 
-                        DockPanel.Dock="Left"
-                        Style="{StaticResource MinimalChartStyle}"
-                        ChartTitle="Minimal Pie Chart"
-                        ChartSubTitle="Chart with fixed width and height"
-                        SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" >
-                        <chart:PieChart.Series>
-                            <chart:ChartSeries
-                                SeriesTitle="Errors"
-                                DisplayMember="Category"
-                                ValueMember="Number"
-                                ItemsSource="{Binding Path=Errors}" />
-                        </chart:PieChart.Series>
-                    </chart:PieChart>
+                <DockPanel DockPanel.Dock="Top" Visibility="{Binding MyCollectionItems.Count, Converter={StaticResource intToVisibilityConverter}}">
 
-                    <DockPanel DockPanel.Dock="Right">
-                        <GroupBox Name="PriceTypeOptionsPanelGrp" Header="Axis Y" Margin="20,5" DockPanel.Dock="Bottom">
-                            <StackPanel Orientation="Horizontal">
-                                <RadioButton Content="Open" IsChecked="{Binding PriceTypeOptions, Converter={
-                            StaticResource enumToBoolConverter}, ConverterParameter=Open}" />
-                                <RadioButton Content="Close" IsChecked="{Binding PriceTypeOptions, Converter={
-                            StaticResource enumToBoolConverter}, ConverterParameter=Close}" Margin="10,0" />
-                                <RadioButton Content="High" IsChecked="{Binding PriceTypeOptions, Converter={
-                            StaticResource enumToBoolConverter}, ConverterParameter=High}" Margin="10,0" />
-                                <RadioButton Content="Low" IsChecked="{Binding PriceTypeOptions, Converter={
-                            StaticResource enumToBoolConverter}, ConverterParameter=Low}" Margin="10,0" />
-                            </StackPanel>
-                        </GroupBox>
-                        <Grid Margin="10">
-                            <oxy:PlotView Title="Chart" Width="600" Height="250">
-                                <oxy:PlotView.Series>
-                                    <oxy:LineSeries ItemsSource="{Binding ChartQuotePointsList}"/>
-                                </oxy:PlotView.Series>
-                            </oxy:PlotView>
-                        </Grid>
-                    </DockPanel>
-
+                    <Expander Header="Details" IsExpanded="False">
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush3}" Background="{DynamicResource AccentColorBrush3}">
+                            <DockPanel>
+                                <GroupBox Name="PriceTypeOptionsPanelGrp" Header="Axis Y" Margin="20,5" DockPanel.Dock="Left">
+                                    <StackPanel>
+                                        <RadioButton Content="Open" IsChecked="{Binding PriceTypeOptions, Converter={
+                            StaticResource enumToBoolConverter}, ConverterParameter=Open}" Margin="10"/>
+                                        <RadioButton Content="Close" IsChecked="{Binding PriceTypeOptions, Converter={
+                            StaticResource enumToBoolConverter}, ConverterParameter=Close}" Margin="10" />
+                                        <RadioButton Content="High" IsChecked="{Binding PriceTypeOptions, Converter={
+                            StaticResource enumToBoolConverter}, ConverterParameter=High}" Margin="10" />
+                                        <RadioButton Content="Low" IsChecked="{Binding PriceTypeOptions, Converter={
+                            StaticResource enumToBoolConverter}, ConverterParameter=Low}" Margin="10" />
+                                    </StackPanel>
+                                </GroupBox>
+                                <Grid Margin="10">
+                                    <oxy:PlotView Title="Chart">
+                                        <oxy:PlotView.Series>
+                                            <oxy:LineSeries ItemsSource="{Binding ChartQuotePointsList}"/>
+                                        </oxy:PlotView.Series>
+                                    </oxy:PlotView>
+                                </Grid>
+                            </DockPanel>
+                        </Border>
+                    </Expander>
                 </DockPanel>
+                    
 
             </DockPanel>
+
 
         </ScrollViewer>
 

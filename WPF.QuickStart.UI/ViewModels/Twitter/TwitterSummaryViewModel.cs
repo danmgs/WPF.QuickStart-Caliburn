@@ -80,6 +80,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
             }
             catch (WebException ex)
             {
+                IsBusy = false;
                 var message = string.Format("WebException : {0}", ex.Message);
                 _windowManager.ShowDialog(new DialogViewModel()
                 {
@@ -88,7 +89,6 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     NotificationType = NotificationType.Error
                 });
                 PublishStatusEvent(message);
-                IsBusy = false;
             }
         }
 

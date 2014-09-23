@@ -89,12 +89,12 @@
     <DockPanel>
 
         <Grid DockPanel.Dock="Top" 
-                    Background="{DynamicResource AccentColorBrush3}">
+                    Background="{DynamicResource AccentColorBrush}">
             <Menu Grid.Row="0"
                     Margin="5"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Left"                  
-                    Background="{DynamicResource AccentColorBrush3}">
+                    Background="{DynamicResource AccentColorBrush}">
                 <MenuItem Header="Theme"
                               ItemsSource="{Binding AppThemes, Mode=OneWay}"
                               ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}" />

@@ -27,9 +27,8 @@
 
             <UniformGrid Columns="2" Height="Auto">
 
-                <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" Padding="5"  Margin="5">
-                    <StackPanel Background="{DynamicResource AccentColorBrush2}">
-                        <TextBlock Style="{StaticResource subTitleStyle}"  Text="Tweets Finder" HorizontalAlignment="Left" />
+                <GroupBox Name="TwitterViewPanelGrp" Header="View Tweets From">
+                    <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Screen name : " Width="159"/>
                             <ComboBox 
@@ -51,43 +50,23 @@
                         </StackPanel>
                         <Button x:Name="Load" Content="Load Tweets" Margin="5" />
                     </StackPanel>
-                </Border>
+                </GroupBox>
 
-                <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" Padding="5" Margin="5">
-                    <StackPanel  Background="{DynamicResource AccentColorBrush2}">
-                        <TextBlock Style="{StaticResource subTitleStyle}" Text="Make a search" HorizontalAlignment="Left" />
+                <GroupBox Name="TwitterSearchPanelGrp" Header="Make a search">
+                    <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Keyword : " />
                             <TextBox x:Name="Keyword" Width="170" Controls:TextboxHelper.Watermark="Type a keyword ..." Controls:TextboxHelper.ClearTextButton="True" />
                         </StackPanel>
                         <Button x:Name="Search" Content="Search" Margin="5,52,5,5" />
                     </StackPanel>
-                </Border>
+                </GroupBox>
 
             </UniformGrid>
 
         </DockPanel>
 
         <Grid>
-            <!--<xcdg:DataGridControl 
-                x:Name="_dataGrid"            
-                MinHeight="400"
-                MinWidth="1000" 
-                Width="Auto"
-                Margin="0,10"
-                AutoCreateColumns="False"
-                IsEnabled="False"
-                IsEnabledChanged="False"
-                ItemsSource="{Binding Tweets}">
-                <xcdg:DataGridControl.Columns>
-                    <xcdg:Column Title="Date" FieldName="Date" VisiblePosition="0"/>
-                    <xcdg:Column Title="ScreenName" FieldName="ScreenName" VisiblePosition="1"/>
-                    <xcdg:Column Title="Status" FieldName="Text" VisiblePosition="2" MinWidth="500" />
-                </xcdg:DataGridControl.Columns>
-                <xcdg:DataGridControl.View>
-                    <xcdg:TableView ColumnStretchMode="All" ColumnStretchMinWidth="100" />
-                </xcdg:DataGridControl.View>
-            </xcdg:DataGridControl>-->
             <DataGrid ItemsSource="{Binding Tweets}" Margin="10,20,10,0"
                       Visibility="{Binding Tweets.Count, Converter={StaticResource intToVisibilityConverter}}"
                   AutoGenerateColumns="False">

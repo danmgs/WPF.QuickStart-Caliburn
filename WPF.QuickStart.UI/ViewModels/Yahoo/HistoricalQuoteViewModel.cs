@@ -97,8 +97,8 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             }
         }
 
-        private ICollectionView _myCollectionItems;
-        public ICollectionView MyCollectionItems
+        private BindableCollection<HistoricalQuotationResults.Quote> _myCollectionItems = new BindableCollection<HistoricalQuotationResults.Quote>();
+        public BindableCollection<HistoricalQuotationResults.Quote> MyCollectionItems
         {
             get
             {
@@ -149,21 +149,25 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             quotes.ForEach(q =>
             {
                 double yPrice;
-                if (PriceTypeOptions == PriceTypeOptions.Open)
+                if (q == null)
                 {
-                    yPrice = Convert.ToDouble(q.Open.Replace(".", ","));
+                    yPrice = 0;
+                }
+                else if (PriceTypeOptions == PriceTypeOptions.Open)
+                {
+                    yPrice = q.Open.ReplaceAndConvertToDouble(".", ",");
                 }
                 else if (PriceTypeOptions == PriceTypeOptions.Close)
                 {
-                    yPrice = Convert.ToDouble(q.Close.Replace(".", ","));
+                    yPrice = q.Close.ReplaceAndConvertToDouble(".", ",");
                 }
                 else if (PriceTypeOptions == PriceTypeOptions.High)
                 {
-                    yPrice = Convert.ToDouble(q.High.Replace(".", ","));
+                    yPrice = q.High.ReplaceAndConvertToDouble(".", ",");
                 }
                 else if (PriceTypeOptions == PriceTypeOptions.Low)
                 {
-                    yPrice = Convert.ToDouble(q.Low.Replace(".", ","));
+                    yPrice = q.Low.ReplaceAndConvertToDouble(".", ",");
                 }
                 else
                 {
@@ -186,6 +190,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
 
             PublishStatusEvent("Begin Load historical data");
             IsBusy = true;
+            MyCollectionItems.Clear();
 
             using (var webClient = new System.Net.WebClient())
             {
@@ -194,12 +199,13 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
                 HistoricalQuotationResults.RootObject histoQuotationRes = Newtonsoft.Json.JsonConvert.DeserializeObject<HistoricalQuotationResults.RootObject>(json);
                 if (histoQuotationRes.query.results != null)
                 {
-                    MyCollectionItems = CollectionViewSource.GetDefaultView(histoQuotationRes.query.results.quote);
+                    MyCollectionItems = new BindableCollection<HistoricalQuotationResults.Quote>(histoQuotationRes.query.results.quote);
                     LoadChartQuotesModel(histoQuotationRes.query.results.quote);
                     PublishStatusEvent("End Load historical data");
                 }
                 else
                 {
+                    IsBusy = false;
                     var message = "Wrong security code or no data in the specified timeline ! ...";
                     _windowManager.ShowDialog(new DialogViewModel()
                     {
@@ -210,7 +216,6 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
                     PublishStatusEvent(message);
                 }
             }
-
             IsBusy = false;
         }
 

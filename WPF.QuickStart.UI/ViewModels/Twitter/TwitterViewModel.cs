@@ -153,12 +153,13 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                 }).ContinueWith(previousTask =>
                 {
                     PublishStatusEvent(string.Format("End loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName));
-                    IsBusy = false;
                     ShowNotFoundTweet(Tweets);
+                    IsBusy = false;
                 }, context);
             }
             catch(WebException ex)
             {
+                IsBusy = false;
                 var message = string.Format("Profile '{0}' not found ... : {1}", ScreenName, ex.Message);
                 _windowManager.ShowDialog(new DialogViewModel()
                 {
@@ -167,7 +168,6 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     NotificationType = NotificationType.Error
                 });
                 PublishStatusEvent(message);
-                IsBusy = false;
             }            
         }
 

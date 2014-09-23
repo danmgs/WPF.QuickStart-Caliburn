@@ -13,6 +13,7 @@
     <converter:InverseBooleanConverter x:Key="inverseBoolConverter" />
     <converter:BackgroundConverter x:Key="backgroundConverter" />
     <converter:EnumToBoolConverter x:Key="enumToBoolConverter" />
+    <converter:MetroBackGroundConverter x:Key="metroBackgroundConverter" />    
     
     <!-- Custom Color Palette -->
     
@@ -50,7 +51,6 @@
         <Setter Property="MinHeight" Value="600" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="WindowState" Value="Maximized" />
-        <!--<Setter Property="Foreground" Value="#CC119EDA" />-->
         <Setter Property="Title" Value="MainWindow" />
     </Style>
 
@@ -96,9 +96,9 @@
     </Style>
 
     <Style x:Key="noteHeaderStyle" TargetType="{x:Type TextBlock}">
-        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontSize" Value="15" />
         <Setter Property="FontStyle" Value="Italic" />
-        <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush2}" />
+        <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
     </Style>    
 
     <Style x:Key="subTitleStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
