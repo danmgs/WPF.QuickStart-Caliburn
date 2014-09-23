@@ -110,6 +110,7 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
         {
             base.OnInitialize();
             PublishStatusEvent(string.Format("Load {0} ...", DisplayName));
+            Connected = false;
         }
 
         protected override void OnDeactivate(bool close)
@@ -194,14 +195,14 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
             }
         }
 
-        public void ConnectBtn(object sender, RoutedEventArgs e)
+        public void ConnectBtn()
         {
             try
             {
                 PublishStatusEvent("Try to connect to server ...");
 
                 // Disconnect surrent connection
-                if (m_pMarketDataClient != null)
+                if (Connected && m_pMarketDataClient != null)
                     if (m_pMarketDataClient.State == System.ServiceModel.CommunicationState.Opened)
                     {
                         //Log("Closing connection...");

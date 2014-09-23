@@ -7,16 +7,13 @@
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              HorizontalAlignment="Center">
 
-    <DockPanel Height="Auto">
-
-        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top" />
+    <DockPanel Height="Auto" Margin="0,10">
 
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
+            <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" Margin="30,0"/>
             <!--<TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." />-->
             <TextBox x:Name="SecurityCode"  
                      Width="134" 
-                     Margin="10,0"
                      ToolTip="Input code. Exple : YHOO, MSCI .." 
                      Controls:TextboxHelper.Watermark="MSCI..." Controls:TextboxHelper.ClearTextButton="True"
                      VerticalContentAlignment="Center" />

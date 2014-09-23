@@ -11,8 +11,6 @@
 
     <DockPanel>
 
-        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top" />
-
         <TextBlock Text="Can Tiny Tweets Predict Financial Markets?" Style="{StaticResource noteHeaderStyle}" HorizontalAlignment="Center" DockPanel.Dock="Top" />
 
         <Grid Width="500" HorizontalAlignment="Center" Margin="20">

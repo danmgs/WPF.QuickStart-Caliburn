@@ -17,15 +17,11 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <DockPanel>
-
-        <StackPanel DockPanel.Dock="Top">
-            <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}"/>
-        </StackPanel>
+    <DockPanel Margin="0,10">
 
         <DockPanel DockPanel.Dock="Top">
 
-            <UniformGrid Columns="2" Height="Auto">
+            <UniformGrid Columns="2" Height="Auto" Margin="0,10">
 
                 <GroupBox Name="TwitterViewPanelGrp" Header="View Tweets From">
                     <StackPanel>

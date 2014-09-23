@@ -9,9 +9,7 @@
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              HorizontalAlignment="Center">
 
-    <DockPanel>
-
-        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderStyle}" DockPanel.Dock="Top" />
+    <DockPanel Margin="0,10">
 
         <ScrollViewer DockPanel.Dock="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
 

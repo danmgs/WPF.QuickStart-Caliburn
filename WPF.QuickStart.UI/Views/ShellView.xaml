@@ -139,32 +139,65 @@
                     BorderThickness="1" HorizontalAlignment="Stretch">
             <Grid>
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" >
-                    <Button Style="{StaticResource categoryBtn}" Content="Twitter">
+                    <Button Width="50"
+                    Height="50"
+                    Margin="0, 10, 0, 0"
+                    Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_twitter_bird}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <cal:ActionMessage MethodName="ShowTwitterMultiTabsScreen">
                                     <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
                                 </cal:ActionMessage>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers>                        
                     </Button>
-                    <Button Style="{StaticResource categoryBtn}" Content="Yahoo !">
+                    <Button Width="50"
+                    Height="50"
+                    Margin="0, 10, 0, 0"
+                    Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_social_yahoo}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <cal:ActionMessage MethodName="ShowYahooMultiTabsScreen">
                                     <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
                                 </cal:ActionMessage>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers>                        
                     </Button>
-                    <Button Style="{StaticResource categoryBtn}" Content="Client Server">
+                    <Button Width="50"
+                    Height="50"
+                    Margin="0, 10, 0, 0"
+                    Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_connect}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <cal:ActionMessage MethodName="ShowClientServerMultiTabsScreen">
                                     <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
                                 </cal:ActionMessage>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers>                        
                     </Button>
                 </StackPanel>
             </Grid>
