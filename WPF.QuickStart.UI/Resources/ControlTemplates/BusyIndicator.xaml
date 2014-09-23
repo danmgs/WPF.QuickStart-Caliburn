@@ -18,29 +18,21 @@
         <Setter Property="BusyContentTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <StackPanel Width="350" Height="10">
-                        <!--<StackPanel.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="{DynamicResource AccentColor}" Offset="0"/>
-                                <GradientStop Color="#FFFFFF" Offset="1"/>
-                            </LinearGradientBrush>
-                        </StackPanel.Background>-->
-                        <Controls:MetroProgressBar Width="340"
-                            Foreground="{DynamicResource AccentColorBrush3}"
-                            IsIndeterminate="True"
-                            Maximum="100"
-                            Minimum="0" />
-                    </StackPanel>
+                    <Controls:MetroProgressBar 
+                        Width="340"
+                        IsIndeterminate="True"
+                        Maximum="100"
+                        Minimum="0" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="OverlayStyle">
+        <!--<Setter Property="OverlayStyle">
             <Setter.Value>
                 <Style TargetType="Rectangle">
                     <Setter Property="Fill" Value="{DynamicResource AccentColorBrush}"/>
                 </Style>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="ProgressBarStyle">
             <Setter.Value>
                 <Style TargetType="ProgressBar">

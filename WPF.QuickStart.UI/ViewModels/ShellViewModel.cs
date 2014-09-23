@@ -92,6 +92,19 @@ namespace WPF.QuickStart.UI.ViewModels
             }
         }
 
+
+        bool _isSettingsFlyoutOpen;
+
+        public bool IsSettingsFlyoutOpen
+        {
+            get { return _isSettingsFlyoutOpen; }
+            set
+            {
+                _isSettingsFlyoutOpen = value;
+                this.NotifyOfPropertyChange(() => IsSettingsFlyoutOpen);
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -126,7 +139,32 @@ namespace WPF.QuickStart.UI.ViewModels
         {
             StatusBarContent = string.Format("Status : {0} ", status.Content);
         }
-        
+
+        #endregion
+
+        #region Menu Commands
+
+        public void GoGitHub()
+        {
+            System.Diagnostics.Process.Start("https://github.com/danmgs/WPF.QuickStart-Caliburn");
+        }
+
+        public void GoYahoo()
+        {
+            System.Diagnostics.Process.Start("https://yahoo.com");
+        }
+
+        public void GoTwitter()
+        {
+            System.Diagnostics.Process.Start("https://twitter.com");
+        }
+
+        public void ShowSettings()
+        {
+            IsSettingsFlyoutOpen = true;
+            //this.ToggleFlyout(0);
+        }
+
         #endregion
     }
 }

@@ -54,8 +54,19 @@
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
-            <Button Content="settings" />
-            <Button Click="GoYahoo" ToolTip="Go Yahoo!">
+            <Button Content="settings" cal:Message.Attach="ShowSettings" />
+            <Button cal:Message.Attach="GoGitHub"
+                    ToolTip="View project on GitHub">
+                <Rectangle Width="22"
+                           Height="22"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Uniform"
+                                     Visual="{StaticResource appbar_github}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button ToolTip="Go Yahoo!" cal:Message.Attach="GoYahoo">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20"
                    Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -69,7 +80,7 @@
                    Text="Yahoo !" />
                 </StackPanel>
             </Button>
-            <Button Click="GoTwitter" ToolTip="Go Twitter">
+            <Button ToolTip="Go Twitter" cal:Message.Attach="GoTwitter">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20"
                    Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -86,6 +97,25 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
 
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout Header="Settings" Background="#9f000000" Position="Right" IsOpen="{Binding IsSettingsFlyoutOpen}">
+                <StackPanel>
+                    <Controls:Tile Title="GitHub">                    
+                    <Rectangle Width="22"
+                           Height="22"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform"
+                                     Visual="{StaticResource appbar_github}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    </Controls:Tile>
+                </StackPanel>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+    
     <DockPanel>
 
         <Grid DockPanel.Dock="Top" 

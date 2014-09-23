@@ -13,11 +13,11 @@
     <converter:InverseBooleanConverter x:Key="inverseBoolConverter" />
     <converter:BackgroundConverter x:Key="backgroundConverter" />
     <converter:EnumToBoolConverter x:Key="enumToBoolConverter" />
-    <converter:MetroBackGroundConverter x:Key="metroBackgroundConverter" />    
-    
+    <converter:MetroBackGroundConverter x:Key="metroBackgroundConverter" />
+
     <!-- Custom Color Palette -->
-    
-    
+
+
     <!--<Color x:Key="AquaBlueColor">#FFA3C3EC</Color>
     <Brush x:Key="AquaBlueBrush">#FFA3C3EC</Brush>
 
@@ -37,7 +37,7 @@
 
     <Brush x:Key="OrangeBrush">#FFFEE17A</Brush>-->
 
-    
+
     <!-- End Custom Color Palette -->
 
     <Style x:Key="windowBaseStyle" TargetType="Window">
@@ -54,10 +54,6 @@
         <Setter Property="Title" Value="MainWindow" />
     </Style>
 
-    <Style x:Key="HeaderFooterStyle" TargetType="{x:Type Panel}">
-        <Setter Property="Background" Value="AntiqueWhite" />
-    </Style>
-
     <Style x:Key="StatusBar" TargetType="{x:Type TextBlock}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="Height" Value="Auto" />
@@ -67,24 +63,19 @@
         <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
     </Style>
 
-    <Style x:Key="baseStyle" TargetType="{x:Type Control}">
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="Height" Value="30" />
-    </Style>
-
-    <Style x:Key="baseStyleTextBlock" TargetType="{x:Type TextBlock}">
-        <!-- Styles below are applied to all Textblocks, including the ones inside control (visual styles tree) -->
+    <!-- Applied to all Textboxes, including children Textboxes in the visual tree. -->
+    <Style TargetType="{x:Type TextBlock}">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="Width" Value="Auto" />
-        <Setter Property="Margin" Value="10,0" />
-    </Style> 
-    
-    <Style BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">        
     </Style>
 
-    <Style x:Key="baseStyleTitleTextBlock" BasedOn="{StaticResource baseStyleTextBlock}" TargetType="{x:Type TextBlock}">
+    <!--<Style TargetType="{x:Type TextBox}">
+        <Setter Property="MinWidth" Value="155" />
+    </Style>-->
+
+    <Style x:Key="baseStyleTitleTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="Margin" Value="10,10" />
@@ -95,11 +86,11 @@
         <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
     </Style>
 
-    <Style x:Key="noteHeaderStyle" TargetType="{x:Type TextBlock}">
+    <Style x:Key="noteHeaderStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontStyle" Value="Italic" />
         <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
-    </Style>    
+    </Style>
 
     <Style x:Key="subTitleStyle" BasedOn="{StaticResource baseStyleTitleTextBlock}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="15" />
@@ -112,7 +103,7 @@
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="Padding" Value="5,1,5,1" />
-        <Setter Property="Margin" Value="10,5" />        
-    </Style>  
+        <Setter Property="Margin" Value="10,5" />
+    </Style>
 
 </ResourceDictionary> 

@@ -20,15 +20,35 @@
                 <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
-                        <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." 
-                             Controls:TextboxHelper.Watermark="YHOO" Controls:TextboxHelper.ClearTextButton="True" />
+                        <TextBox x:Name="SecurityCode" 
+                                Margin="10,0"
+                                Width="134" 
+                                ToolTip="Input code. Exple : YHOO, MSCI .." 
+                                Controls:TextboxHelper.ButtonContent="r"
+                                Controls:TextboxHelper.Watermark="YHOO" Controls:TextboxHelper.ClearTextButton="True" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <TextBlock x:Name="StartDateTxt" Text="Start Date" Width="74" />
-                        <xctk:DateTimePicker x:Name="StartDate" Format="ShortDate" Value="{Binding StartDate}" Width="150" Height="25" />
-                        <TextBlock x:Name="EndDateTxt" Text="End Date" />
-                        <xctk:DateTimePicker x:Name="EndDate" Format="ShortDate" Value="{Binding EndDate}" Width="150" Height="30" Tag="" />
-                        <Button x:Name="LoadHistoricalData" Content="Load historical quotes" Margin="10,0"/>
+                        <!--<xctk:DateTimePicker x:Name="StartDate" Format="ShortDate" Value="{Binding StartDate}" Width="150" Height="25" Margin="10,0" />-->
+
+                        <DatePicker x:Name="StartDate"
+                                    Width="150"
+                                    Height="25" 
+                                    Margin="10,0"
+                                    HorizontalAlignment="Center"                                    
+                                    SelectedDate="{Binding StartDate}"
+                                    Controls:TextboxHelper.Watermark="Select a date" />
+                        <TextBlock x:Name="EndDateTxt" Text="End Date" Margin="20,0,5,0" />
+                        <!--<xctk:DateTimePicker x:Name="EndDate" Format="ShortDate" Value="{Binding EndDate}" Width="150" Height="25" />-->
+
+                        <DatePicker x:Name="EndDate"
+                                    Width="150"
+                                    Height="25" 
+                                    Margin="10,0"
+                                    HorizontalAlignment="Center"                                    
+                                    SelectedDate="{Binding EndDate}"
+                                    Controls:TextboxHelper.Watermark="Select a date" />
+                        <Button x:Name="LoadHistoricalData" Content="Load historical quotes" Margin="40,0"/>
                     </StackPanel>
                 </StackPanel>
 

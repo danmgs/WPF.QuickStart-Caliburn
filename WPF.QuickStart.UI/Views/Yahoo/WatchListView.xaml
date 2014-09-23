@@ -14,7 +14,10 @@
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <TextBlock x:Name="SecurityCodeTxt" Text="Security Code" />
             <!--<TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." />-->
-            <TextBox x:Name="SecurityCode"  Width="134" ToolTip="Input code. Exple : YHOO, MSCI .." 
+            <TextBox x:Name="SecurityCode"  
+                     Width="134" 
+                     Margin="10,0"
+                     ToolTip="Input code. Exple : YHOO, MSCI .." 
                      Controls:TextboxHelper.Watermark="MSCI..." Controls:TextboxHelper.ClearTextButton="True"
                      VerticalContentAlignment="Center" />
             <Button x:Name="AddSingleStock" Content="Add Stock" HorizontalAlignment="Left" Margin="10,0" />

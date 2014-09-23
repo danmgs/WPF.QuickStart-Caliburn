@@ -17,30 +17,32 @@
 
         <Grid Width="500" HorizontalAlignment="Center" Margin="20">
 
-            <ListView ItemsSource="{Binding Tweets}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" 
-                                Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource metroBackgroundConverter}}">
-                            <Grid x:Name="statusBox" Height="auto" Width="auto">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.168*"/>
-                                    <ColumnDefinition Width="0.832*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Image Source="{Binding Path=UserProfileImageUrl}" Grid.Column="0" Grid.Row="0" x:Name="userImage"/>
-                                <Label Margin="8,0,8,0" x:Name="status" Grid.Column="1">
-                                    <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=Text}"></TextBlock>
-                                </Label>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Grid Visibility="{Binding Tweets.Count >, Converter={StaticResource intToVisibilityConverter}}">
+                <ListView ItemsSource="{Binding Tweets}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" 
+                                    Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource metroBackgroundConverter}}">
+                                <Grid x:Name="statusBox" Height="auto" Width="auto">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.168*"/>
+                                        <ColumnDefinition Width="0.832*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{Binding Path=UserProfileImageUrl}" Grid.Column="0" Grid.Row="0" x:Name="userImage"/>
+                                    <Label Margin="8,0,8,0" x:Name="status" Grid.Column="1">
+                                        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=Text}"></TextBlock>
+                                    </Label>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
 
-            <xctk:BusyIndicator IsBusy="{Binding IsBusy}" />
+        <xctk:BusyIndicator IsBusy="{Binding IsBusy}" Background="Transparent" BorderThickness="0" />
         </Grid>
         
 

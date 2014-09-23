@@ -172,10 +172,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Metro\MetroHelper.cs" />
     <Compile Include="Utils\Themes\AccentColorMenuData.cs" />
     <Compile Include="Utils\Themes\AppThemeMenuData.cs" />
     <Compile Include="Utils\Themes\SimpleCommand.cs" />
     <Compile Include="Utils\TwitterHelperWrapper.cs" />
+    <Compile Include="ViewModels\Flyouts\FlyoutLeftViewModel.cs" />
+    <Compile Include="ViewModels\Flyouts\FlyoutBaseViewModel.cs" />
     <Compile Include="ViewModels\Yahoo\ChildTabYahooViewModel.cs" />
     <Compile Include="ViewModels\Yahoo\HistoricalQuoteViewModel.cs" />
     <Compile Include="ViewModels\Twitter\ITwitterViewModel.cs" />
@@ -229,6 +232,14 @@
     <Page Include="Resources\Shared.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Flyouts\FlyoutLeftView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows8.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Twitter\ChildTabTwitterView.xaml">
       <SubType>Designer</SubType>

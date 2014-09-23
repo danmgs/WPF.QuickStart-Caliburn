@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WPF.QuickStart.UI.Utils.Metro;
 
 namespace WPF.QuickStart.UI.Converters
 {
@@ -18,13 +19,10 @@ namespace WPF.QuickStart.UI.Converters
             ListView listView = ItemsControl.ItemsControlFromItemContainer(item) as ListView; //Get the index of a ListViewItem 
             int index = listView.ItemContainerGenerator.IndexFromContainer(item);
 
-            var theme = ThemeManager.DetectAppStyle(Application.Current);
+            var rsr = MetroHelper.FindBrushResources();
 
-            Accent currentUseAccent = ThemeManager.Accents
-                                            .Where(a => a.Name.Equals(theme.Item2.Name)).First();
-
-            Brush brush1 = currentUseAccent.Resources["AccentColorBrush"] as Brush;
-            Brush brush2 = currentUseAccent.Resources["AccentColorBrush3"] as Brush;
+            Brush brush1 = MetroHelper.FindBrushResources().Where(r => r.Item1.Equals("AccentColorBrush")).First().Item2;
+            Brush brush2 = MetroHelper.FindBrushResources().Where(r => r.Item1.Equals("AccentColorBrush3")).First().Item2 as Brush;
 
             if (index % 2 == 0)
             {

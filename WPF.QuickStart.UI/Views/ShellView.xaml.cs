@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using MahApps.Metro;
+using WPF.QuickStart.UI.ViewModels.Flyouts;
+using Caliburn.Micro;
 
 namespace WPF.QuickStart.UI.Views
 {
@@ -21,20 +24,51 @@ namespace WPF.QuickStart.UI.Views
     /// </summary>
     public partial class ShellView : MetroWindow
     {
+        //private readonly IObservableCollection<FlyoutBaseViewModel> flyouts =
+        //    new BindableCollection<FlyoutBaseViewModel>();
+
+        //public IObservableCollection<FlyoutBaseViewModel> Flyouts
+        //{
+        //    get
+        //    {
+        //        return this.flyouts;
+        //    }
+        //}
+
         public ShellView()
         {
             InitializeComponent();
             Title = "TITLE NOT WORKING PROGRAMMATICALLY, NEITHER IN VIEW XAML, NEITHER IN RESOURCES XAML ...";
+            //LoadFlyouts();
+
+            var theme = ThemeManager.DetectAppStyle(Application.Current);
+            var appTheme = ThemeManager.GetAppTheme(this.Name);
+            
+            Accent expectedAccent = ThemeManager.Accents.First(x => x.Name == "Teal");
+            AppTheme expectedTheme = ThemeManager.GetAppTheme("BaseDark");
+            ThemeManager.ChangeAppStyle(Application.Current, expectedAccent, expectedTheme);
         }
 
-        private void GoYahoo(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://yahoo.com");
-        }
+        //private void ShowSettings(object sender, RoutedEventArgs e)
+        //{
+        //    //IsSettingsFlyoutOpen = true;
+        //    //this.ToggleFlyout(0);
+        //}
 
-        private void GoTwitter(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://twitter.com");
-        }
+        //private void ToggleFlyout(int index)
+        //{
+        //    var flyout = this.Flyouts.Items[index] as Flyout;
+        //    if (flyout == null)
+        //    {
+        //        return;
+        //    }
+
+        //    flyout.IsOpen = !flyout.IsOpen;
+        //}
+
+        //private void LoadFlyouts()
+        //{
+        //    this.flyouts.Add(new FlyoutLeftViewModel());
+        //}
     }
 }
