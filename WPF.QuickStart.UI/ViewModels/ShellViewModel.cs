@@ -12,11 +12,12 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Media;
 using WPF.QuickStart.UI.ViewModels.WinOs;
+using WPF.QuickStart.UI.Utils.Enum;
 
 namespace WPF.QuickStart.UI.ViewModels
 {
     [Export(typeof(IShell))]
-    public class ShellViewModel : Conductor<Screen>, IShell, IHandle<StatusEvent>
+    public class ShellViewModel : Conductor<Screen>, IShell, IHandle<StatusEvent>, IHandle<ActivateScreenEvent>
     {
         #region Fields
 
@@ -65,7 +66,6 @@ namespace WPF.QuickStart.UI.ViewModels
             {
                 name = value;
                 NotifyOfPropertyChange(() => Name);
-                NotifyOfPropertyChange(() => CanSayHello);
             }
         }
 
@@ -113,12 +113,7 @@ namespace WPF.QuickStart.UI.ViewModels
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            ShowTwitterMultiTabsScreen("Windows8");
-        }
-
-        public bool CanSayHello
-        {
-            get { return !string.IsNullOrWhiteSpace(Name); }
+            ShowWindowsOsMultiTabsScreen("Windows8");
         }
 
         public void ShowTwitterMultiTabsScreen(string content)
@@ -141,9 +136,29 @@ namespace WPF.QuickStart.UI.ViewModels
             ActivateItem(new WinOsViewModel(content, _eventAgg, _windowManager));
         }        
 
+        #endregion
+
+        #region Events Handler
+
         public void Handle(StatusEvent status)
         {
             StatusBarContent = string.Format("Status : {0} ", status.Content);
+        }
+
+        public void Handle(ActivateScreenEvent ev)
+        {
+            switch (ev.TypeView)
+            {
+                case TypeView.Twitter:
+                    ActivateItem(new ChildTabTwitterViewModel(TypeView.Twitter.ToString(), _eventAgg, _windowManager));
+                    break;
+                case TypeView.ClientServer:
+                    ActivateItem(new ChildViewModel(TypeView.ClientServer.ToString(), _eventAgg, _windowManager));
+                    break;
+                case TypeView.Yahoo:
+                    ActivateItem(new ChildTabYahooViewModel(TypeView.Yahoo.ToString(), _eventAgg, _windowManager));
+                    break;
+            }
         }
 
         #endregion

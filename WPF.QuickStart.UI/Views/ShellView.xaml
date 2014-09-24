@@ -4,6 +4,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:uc="clr-namespace:WPF.QuickStart.UI.Views.WinOs"
         WindowStartupLocation="CenterScreen"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
@@ -54,7 +55,18 @@
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
-            <Button Content="settings" cal:Message.Attach="ShowSettings" />
+            <Button cal:Message.Attach="ShowWindowsOsMultiTabsScreen('Home')"
+                    ToolTip="home">
+                <Rectangle Width="22"
+                           Height="22"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Uniform"
+                                     Visual="{StaticResource appbar_home}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Content="Settings" cal:Message.Attach="ShowSettings" />
             <Button cal:Message.Attach="GoGitHub"
                     ToolTip="View project on GitHub">
                 <Rectangle Width="22"
@@ -133,8 +145,9 @@
                               ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}" />
             </Menu>
         </Grid>
+        
 
-        <Border DockPanel.Dock="Top" BorderBrush="{DynamicResource AccentColorBrush}" 
+        <!--<Border DockPanel.Dock="Top" BorderBrush="{DynamicResource AccentColorBrush}" 
                     Background="{DynamicResource AccentColorBrush4}"
                     BorderThickness="1" HorizontalAlignment="Stretch">
             <Grid>
@@ -221,7 +234,7 @@
                     </Button>
                 </StackPanel>
             </Grid>
-        </Border>
+        </Border>-->
 
         <Border DockPanel.Dock="Bottom" BorderBrush="{DynamicResource AccentColorBrush}" Background="{DynamicResource AccentColorBrush3}" BorderThickness="1" HorizontalAlignment="Stretch">
             <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Height="Auto" Orientation="Horizontal">
@@ -236,7 +249,7 @@
             </StackPanel>
         </Border>
 
-        <ContentControl x:Name="ActiveItem" VerticalAlignment="Stretch" />
+        <ContentControl DockPanel.Dock="Top" x:Name="ActiveItem" VerticalAlignment="Stretch" />
 
     </DockPanel>
 

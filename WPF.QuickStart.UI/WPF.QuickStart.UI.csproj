@@ -166,12 +166,14 @@
     <Compile Include="Converters\IntToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\MetroBackGroundConverter.cs" />
+    <Compile Include="Events\ActivateScreenEvent.cs" />
     <Compile Include="Proxy\MarketData\ClientCallback.cs" />
     <Compile Include="Service References\MarketDataProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Enum\TypeView.cs" />
     <Compile Include="Utils\Metro\MetroHelper.cs" />
     <Compile Include="Utils\Themes\AccentColorMenuData.cs" />
     <Compile Include="Utils\Themes\AppThemeMenuData.cs" />
@@ -402,9 +404,7 @@
   <ItemGroup>
     <Resource Include="Images\wait.gif" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utils\Enum\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\WindowsIcons-license.txt" />
   </ItemGroup>

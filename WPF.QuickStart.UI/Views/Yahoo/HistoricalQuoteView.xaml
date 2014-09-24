@@ -46,7 +46,7 @@
                                     HorizontalAlignment="Center"                                    
                                     SelectedDate="{Binding EndDate}"
                                     Controls:TextboxHelper.Watermark="Select a date" />
-                        <Button x:Name="LoadHistoricalData" Content="Load historical quotes" Margin="40,0"/>
+                        <Button x:Name="Load" Content="Load historical quotes" Margin="40,0"/>
                     </StackPanel>
                 </StackPanel>
 

@@ -20,22 +20,94 @@
         </Style>
     </UserControl.Resources>
 
-    <WrapPanel Width="950" Height="700" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <Controls:Tile Title="Mail" Style="{StaticResource LargeTileStyle}" Content="ImageHere" Background="Teal" Margin="3"/>
+    <WrapPanel Width="950" Height="700" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Top">
+        <Controls:Tile Title="Mail" Style="{StaticResource LargeTileStyle}" Background="Teal" Margin="3">
+            <Controls:Tile.Content>
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_email}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile.Content>
+        </Controls:Tile>            
         <Controls:Tile Title="Desktop" Style="{StaticResource LargeTileStyle}"  Margin="3">
-            <!--<Controls:Tile>
-                <Controls:Tile.Background>
-                    <ImageBrush ImageSource="/Images/windows8.ico"  />
-                </Controls:Tile.Background>
-            </Controls:Tile>-->
+            <Controls:Tile.Content>
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_os_windows_8}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile.Content>
         </Controls:Tile>
-        <Controls:Tile Title="Finance" Style="{StaticResource LargeTileStyle}" Background="Green" />
-        <Controls:Tile Title="People" Style="{StaticResource LargeTileStyle}" Background="#D2691E" />
-        <Controls:Tile Title="Weather" Style="{StaticResource LargeTileStyle}" Background="#1E90FF" />
-        <Controls:Tile Title="Weather" Style="{StaticResource SmallTileStyle}" Background="#1E90FF" />
-        <Controls:Tile Title="Store" Style="{StaticResource SmallTileStyle}" Background="Green" />
+        <Controls:Tile x:Name="ShowYahooMultiTabsScreen" Title="Finance" Style="{StaticResource LargeTileStyle}" Background="Green">
+            <Controls:Tile.Content>
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_social_yahoo}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile.Content>
+        </Controls:Tile>
+        <Controls:Tile x:Name="ShowTwitterMultiTabsScreen" Title="twitter" Style="{StaticResource LargeTileStyle}" Background="#D2691E">
+            <Controls:Tile.Content>
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_twitter_bird}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile.Content>
+        </Controls:Tile>
+        <Controls:Tile x:Name="ShowClientServerMultiTabsScreen" Title="Network" Style="{StaticResource LargeTileStyle}" Background="#1E90FF">
+            <Controls:Tile.Content>
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_connect}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile.Content>
+        </Controls:Tile>
+        <Controls:Tile Title="Weather" Style="{StaticResource SmallTileStyle}" Background="#1E90FF">
+            <Controls:Tile.Content>
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_weather_overcast}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile.Content>
+        </Controls:Tile>
+        <Controls:Tile Title="Store" Style="{StaticResource SmallTileStyle}" Background="Green">
+            <Controls:Tile.Content>
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_store}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile.Content>
+        </Controls:Tile>
         <Controls:Tile Title="Store" Style="{StaticResource SmallTileStyle}" Background="Green" />
         <Controls:Tile Title="Store" Style="{StaticResource SmallTileStyle}" Background="Green" />
 
     </WrapPanel>
+
 </UserControl>
