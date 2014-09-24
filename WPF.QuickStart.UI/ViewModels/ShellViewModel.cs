@@ -11,6 +11,7 @@ using WPF.QuickStart.UI.ViewModels.Yahoo;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Media;
+using WPF.QuickStart.UI.ViewModels.WinOs;
 
 namespace WPF.QuickStart.UI.ViewModels
 {
@@ -112,7 +113,7 @@ namespace WPF.QuickStart.UI.ViewModels
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            ShowYahooMultiTabsScreen("Twitter");
+            ShowTwitterMultiTabsScreen("Windows8");
         }
 
         public bool CanSayHello
@@ -134,6 +135,11 @@ namespace WPF.QuickStart.UI.ViewModels
         {
             ActivateItem(new ChildViewModel(content, _eventAgg, _windowManager));
         }
+
+        public void ShowWindowsOsMultiTabsScreen(string content)
+        {
+            ActivateItem(new WinOsViewModel(content, _eventAgg, _windowManager));
+        }        
 
         public void Handle(StatusEvent status)
         {

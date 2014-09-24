@@ -22,12 +22,13 @@ namespace WPF.QuickStart.UI.ViewModels.Common
         #region Constructor
 
         [ImportingConstructor()]
-        protected ExtendedScreen(IEventAggregator eventAgg, IWindowManager windowManager)
+        protected ExtendedScreen(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
         {
             IsBusy = false;
             _eventAgg = eventAgg;
             _eventAgg.Subscribe(this);
             _windowManager = windowManager;
+            DisplayName = displayName;
         }
 
         #endregion

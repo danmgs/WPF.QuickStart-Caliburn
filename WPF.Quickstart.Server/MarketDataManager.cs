@@ -22,6 +22,13 @@ namespace WPF.Quickstart.Server
         {
             Logger.Info(string.Format("MarketDataManager({0}) Created...", GetHashCode()));
             m_pIClientCallback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
+            OperationContext.Current.Channel.Faulted += new EventHandler(FaultedHandler);
+        }
+
+        private void FaultedHandler(object sender, EventArgs e)
+        {
+            Logger.Warn(string.Format("Detect client disconnection"));
+            throw new NotImplementedException();
         }
 
         public StringCollection GetDataSourceList()
@@ -50,6 +57,7 @@ namespace WPF.Quickstart.Server
         {
             while (true)
             {
+                Logger.Warn(string.Format("GetRandomTweet('{0}')", keyword));
                 Tweet t = SearchRandomTweet(keyword);
                 m_pIClientCallback.PullRandomTweet(t);
                 Thread.Sleep(Convert.ToInt32(AppSettings.WCFService.MarketData.RefreshFrequency.Tweet));

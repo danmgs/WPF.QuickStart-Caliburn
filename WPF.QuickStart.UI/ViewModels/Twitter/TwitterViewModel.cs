@@ -24,9 +24,8 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
     {
         [ImportingConstructor()]
         public TwitterViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
-			: base(eventAgg, windowManager)
+            : base(displayName, eventAgg, windowManager)
 		{
-            base.DisplayName = displayName;
             
         }
         protected override void OnInitialize()

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,9 @@ using WPFQuickstart.Core.Utils;
 
 namespace WPF.QuickStart.UI.ViewModels.Yahoo
 {
-    public class HistoricalQuoteViewModel : ExtendedScreen
+    //[Export("HistoricalQuoteViewModel", typeof(IHistoricalQuoteViewModel))]
+    [Export(typeof(HistoricalQuoteViewModel))]
+    public class HistoricalQuoteViewModel : ExtendedScreen, IHistoricalQuoteViewModel
     {
         private const string _dateformat = "yyyy-MM-dd";
 
@@ -63,7 +66,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             {
                 _securityCode = value;
                 this.NotifyOfPropertyChange(() => SecurityCode);
-                this.NotifyOfPropertyChange(() => CanLoadHistoricalData);                
+                this.NotifyOfPropertyChange(() => CanLoad);                
             }
         }
 
@@ -78,7 +81,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             {
                 _startDate = value;
                 this.NotifyOfPropertyChange(() => StartDate);
-                this.NotifyOfPropertyChange(() => CanLoadHistoricalData);
+                this.NotifyOfPropertyChange(() => CanLoad);
             }
         }
 
@@ -93,7 +96,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             {
                 _endDate = value;
                 this.NotifyOfPropertyChange(() => EndDate);
-                this.NotifyOfPropertyChange(() => CanLoadHistoricalData);
+                this.NotifyOfPropertyChange(() => CanLoad);
             }
         }
 
@@ -120,14 +123,14 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             {
                 _priceTypeOptions = value;
                 this.NotifyOfPropertyChange(() => PriceTypeOptions);
-                LoadHistoricalData();
+                Load();
             }
         }
 
+        //[ImportingConstructor]
         public HistoricalQuoteViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
-			: base(eventAgg, windowManager)
+            : base(displayName, eventAgg, windowManager)
 		{
-            base.DisplayName = displayName;
         }
 
         protected override void OnInitialize()
@@ -181,9 +184,9 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             ChartQuotePointsList = new ObservableCollection<DataPoint>(list);
         }
 
-        public void LoadHistoricalData()
+        public void Load()
         {
-            if (!CanLoadHistoricalData)
+            if (!CanLoad)
             {
                 return;
             }
@@ -219,7 +222,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
             IsBusy = false;
         }
 
-        public bool CanLoadHistoricalData
+        public bool CanLoad
         {
             get { return !string.IsNullOrWhiteSpace(SecurityCode) && (StartDate <= EndDate) && (EndDate <= DateTime.Today); }
         }
@@ -242,4 +245,6 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
 
         public int Number { get; set; }
     }
+
+    public interface IHistoricalQuoteViewModel { }
 }

@@ -101,9 +101,8 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
         }
 
 		public ChildViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
-			: base(eventAgg, windowManager)
+            : base(displayName, eventAgg, windowManager)
 		{
-            base.DisplayName = displayName;
         }
 
         protected override void OnInitialize()

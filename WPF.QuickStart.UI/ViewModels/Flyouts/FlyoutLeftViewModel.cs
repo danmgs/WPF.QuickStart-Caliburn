@@ -1,8 +1,10 @@
 ﻿using MahApps.Metro.Controls;
+using System.ComponentModel.Composition;
 
 namespace WPF.QuickStart.UI.ViewModels.Flyouts
 {
-    public class FlyoutLeftViewModel : FlyoutBaseViewModel
+    [Export(typeof(IFlyoutLeftViewModel))]
+    public class FlyoutLeftViewModel : FlyoutBaseViewModel, IFlyoutLeftViewModel
     {
         public FlyoutLeftViewModel()
         {
@@ -10,4 +12,6 @@ namespace WPF.QuickStart.UI.ViewModels.Flyouts
             this.Position = Position.Left;
         }
     }
+
+    public interface IFlyoutLeftViewModel { }
 }

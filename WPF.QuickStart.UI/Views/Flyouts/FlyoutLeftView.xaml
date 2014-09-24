@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Caliburn.Metro.Demo.Views.Flyouts.FlyoutLeftView"
+﻿<UserControl x:Class="WPF.QuickStart.UI.Views.Flyouts.FlyoutLeftView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

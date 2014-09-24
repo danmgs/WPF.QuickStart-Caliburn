@@ -15,9 +15,8 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
     public class WatchListViewModel : ExtendedScreen
     {
         public WatchListViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
-			: base(eventAgg, windowManager)
+            : base(displayName, eventAgg, windowManager)
 		{
-            base.DisplayName = displayName;
         }
 
         public string _securityCode;

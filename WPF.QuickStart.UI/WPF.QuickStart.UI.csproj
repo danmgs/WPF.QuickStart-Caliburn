@@ -179,6 +179,8 @@
     <Compile Include="Utils\TwitterHelperWrapper.cs" />
     <Compile Include="ViewModels\Flyouts\FlyoutLeftViewModel.cs" />
     <Compile Include="ViewModels\Flyouts\FlyoutBaseViewModel.cs" />
+    <Compile Include="ViewModels\WinOs\WinOsChildViewModel.cs" />
+    <Compile Include="ViewModels\WinOs\WinOsViewModel.cs" />
     <Compile Include="ViewModels\Yahoo\ChildTabYahooViewModel.cs" />
     <Compile Include="ViewModels\Yahoo\HistoricalQuoteViewModel.cs" />
     <Compile Include="ViewModels\Twitter\ITwitterViewModel.cs" />
@@ -202,8 +204,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\Common\Controls\TextBoxWatermarked.cs" />
+    <Compile Include="Views\Common\Controls\Yahoo\YahooInputControl.cs" />
+    <Compile Include="Views\Flyouts\FlyoutLeftView.xaml.cs">
+      <DependentUpon>FlyoutLeftView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WinOs\WinOsChildView.xaml.cs">
+      <DependentUpon>WinOsChildView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Charts.xaml">
       <SubType>Designer</SubType>
@@ -221,6 +230,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\ControlTemplates\Yahoo\YahooInputControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -234,10 +247,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Flyouts\FlyoutLeftView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Windows8.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,10 +266,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Yahoo\HistoricalQuoteView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Twitter\TwitterSummaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,7 +274,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\WinOs\WinOsChildView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WinOs\WinOsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Yahoo\ChildTabYahooView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Yahoo\HistoricalQuoteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -417,8 +434,10 @@
   <ItemGroup>
     <Resource Include="icontwitter.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\windows8.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(XamlSpyInstallPath)MSBuild\FirstFloor.XamlSpy.WPF.targets" Condition="'$(XamlSpyInstallPath)' != '' and '$(Configuration)' == 'DEBUG'" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

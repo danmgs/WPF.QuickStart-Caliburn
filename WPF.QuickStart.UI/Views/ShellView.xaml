@@ -199,6 +199,26 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>                        
                     </Button>
+                    <Button Width="50"
+                    Height="50"
+                    Margin="0, 10, 0, 0"
+                    Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_os_windows_8}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <cal:ActionMessage MethodName="ShowWindowsOsMultiTabsScreen">
+                                    <cal:Parameter Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>

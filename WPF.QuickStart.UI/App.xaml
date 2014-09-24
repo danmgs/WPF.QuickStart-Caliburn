@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="/Resources/ControlTemplates/MyCustomControl.xaml"/>
                 <ResourceDictionary Source="/Resources/ControlTemplates/DialogControl.xaml"/>
                 <ResourceDictionary Source="/Resources/ControlTemplates/BusyIndicator.xaml"/>
+                <ResourceDictionary Source="/Resources/ControlTemplates/Yahoo/YahooInputControl.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

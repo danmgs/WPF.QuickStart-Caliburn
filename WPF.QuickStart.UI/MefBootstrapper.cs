@@ -10,6 +10,7 @@
     using System.Windows;
     using WPF.QuickStart.UI.ViewModels;
     using WPF.QuickStart.UI.ViewModels.Twitter;
+    using WPF.QuickStart.UI.ViewModels.Yahoo;
 
     public class MefBootstrapper : BootstrapperBase
     {
@@ -42,6 +43,13 @@
 
         protected override object GetInstance(Type serviceType, string key)
         {
+            // Custom Management for Custom Controls Binding with Caliburn.
+            if (serviceType == null && !string.IsNullOrWhiteSpace(key))
+            {
+                serviceType = Type.GetType(key);
+                key = null;
+            }
+
             var contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(serviceType) : key;
             var exports = container.GetExportedValues<object>(contract);
 

@@ -21,9 +21,8 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
         List<string> TwitterScreenNames { get; set; }
 
         public TwitterSummaryViewModel(string displayName, IEventAggregator eventAgg, IWindowManager windowManager)
-            : base(eventAgg, windowManager)
+            : base(displayName, eventAgg, windowManager)
         {
-            base.DisplayName = displayName;
         }
 
         protected override void OnInitialize()
