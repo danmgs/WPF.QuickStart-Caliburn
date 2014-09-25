@@ -21,7 +21,7 @@
     </UserControl.Resources>
 
     <WrapPanel Width="950" Height="700" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Top">
-        <Controls:Tile Title="Mail" Style="{StaticResource LargeTileStyle}" Background="Teal" Margin="3">
+        <Controls:Tile x:Name="GoGmail" Title="Mail" Style="{StaticResource LargeTileStyle}" Background="Teal" Margin="3">
             <Controls:Tile.Content>
                 <Rectangle Width="20"
                            Height="20"

@@ -39,6 +39,11 @@ namespace WPF.QuickStart.UI.ViewModels.WinOs
 
         #region Methods
 
+        public void GoGmail()
+        {
+            System.Diagnostics.Process.Start("https://mail.google.com");
+        }
+
         public void ShowTwitterMultiTabsScreen(string content)
         {
             PublishActivateScreenEvent(TypeView.Twitter);

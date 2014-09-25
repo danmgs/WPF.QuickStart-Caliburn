@@ -15,6 +15,7 @@ using System.ComponentModel.Composition;
 using WPF.Quickstart.Data.Mocks;
 using System.ComponentModel;
 using System.Windows.Data;
+using WPF.QuickStart.UI.Views.Twitter;
 
 namespace WPF.QuickStart.UI.ViewModels.Twitter
 {
@@ -139,7 +140,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
         {
             IsBusy = true;
             int? selectedCountValue = CountElements.CurrentItem as int?;
-            PublishStatusEvent(string.Format("Begin loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName));
+            PublishStatusEvent(string.Format("Begin loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName), true);
             var context = TaskScheduler.FromCurrentSynchronizationContext();
 
             try
@@ -181,7 +182,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
         public void Search()
         {
             IsBusy = true;
-            PublishStatusEvent(string.Format("Begin search with keyword {0} ...", Keyword));
+            PublishStatusEvent(string.Format("Begin search with keyword {0} ...", Keyword), true);
             var context = TaskScheduler.FromCurrentSynchronizationContext();
 
             try
@@ -210,6 +211,13 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                 PublishStatusEvent(message);
                 IsBusy = false;
             }
+        }
+
+        public void ShowAdvancedSearch()
+        {
+            var w = new TwitterSearchInterop();
+            w.Browser. Navigate(new Uri(string.Format("https://twitter.com/search?q={0}", Keyword)));
+            w.Show();
         }
 
         private void ShowNotFoundTweet(IEnumerable<Tweet> tweets)

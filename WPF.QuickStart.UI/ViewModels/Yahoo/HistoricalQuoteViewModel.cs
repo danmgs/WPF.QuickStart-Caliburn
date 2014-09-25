@@ -191,7 +191,7 @@ namespace WPF.QuickStart.UI.ViewModels.Yahoo
                 return;
             }
 
-            PublishStatusEvent("Begin Load historical data");
+            PublishStatusEvent("Begin Load historical data", true);
             IsBusy = true;
             MyCollectionItems.Clear();
 

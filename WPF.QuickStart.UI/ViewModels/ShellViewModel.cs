@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Windows.Media;
 using WPF.QuickStart.UI.ViewModels.WinOs;
 using WPF.QuickStart.UI.Utils.Enum;
+using WPF.QuickStart.UI.Views.Common;
 
 namespace WPF.QuickStart.UI.ViewModels
 {
@@ -93,6 +94,17 @@ namespace WPF.QuickStart.UI.ViewModels
             }
         }
 
+        bool _isLoading;
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
+                this.NotifyOfPropertyChange(() => IsLoading);
+            }
+        }
 
         bool _isSettingsFlyoutOpen;
 
@@ -143,6 +155,7 @@ namespace WPF.QuickStart.UI.ViewModels
         public void Handle(StatusEvent status)
         {
             StatusBarContent = string.Format("Status : {0} ", status.Content);
+            IsLoading = status.IsLoading;
         }
 
         public void Handle(ActivateScreenEvent ev)
@@ -165,25 +178,14 @@ namespace WPF.QuickStart.UI.ViewModels
 
         #region Menu Commands
 
-        public void GoGitHub()
+        public void OpenBrowser(string url)
         {
-            System.Diagnostics.Process.Start("https://github.com/danmgs/WPF.QuickStart-Caliburn");
-        }
-
-        public void GoYahoo()
-        {
-            System.Diagnostics.Process.Start("https://yahoo.com");
-        }
-
-        public void GoTwitter()
-        {
-            System.Diagnostics.Process.Start("https://twitter.com");
+            System.Diagnostics.Process.Start(url);
         }
 
         public void ShowSettings()
         {
             IsSettingsFlyoutOpen = true;
-            //this.ToggleFlyout(0);
         }
 
         #endregion

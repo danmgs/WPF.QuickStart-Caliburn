@@ -26,7 +26,8 @@
                         MinWidth="1000"
                         Width="Auto"                      
                         Visibility="{Binding Quotes.Count, Converter={StaticResource intToVisibilityConverter}}"
-                  AutoGenerateColumns="True" />
+                        AutoGenerateColumns="True"
+                        Style="{DynamicResource AzureDataGrid}" />
             <xctk:BusyIndicator IsBusy="{Binding IsBusy}" />
         </Grid>
 

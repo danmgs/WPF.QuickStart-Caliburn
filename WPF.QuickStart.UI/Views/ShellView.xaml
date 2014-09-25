@@ -56,7 +56,7 @@
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button cal:Message.Attach="ShowWindowsOsMultiTabsScreen('Home')"
-                    ToolTip="home">
+                    ToolTip="Home">
                 <Rectangle Width="22"
                            Height="22"
                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -67,7 +67,7 @@
                 </Rectangle>
             </Button>
             <Button Content="Settings" cal:Message.Attach="ShowSettings" />
-            <Button cal:Message.Attach="GoGitHub"
+            <Button cal:Message.Attach="OpenBrowser('https://github.com/danmgs/WPF.QuickStart-Caliburn')"
                     ToolTip="View project on GitHub">
                 <Rectangle Width="22"
                            Height="22"
@@ -78,7 +78,7 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <Button ToolTip="Go Yahoo!" cal:Message.Attach="GoYahoo">
+            <Button ToolTip="Go Yahoo!" cal:Message.Attach="OpenBrowser('https://yahoo.com')">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20"
                    Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -92,7 +92,7 @@
                    Text="Yahoo !" />
                 </StackPanel>
             </Button>
-            <Button ToolTip="Go Twitter" cal:Message.Attach="GoTwitter">
+            <Button ToolTip="Go Twitter" cal:Message.Attach="OpenBrowser('https://twitter.com')">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20"
                    Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -242,10 +242,15 @@
                     <Rectangle.Resources>
                     </Rectangle.Resources>
                     <Rectangle.Fill>
-                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_book_open_information}" />
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_rss}" />
                     </Rectangle.Fill>
                 </Rectangle>
-                <TextBlock x:Name="StatusBar" DockPanel.Dock="Bottom" Text="{Binding StatusBarContent}" Style="{StaticResource StatusBar}" />
+                <TextBlock x:Name="StatusBar" Text="{Binding StatusBarContent}" Style="{StaticResource StatusBar}" />
+                <Controls:ProgressRing
+                                       HorizontalAlignment="Right"
+                                       IsActive="{Binding IsLoading}"
+                                       Width="20"
+                                       Height="20" />
             </StackPanel>
         </Border>
 

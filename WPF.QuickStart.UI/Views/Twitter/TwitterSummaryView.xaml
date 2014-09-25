@@ -16,10 +16,13 @@
         <Grid Width="500" HorizontalAlignment="Center" Margin="20">
 
             <Grid Visibility="{Binding Tweets.Count >, Converter={StaticResource intToVisibilityConverter}}">
-                <ListView ItemsSource="{Binding Tweets}">
+                <ListView x:Name="listTweets" 
+                          ItemsSource="{Binding Tweets}" 
+                          cal:Message.Attach="[Event MouseDoubleClick] = [Action ShowTwitterProfile($this, $eventArgs)]">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" 
+                                    Cursor="Hand" ToolTip="Double-click to view on Twitter"
                                     Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource metroBackgroundConverter}}">
                                 <Grid x:Name="statusBox" Height="auto" Width="auto">
                                     <Grid.ColumnDefinitions>
@@ -29,7 +32,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
-                                    <Image Source="{Binding Path=UserProfileImageUrl}" Grid.Column="0" Grid.Row="0" x:Name="userImage"/>
+                                    <Image Source="{Binding Path=UserProfileImageUrl}" Grid.Column="0" Grid.Row="0" />
                                     <Label Margin="8,0,8,0" x:Name="status" Grid.Column="1">
                                         <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=Text}"></TextBlock>
                                     </Label>

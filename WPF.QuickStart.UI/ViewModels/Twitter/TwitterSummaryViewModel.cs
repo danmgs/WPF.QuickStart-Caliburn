@@ -13,6 +13,9 @@ using System.Net;
 using WPF.QuickStart.UI.ViewModels.Common.Dialog;
 using System.ComponentModel.Composition;
 using WPF.Quickstart.Data.Mocks;
+using WPF.QuickStart.UI.Views.Common;
+using System.Windows.Input;
+using System.Windows.Controls.Primitives;
 
 namespace WPF.QuickStart.UI.ViewModels.Twitter
 {
@@ -54,7 +57,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
 
         public void Load()
         {
-            PublishStatusEvent(string.Format("Begin loading tweets ..."));
+            PublishStatusEvent(string.Format("Begin loading tweets ..."), true);
             IsBusy = true;
             var context = TaskScheduler.FromCurrentSynchronizationContext();
             List<Tweet> tmpTweetList = new List<Tweet>();
@@ -88,6 +91,15 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     NotificationType = NotificationType.Error
                 });
                 PublishStatusEvent(message);
+            }
+        }
+
+        public void ShowTwitterProfile(object sender, MouseButtonEventArgs e)
+        {
+            var tweet = sender as Tweet;
+            if (tweet != null && tweet.ScreenName != null)
+            {
+                System.Diagnostics.Process.Start(string.Format("https://twitter.com/{0}", tweet.ScreenName));
             }
         }
 

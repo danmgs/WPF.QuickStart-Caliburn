@@ -51,11 +51,12 @@ namespace WPF.QuickStart.UI.ViewModels.Common
 
         #region Methods
 
-        protected virtual void PublishStatusEvent(string content)
+        protected virtual void PublishStatusEvent(string content, bool isLoading = false)
         {
             var ev = new StatusEvent()
             {
-                Content = content
+                Content = content,
+                IsLoading = isLoading
             };
             _eventAgg.PublishOnUIThread(ev);
         }
