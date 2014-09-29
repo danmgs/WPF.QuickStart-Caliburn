@@ -9,6 +9,7 @@ WPF quickstart caliburn is a ready-to-use project that uses :
 - [Caliburn.Micro](https://github.com/Caliburn-Micro/Caliburn.Micro) *to setup MVVM*
 - [Twitter API](https://dev.twitter.com/)
 - [Yahoo! Finance API](https://code.google.com/p/yahoo-finance-managed/wiki/YahooFinanceAPIs)
+- [NY Times API](http://developer.nytimes.com/)
 
 ##INSTALLATION NOTES
 

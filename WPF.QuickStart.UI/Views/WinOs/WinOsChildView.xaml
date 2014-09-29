@@ -105,7 +105,18 @@
                 </Rectangle>
             </Controls:Tile.Content>
         </Controls:Tile>
-        <Controls:Tile Title="Store" Style="{StaticResource SmallTileStyle}" Background="Green" />
+        <Controls:Tile x:Name="ShowNYTimesMultiTabsScreen" Title="NYTimes" Style="{StaticResource LargeTileStyle}" Background="#D2150E">
+            <Controls:Tile.Content>
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_newspaper}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile.Content>
+        </Controls:Tile>    
         <Controls:Tile Title="Store" Style="{StaticResource SmallTileStyle}" Background="Green" />
 
     </WrapPanel>

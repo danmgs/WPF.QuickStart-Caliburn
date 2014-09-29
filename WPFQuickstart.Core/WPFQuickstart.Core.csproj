@@ -69,10 +69,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utils\Api\IProvider.cs" />
     <Compile Include="Utils\ColorHelper.cs" />
+    <Compile Include="Utils\Api\NYTimes\NYTimesHelper.cs" />
     <Compile Include="Utils\PriceTypeOptions.cs" />
     <Compile Include="Utils\StringHelper.cs" />
-    <Compile Include="Utils\Twitter\TwitterHelper.cs" />
+    <Compile Include="Utils\Api\Twitter\TwitterHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

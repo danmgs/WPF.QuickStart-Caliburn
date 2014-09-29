@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WPF.Quickstart.Model.Twitter;
 using WPF.QuickStart.UI.ViewModels.Common;
-using WPF.QuickStart.UI.Utils.Twitter;
+using WPF.QuickStart.UI.Utils.Api.Twitter;
 using WPF.QuickStart.UI.Utils;
 using System.Windows.Controls;
 using System.Net;
@@ -152,7 +152,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     Tweets = new BindableCollection<Tweet>(tweets);
                 }).ContinueWith(previousTask =>
                 {
-                    PublishStatusEvent(string.Format("End loading {0} tweets from profile '{1}'...", selectedCountValue, ScreenName));
+                    PublishStatusEvent(string.Format("End loading {0} tweets from profile '{1}'", selectedCountValue, ScreenName));
                     ShowNotFoundTweet(Tweets);
                     IsBusy = false;
                 }, context);
@@ -160,7 +160,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
             catch(WebException ex)
             {
                 IsBusy = false;
-                var message = string.Format("Profile '{0}' not found ... : {1}", ScreenName, ex.Message);
+                var message = string.Format("Profile '{0}' not found : {1}", ScreenName, ex.Message);
                 _windowManager.ShowDialog(new DialogViewModel()
                 {
                     Text = String.Format(message),
@@ -194,7 +194,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                     Tweets = new BindableCollection<Tweet>(tweets);
                 }).ContinueWith(previousTask =>
                 {
-                    PublishStatusEvent(string.Format("End search with keyword {0} ...", Keyword));
+                    PublishStatusEvent(string.Format("End search with keyword {0}", Keyword));
                     IsBusy = false;
                     ShowNotFoundTweet(Tweets);
                 }, context);

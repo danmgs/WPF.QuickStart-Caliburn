@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF.QuickStart.UI.Utils.Enum
+namespace WPFQuickstart.Core.Utils.Api
 {
-    public enum TypeView
+    public interface IProvider
     {
-        Twitter,
-        Yahoo,
-        ClientServer,
-        NYTimes
+        string GetJsonFrom(string url);
     }
 }

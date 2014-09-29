@@ -1,19 +1,17 @@
 using Caliburn.Micro;
 using MahApps.Metro;
-using System.ComponentModel.Composition;
-using System.Windows;
-using WPF.QuickStart.UI.Events;
-using WPF.QuickStart.UI.Utils.Themes;
-using WPF.QuickStart.UI.ViewModels;
-using WPF.QuickStart.UI.ViewModels.ClientServer;
-using WPF.QuickStart.UI.ViewModels.Twitter;
-using WPF.QuickStart.UI.ViewModels.Yahoo;
-using System.Linq;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
 using System.Windows.Media;
-using WPF.QuickStart.UI.ViewModels.WinOs;
+using WPF.QuickStart.UI.Events;
 using WPF.QuickStart.UI.Utils.Enum;
-using WPF.QuickStart.UI.Views.Common;
+using WPF.QuickStart.UI.Utils.Themes;
+using WPF.QuickStart.UI.ViewModels.ClientServer;
+using WPF.QuickStart.UI.ViewModels.NYTimes;
+using WPF.QuickStart.UI.ViewModels.Twitter;
+using WPF.QuickStart.UI.ViewModels.WinOs;
 
 namespace WPF.QuickStart.UI.ViewModels
 {
@@ -128,25 +126,10 @@ namespace WPF.QuickStart.UI.ViewModels
             ShowWindowsOsMultiTabsScreen("Windows8");
         }
 
-        public void ShowTwitterMultiTabsScreen(string content)
-        {
-            ActivateItem(new ChildTabTwitterViewModel(content, _eventAgg, _windowManager));
-        }
-
-        public void ShowYahooMultiTabsScreen(string content)
-        {
-            ActivateItem(new ChildTabYahooViewModel(content, _eventAgg, _windowManager));
-        }
-
-        public void ShowClientServerMultiTabsScreen(string content)
-        {
-            ActivateItem(new ChildViewModel(content, _eventAgg, _windowManager));
-        }
-
         public void ShowWindowsOsMultiTabsScreen(string content)
         {
             ActivateItem(new WinOsViewModel(content, _eventAgg, _windowManager));
-        }        
+        }
 
         #endregion
 
@@ -171,6 +154,11 @@ namespace WPF.QuickStart.UI.ViewModels
                 case TypeView.Yahoo:
                     ActivateItem(new ChildTabYahooViewModel(TypeView.Yahoo.ToString(), _eventAgg, _windowManager));
                     break;
+                case TypeView.NYTimes:
+                    ActivateItem(new NewsViewModel(TypeView.NYTimes.ToString(), _eventAgg, _windowManager));
+                    break;
+                default:
+                    throw new NotImplementedException();
             }
         }
 

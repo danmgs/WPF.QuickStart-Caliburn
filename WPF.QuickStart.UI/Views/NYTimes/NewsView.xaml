@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPF.QuickStart.UI.Views.Twitter.TwitterSummaryView"
+﻿<UserControl x:Class="WPF.QuickStart.UI.Views.NYTimes.NewsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:cal="http://www.caliburnproject.org"   
@@ -11,14 +11,14 @@
 
     <DockPanel>
 
-        <TextBlock Text="NY Times, what's New ?" Style="{StaticResource noteHeaderStyle}" HorizontalAlignment="Center" DockPanel.Dock="Top" />
+        <TextBlock Text="NY Times - What's New?" Style="{StaticResource noteHeaderStyle}" HorizontalAlignment="Center" DockPanel.Dock="Top" />
 
         <Grid Width="500" HorizontalAlignment="Center" Margin="20">
 
-            <Grid Visibility="{Binding Tweets.Count >, Converter={StaticResource intToVisibilityConverter}}">
-                <ListView x:Name="listTweets" 
-                          ItemsSource="{Binding News}">
-                    <!--cal:Message.Attach="[Event MouseDoubleClick] = [Action ShowTwitterProfile($this, $eventArgs)]">
+            <Grid Visibility="{Binding News.Count >, Converter={StaticResource intToVisibilityConverter}}">
+                <ListView x:Name="listNews" 
+                          ItemsSource="{Binding News}"> 
+                          <!--cal:Message.Attach="[Event MouseDoubleClick] = [Action ShowTwitterProfile($this, $eventArgs)]">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" 
@@ -40,12 +40,32 @@
                             </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="400" Height="75" CornerRadius="10,10,10,10" Margin="4,4,4,4" Padding="4,4,4,4" 
+                                    Cursor="Hand" ToolTip="Double-click to view on NYTimes"
+                                    Background="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource metroBackgroundConverter}}">
+                                <Grid x:Name="newsBox" Height="auto" Width="auto">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Label Margin="8,0,8,0" x:Name="snippet">
+                                        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=snippet}"></TextBlock>
+                                    </Label>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </Grid>
 
-        <xctk:BusyIndicator IsBusy="{Binding IsBusy}" Background="Transparent" BorderThickness="0" />
+            <xctk:BusyIndicator IsBusy="{Binding IsBusy}" Background="Transparent" BorderThickness="0" />
         </Grid>
-        
+
 
     </DockPanel>
 </UserControl>
+    

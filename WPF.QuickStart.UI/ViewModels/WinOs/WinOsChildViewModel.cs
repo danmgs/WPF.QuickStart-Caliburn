@@ -59,6 +59,11 @@ namespace WPF.QuickStart.UI.ViewModels.WinOs
             PublishActivateScreenEvent(TypeView.ClientServer);
         }
 
+        public void ShowNYTimesMultiTabsScreen(string content)
+        {
+            PublishActivateScreenEvent(TypeView.NYTimes);
+        }
+        
         protected virtual void PublishActivateScreenEvent(TypeView typeView)
         {
             _eventAgg.PublishOnUIThread(new ActivateScreenEvent() { TypeView = typeView });

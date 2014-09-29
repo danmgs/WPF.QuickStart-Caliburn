@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using WPF.Quickstart.Model.Twitter;
-using WPF.QuickStart.UI.Utils.Twitter;
+using WPF.QuickStart.UI.Utils.Api.Twitter;
 
 namespace WPF.Quickstart.Server
 {

@@ -14,6 +14,20 @@ namespace WPF.QuickStart.UI
             }
         }
 
+        public static class Nytimes
+        {
+            public static class Articles
+            {
+                public static class Search
+                {
+                    public static string ApiKey
+                    {
+                        get { return ConfigurationManager.AppSettings["Nytimes.Articles.Search.ApiKey"]; }
+                    }
+                }
+            }
+        }
+
         public static class Twitter
         {
             public static class OAuth

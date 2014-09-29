@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WPF.Quickstart.Model.Twitter;
 using WPF.QuickStart.UI.ViewModels.Common;
-using WPF.QuickStart.UI.Utils.Twitter;
+using WPF.QuickStart.UI.Utils.Api.Twitter;
 using WPF.QuickStart.UI.Utils;
 using System.Windows.Controls;
 using System.Net;
@@ -76,7 +76,7 @@ namespace WPF.QuickStart.UI.ViewModels.Twitter
                         Tweets.AddRange(tmpTweetList);
                     }).ContinueWith(previousTask =>
                     {
-                        PublishStatusEvent(string.Format("End loading tweets ..."));
+                        PublishStatusEvent(string.Format("End loading tweets"));
                         IsBusy = false;
                     }, context);
             }

@@ -9,10 +9,11 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using WPF.Quickstart.Model.Twitter;
+using WPFQuickstart.Core.Utils.Api;
 
-namespace WPF.QuickStart.UI.Utils.Twitter
+namespace WPF.QuickStart.UI.Utils.Api.Twitter
 {
-    public class TwitterHelper
+    public class TwitterHelper : IProvider
     {
         TwitAuthenticateResponse TwitAuthResponse { get; set; }
 
@@ -74,7 +75,7 @@ namespace WPF.QuickStart.UI.Utils.Twitter
             return twitAuthResponse;
         }
 
-        private string GetJsonFrom(string timelineUrl)
+        public string GetJsonFrom(string timelineUrl)
         {
             string timeLineJson = string.Empty;
             // Do the timeline
