@@ -1,6 +1,4 @@
-# WPF.QuickStart Caliburn - 2014
-
-*Designed by [@Daniel NGUYEN](https://www.linkedin.com/in/nguyendaniel)* :smirk_cat:
+# WPF.QuickStart Caliburn (2014)
 
 WPF quickstart caliburn is a ready-to-use project that uses :
 
@@ -98,15 +96,15 @@ http://stackoverflow.com/questions/833943/watermark-hint-text-placeholder-textbo
 
 ##ENCOUNTERED ISSUES :
 
-Pour les problèmes d'import dans le XAML de namespaces non reconnu lorsque les dll proviennent du WEB :
+Pour les problÃ¨mes d'import dans le XAML de namespaces non reconnu lorsque les dll proviennent du WEB :
 
 https://wpfanimatedgif.codeplex.com/discussions/392120
 
-Par ordre de priorité :
+Par ordre de prioritÃ© :
 
 1. **Si disponible, installer la dll via nugget manager.**
 
-2. **Ou bien, aller dans les propriétés de la dll => "Unblock"/"Débloquer".**
+2. **Ou bien, aller dans les propriÃ©tÃ©s de la dll => "Unblock"/"DÃ©bloquer".**
 
 3. **Ou bien, ajouter dans le .config du projet** :
 
