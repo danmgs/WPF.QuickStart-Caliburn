@@ -66,7 +66,7 @@ namespace WPF.Quickstart.Server
             {
                 serviceHost.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //CMarkerConfig.LogExcptn(ex);
             }

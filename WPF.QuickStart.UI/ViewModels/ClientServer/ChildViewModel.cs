@@ -137,7 +137,7 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
                     }
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
 
             }
@@ -208,7 +208,7 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
                         m_pMarketDataClient.Close();
                     }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Log(ex);
                 PublishStatusEvent("Error connecting to server ...");
@@ -230,7 +230,7 @@ namespace WPF.QuickStart.UI.ViewModels.ClientServer
                     Connected = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Log(ex);
                 var message = "Server is not reachable";

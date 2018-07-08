@@ -146,7 +146,7 @@ namespace WPF.QuickStart.UI.Utils.Api.Twitter
             {
                 resultSearchedTweets = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultSearchedTweet.RootObject>(urlResponseJson);
             }
-            catch(JsonException ex)
+            catch(JsonException)
             {
                 return null;
             }

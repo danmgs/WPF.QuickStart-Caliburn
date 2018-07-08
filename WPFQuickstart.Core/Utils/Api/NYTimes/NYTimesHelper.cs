@@ -50,7 +50,7 @@ namespace WPFQuickstart.Core.Utils.Api.NYTimes
             {
                 resultSearch = Newtonsoft.Json.JsonConvert.DeserializeObject<NYTimesResults.RootObject>(urlResponseJson);
             }
-            catch (JsonException ex)
+            catch (JsonException)
             {
                 return null;
             }
