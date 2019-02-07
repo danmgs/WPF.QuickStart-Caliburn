@@ -1,4 +1,4 @@
-# WPF.QuickStart Caliburn (2014)
+# WPF.QuickStart-Caliburn [![Build Status](https://travis-ci.org/danmgs/WPF.QuickStart-Caliburn.svg?branch=master)](https://travis-ci.org/danmgs/WPF.QuickStart-Caliburn)
 
 WPF quickstart caliburn is a ready-to-use project that uses :
 
