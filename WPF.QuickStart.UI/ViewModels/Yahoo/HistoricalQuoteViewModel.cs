@@ -1,16 +1,10 @@
 ﻿using Caliburn.Micro;
 using OxyPlot;
 using OxyPlot.Axes;
-using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
 using WPF.Quickstart.Model.Yahoo;
 using WPF.QuickStart.UI.ViewModels.Common;
 using WPF.QuickStart.UI.ViewModels.Common.Dialog;

@@ -1,17 +1,13 @@
-﻿using Common.Logging;
+﻿using log4net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WPF.Quickstart.Server
 {
     class Program
     {
-        static ILog Logger = LogManager.GetCurrentClassLogger();
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
         static void Main(string[] args)
         {            
@@ -22,23 +18,22 @@ namespace WPF.Quickstart.Server
                 // Service htpp address
                 //CMarkerConfig.LogInfo("Creating URI...");
                 
-                Logger.Debug("Creating URI...");
-                Logger.Debug(string.Format("Creating URI at url '{0}'", AppSettings.WCFService.MarketData.Url));
+                log.Debug("Creating URI...");
+                log.Debug(string.Format("Creating URI at url '{0}'", AppSettings.WCFService.MarketData.Url));
                 Uri baseAddress = new Uri(AppSettings.WCFService.MarketData.Url);
 
                 // Create new WCF Service host
-                Logger.Debug("Creating ServiceHost...");
+                log.Debug("Creating ServiceHost...");
                 serviceHost = new ServiceHost(typeof(MarketDataManager), baseAddress);
-
 
                 // Add the htpp end point 
                 NetTcpBinding pNetTcpBinding = new NetTcpBinding(SecurityMode.Transport);
 
-                Logger.Debug("Adding Endpoint...");
+                log.Debug("Adding Endpoint...");
                 serviceHost.AddServiceEndpoint(typeof(IMarketData), pNetTcpBinding, baseAddress);
 
                 // Add the Metadata
-                Logger.Debug(string.Format("Adding Metadata behavior at url '{0}'", AppSettings.WCFService.MarketData.Metadata.Url));
+                log.Debug(string.Format("Adding Metadata behavior at url '{0}'", AppSettings.WCFService.MarketData.Metadata.Url));
                 ServiceMetadataBehavior servicemetadatabehavior = new ServiceMetadataBehavior();
                 servicemetadatabehavior.HttpGetEnabled = true;
                 servicemetadatabehavior.HttpGetUrl = new Uri(AppSettings.WCFService.MarketData.Metadata.Url);                
@@ -46,7 +41,7 @@ namespace WPF.Quickstart.Server
                 serviceHost.Description.Behaviors.Add(servicemetadatabehavior);
 
                 // Open Host
-                Logger.Debug("Open the service host...");
+                log.Debug("Open the service host...");
                 serviceHost.Open();
             }
             catch (CommunicationException ex)

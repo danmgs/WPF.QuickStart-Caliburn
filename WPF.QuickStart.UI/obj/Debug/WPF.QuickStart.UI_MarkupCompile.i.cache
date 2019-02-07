@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Apps\GIT\WPF.QuickStart-Caliburn\WPF.QuickStart.UI\App.xaml
-22884729991
+24-466847154
 
-54-463593818
-931581356047
-Resources\Charts.xaml;Resources\ControlTemplates\BusyIndicator.xaml;Resources\ControlTemplates\MyCustomControl.xaml;Resources\ControlTemplates\DialogControl.xaml;Resources\ControlTemplates\Yahoo\YahooInputControl.xaml;Resources\Icons.xaml;Resources\MahApp.Metro.xaml;Resources\Shared.xaml;Views\NYTimes\NewsView.xaml;Views\Twitter\TwitterSearchInterop.xaml;Views\Flyouts\FlyoutLeftView.xaml;Views\Twitter\ChildTabTwitterView.xaml;Views\ClientServer\ChildView.xaml;Views\Common\Dialog\DialogView.xaml;Views\ShellView.xaml;Views\Twitter\TwitterSummaryView.xaml;Views\Twitter\TwitterView.xaml;Views\WinOs\WinOsChildView.xaml;Views\WinOs\WinOsView.xaml;Views\Yahoo\ChildTabYahooView.xaml;Views\Yahoo\HistoricalQuoteView.xaml;Views\Yahoo\WatchListView.xaml;
+55-1028292709
+1471640263746
+Resources\Charts.xaml;Resources\ControlTemplates\BusyIndicator.xaml;Resources\ControlTemplates\MyCustomControl.xaml;Resources\ControlTemplates\DialogControl.xaml;Resources\ControlTemplates\Yahoo\YahooInputControl.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Resources\MahApp.Metro.xaml;Resources\Shared.xaml;ShellView.xaml;Views\NYTimes\NewsView.xaml;Views\Twitter\TwitterSearchInterop.xaml;Views\Flyouts\FlyoutLeftView.xaml;Views\Twitter\ChildTabTwitterView.xaml;Views\ClientServer\ChildView.xaml;Views\Common\Dialog\DialogView.xaml;Views\ShellView.xaml;Views\Twitter\TwitterSummaryView.xaml;Views\Twitter\TwitterView.xaml;Views\WinOs\WinOsChildView.xaml;Views\WinOs\WinOsView.xaml;Views\Yahoo\ChildTabYahooView.xaml;Views\Yahoo\HistoricalQuoteView.xaml;Views\Yahoo\WatchListView.xaml;
 
 True
 

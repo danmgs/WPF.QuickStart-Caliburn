@@ -1,15 +1,10 @@
 ﻿namespace WPF.QuickStart.UI.Common.Controls
 {
-	using System;
-	using System.Windows;
-	using System.Windows.Controls;
-	using System.Windows.Data;
-	using System.Windows.Media;
-	using System.Windows.Media.Imaging;
-	using System.Windows.Threading;
-	using System.Windows.Shapes;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
 
-	public class DialogControl : Control
+    public class DialogControl : Control
 	{
 		//DispatcherTimer _timer = new DispatcherTimer();
 

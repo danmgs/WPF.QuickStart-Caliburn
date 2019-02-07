@@ -6,7 +6,7 @@
     <Grid>
 
         <TabControl x:Name="Items"
-                    Controls:ControlsHelper.IsUnderlined="True"
+                    Controls:ControlsHelper.CornerRadius="1"
                     Grid.Row="1"
                     TabStripPlacement="Top">
             <!--

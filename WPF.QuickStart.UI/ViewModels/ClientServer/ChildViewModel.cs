@@ -2,15 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 using WPF.Quickstart.Model.Twitter;
-using WPF.Quickstart.Model.Yahoo;
-using WPF.QuickStart.UI.Events;
 using WPF.QuickStart.UI.MarketDataProxy;
 using WPF.QuickStart.UI.Proxy.MarketData;
 using WPF.QuickStart.UI.ViewModels.Common;

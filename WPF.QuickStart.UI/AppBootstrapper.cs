@@ -1,8 +1,8 @@
-namespace WPF.QuickStart.UI {
+namespace WPF.QuickStart.UI
+{
+    using Caliburn.Micro;
     using System;
     using System.Collections.Generic;
-    using Caliburn.Micro;
-    using WPF.QuickStart.UI.ViewModels;
 
     public class AppBootstrapper : BootstrapperBase {
         SimpleContainer container;
@@ -20,11 +20,7 @@ namespace WPF.QuickStart.UI {
         }
 
         protected override object GetInstance(Type service, string key) {
-            var instance = container.GetInstance(service, key);
-            if (instance != null)
-                return instance;
-
-            throw new InvalidOperationException("Could not locate any instances.");
+            return container.GetInstance(service, key);
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service) {

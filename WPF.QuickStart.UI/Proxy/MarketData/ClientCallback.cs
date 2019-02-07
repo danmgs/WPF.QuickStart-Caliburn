@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Threading;
 using WPF.Quickstart.Model.Twitter;
 using WPF.QuickStart.UI.MarketDataProxy;
-using WPF.QuickStart.UI.ViewModels;
 using WPF.QuickStart.UI.ViewModels.ClientServer;
 
 namespace WPF.QuickStart.UI.Proxy.MarketData

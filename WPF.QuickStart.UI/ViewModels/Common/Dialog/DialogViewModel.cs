@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using Caliburn.Micro;
+using System;
+using System.ComponentModel.Composition;
 using System.Reflection;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Caliburn.Micro;
-using System.ComponentModel.Composition;
 using WPF.QuickStart.UI.Utils;
 
 namespace WPF.QuickStart.UI.ViewModels.Common.Dialog
 {
-	[PartCreationPolicy(CreationPolicy.NonShared)] // TODO : à vérifier l'utilité ici.
+    [PartCreationPolicy(CreationPolicy.NonShared)] // TODO : à vérifier l'utilité ici.
 	public class DialogViewModel : Screen
 	{
 		private static readonly string prefixIMG = @"pack://application:,,,/" + Assembly.GetExecutingAssembly().GetName().Name + ";component/Images/DialogWindow";
