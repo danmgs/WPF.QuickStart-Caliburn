@@ -1,11 +1,9 @@
 using System;
-using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 
 namespace WPF.QuickStart.UI.Converters
 {
-	[ValueConversion(typeof(bool), typeof(bool))]
+    [ValueConversion(typeof(bool), typeof(bool))]
 	public class InverseBooleanConverter : IValueConverter
 	{
 		#region IValueConverter Members

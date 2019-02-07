@@ -1,17 +1,15 @@
-﻿namespace WPF.QuickStart.UI
-{
-    using Caliburn.Micro;
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.Composition;
-    using System.ComponentModel.Composition.Hosting;
-    using System.ComponentModel.Composition.Primitives;
-    using System.Linq;
-    using System.Windows;
-    using WPF.QuickStart.UI.ViewModels;
-    using WPF.QuickStart.UI.ViewModels.Twitter;
-    using WPF.QuickStart.UI.ViewModels.Yahoo;
+﻿using Caliburn.Micro;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.ComponentModel.Composition.Primitives;
+using System.Linq;
+using System.Windows;
+using WPF.QuickStart.UI.ViewModels.Twitter;
 
+namespace WPF.QuickStart.UI
+{
     public class MefBootstrapper : BootstrapperBase
     {
         private CompositionContainer container;

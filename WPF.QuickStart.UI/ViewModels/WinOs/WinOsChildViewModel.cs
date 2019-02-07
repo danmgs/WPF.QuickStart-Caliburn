@@ -1,19 +1,7 @@
 ﻿using Caliburn.Micro;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WPF.Quickstart.Model.Yahoo;
 using WPF.QuickStart.UI.Events;
 using WPF.QuickStart.UI.Utils.Enum;
-using WPF.QuickStart.UI.ViewModels.ClientServer;
-using WPF.QuickStart.UI.ViewModels.Common;
-using WPF.QuickStart.UI.ViewModels.Common.Dialog;
-using WPF.QuickStart.UI.ViewModels.Twitter;
 
 namespace WPF.QuickStart.UI.ViewModels.WinOs
 {

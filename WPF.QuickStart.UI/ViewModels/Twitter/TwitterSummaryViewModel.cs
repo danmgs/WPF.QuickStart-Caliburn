@@ -1,21 +1,14 @@
 ﻿using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WPF.Quickstart.Model.Twitter;
-using WPF.QuickStart.UI.ViewModels.Common;
-using WPF.QuickStart.UI.Utils.Api.Twitter;
-using WPF.QuickStart.UI.Utils;
-using System.Windows.Controls;
 using System.Net;
-using WPF.QuickStart.UI.ViewModels.Common.Dialog;
-using System.ComponentModel.Composition;
-using WPF.Quickstart.Data.Mocks;
-using WPF.QuickStart.UI.Views.Common;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Controls.Primitives;
+using WPF.Quickstart.Data.Mocks;
+using WPF.Quickstart.Model.Twitter;
+using WPF.QuickStart.UI.Utils;
+using WPF.QuickStart.UI.ViewModels.Common;
+using WPF.QuickStart.UI.ViewModels.Common.Dialog;
 
 namespace WPF.QuickStart.UI.ViewModels.Twitter
 {

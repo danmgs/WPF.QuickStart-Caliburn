@@ -52,8 +52,8 @@
                                      IsEnabled="{Binding ConnectedTwitter, Converter={StaticResource inverseBoolConverter}}"  
                                      Width="200" 
                                      Height="43"                                 
-                                     Controls:TextboxHelper.Watermark="Type a keyword ..." 
-                                     Controls:TextboxHelper.ClearTextButton="True" 
+                                     Controls:TextBoxHelper.Watermark="Type a keyword ..." 
+                                     Controls:TextBoxHelper.ClearTextButton="True" 
                                      VerticalContentAlignment="Center" />
                                 <Image gif:ImageBehavior.AnimatedSource="/Images/wait.gif" 
                                Height="24" Width="24" Margin="5,5" 

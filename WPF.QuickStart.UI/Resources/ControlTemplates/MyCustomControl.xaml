@@ -25,7 +25,7 @@
                     <DockPanel>
                         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10,10">
                             <Label Content="Number of items" />
-                            <TextBox Name="ElementsCount" Width="50" Margin="20,0" />                            
+                            <TextBox Name="ElementsCount" Width="50" Margin="20,0" />
                         </StackPanel>
                         <Button DockPanel.Dock="Top" Name="GenerateItems" HorizontalContentAlignment="Stretch" Content="Generate list" Padding="10" IsEnabled="{TemplateBinding EnabledUi}">
                             <i:Interaction.Triggers>
@@ -45,7 +45,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    
-
 </ResourceDictionary>
+    

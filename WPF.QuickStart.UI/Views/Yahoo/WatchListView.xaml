@@ -15,7 +15,7 @@
             <TextBox x:Name="SecurityCode"  
                      Width="134" 
                      ToolTip="Input code. Exple : YHOO, MSCI .." 
-                     Controls:TextboxHelper.Watermark="MSCI..." Controls:TextboxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.Watermark="MSCI..." Controls:TextBoxHelper.ClearTextButton="True"
                      VerticalContentAlignment="Center" />
             <Button x:Name="AddSingleStock" Content="Add Stock" HorizontalAlignment="Left" Margin="10,0" />
         </StackPanel>        

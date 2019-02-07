@@ -1,0 +1,10 @@
+language: csharp
+solution: WPF.QuickStart.sln
+
+# whitelist
+branches:
+  only:
+    - /.*/
+
+notifications:
+    - email: false

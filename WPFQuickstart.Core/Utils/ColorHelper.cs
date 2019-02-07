@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Windows.Media;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
-using System;
+using System.Windows.Media;
 
 namespace WPF.QuickStart.UI.Utils
 {
-	public static class ColorHelper
+    public static class ColorHelper
     {
         private static Dictionary<string, Color> namedColors = new Dictionary<string, Color>();
 

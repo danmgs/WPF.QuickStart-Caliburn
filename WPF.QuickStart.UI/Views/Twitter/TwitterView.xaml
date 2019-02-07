@@ -53,7 +53,7 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Keyword : " />
-                            <TextBox x:Name="Keyword" Width="170" Height="26" Controls:TextboxHelper.Watermark="Type a keyword ..." Controls:TextboxHelper.ClearTextButton="True" />
+                            <TextBox x:Name="Keyword" Width="170" Height="26" Controls:TextBoxHelper.Watermark="Type a keyword ..." Controls:TextBoxHelper.ClearTextButton="True" />
                             <Button Width="50"
                                 Height="50"
                                 Margin="8, 0, 0, 0"

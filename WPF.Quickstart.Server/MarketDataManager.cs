@@ -1,12 +1,9 @@
-﻿using Common.Logging;
+﻿using log4net;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using WPF.Quickstart.Model.Twitter;
 using WPF.QuickStart.UI.Utils.Api.Twitter;
 
@@ -14,20 +11,20 @@ namespace WPF.Quickstart.Server
 {
     public class MarketDataManager : IMarketData
     {
-        static ILog Logger = LogManager.GetCurrentClassLogger();
+        private static readonly ILog log = LogManager.GetLogger(typeof(MarketDataManager));
 
         private IClientCallback m_pIClientCallback = null;
 
         public MarketDataManager()
         {
-            Logger.Info(string.Format("MarketDataManager({0}) Created...", GetHashCode()));
+            log.Info(string.Format("MarketDataManager({0}) Created...", GetHashCode()));
             m_pIClientCallback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
             OperationContext.Current.Channel.Faulted += new EventHandler(FaultedHandler);
         }
 
         private void FaultedHandler(object sender, EventArgs e)
         {
-            Logger.Warn(string.Format("Detect client disconnection"));
+            log.Warn(string.Format("Detect client disconnection"));
             throw new NotImplementedException();
         }
 
@@ -37,14 +34,14 @@ namespace WPF.Quickstart.Server
             Random rdm = new Random();
             var rdnNum = rdm.Next(1, 100);
 
-            Logger.Debug(string.Format("GetDataSourceList Random number is {0}", rdnNum));
+            log.Debug(string.Format("GetDataSourceList Random number is {0}", rdnNum));
 
             for (var i = 1; i <= rdnNum; i++)
             {
                 collection.Add(string.Format("item{0}", i));
             }
 
-            Logger.Debug(string.Format("GetDataSourceList with {0} items", collection.Count));
+            log.Debug(string.Format("GetDataSourceList with {0} items", collection.Count));
 
             // On peut appeler cette ligne plusieurs fois !!
             // Q : Est ce qu'on peut renvoyer la collection, si oui, a mon avis elle devrait etre serializable avant :). 
@@ -57,7 +54,7 @@ namespace WPF.Quickstart.Server
         {
             while (true)
             {
-                Logger.Warn(string.Format("GetRandomTweet('{0}')", keyword));
+                log.Warn(string.Format("GetRandomTweet('{0}')", keyword));
                 Tweet t = SearchRandomTweet(keyword);
                 m_pIClientCallback.PullRandomTweet(t);
                 Thread.Sleep(Convert.ToInt32(AppSettings.WCFService.MarketData.RefreshFrequency.Tweet));
